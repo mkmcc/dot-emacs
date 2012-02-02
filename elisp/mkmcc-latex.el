@@ -1,0 +1,64 @@
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; latex mode tweaks
+;;;
+;;; Time-stamp: <2012-02-02 10:09:13 (mkmcc)>
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; AUCTeX configuration
+(setq TeX-auto-save t)
+(setq TeX-parse-self t)
+
+(setq-default TeX-master nil)
+
+;; use pdflatex
+(setq TeX-PDF-mode t)
+
+(setq TeX-view-program-selection
+      '((output-dvi "DVI Viewer")
+        (output-pdf "PDF Viewer")
+        (output-html "HTML Viewer")))
+
+;; this section is good for OS X only
+(setq TeX-view-program-list
+      '(("DVI Viewer" "open %o")
+        ("PDF Viewer" "open %o")
+        ("HTML Viewer" "open %o")))
+
+;;; add rubber as an option in the compile menu
+(eval-after-load "tex"
+  '(progn
+     (add-to-list 'TeX-expand-list
+                  '("%(RubberPDF)"
+                    (lambda ()
+                      (if
+                          (not TeX-PDF-mode)
+                          ""
+                        "--pdf"))))
+     (add-to-list 'TeX-command-list
+                  '("Rubber" "rubber %(RubberPDF) %t" TeX-run-shell nil t) t)))
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
+
+;;; make rubber the default method for compiling.  bind f9 to compile
+;;; and f12 to view.
+(defun mkmcc-latex-mode-hook ()
+  (turn-on-auto-fill)
+  (abbrev-mode +1)
+  (define-key TeX-mode-map (kbd "<f9>")
+    (lambda ()
+      (interactive)
+      (save-buffer)
+      (TeX-command-menu "Rubber")
+      (TeX-clean)))
+  (define-key TeX-mode-map (kbd "<f12>")
+    (lambda ()
+      (interactive)
+      (TeX-view)
+      [return]))
+  (setq TeX-command-default '"Rubber"))
+
+(add-hook 'LaTeX-mode-hook 'mkmcc-latex-mode-hook)
+
+
+(provide 'mkmcc-latex)

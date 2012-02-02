@@ -1,0 +1,63 @@
+# -*- mode: snippet -*-
+# contributor: Mads D. Kristensen <madsdk@gmail.com>
+# contributor : Song Qiang <tsiangsung@gmail.com>
+# contributor : Mike McCourt mkmccjr@gmail.com>
+# key: article
+# group: skeleton
+# name: \documentclass{article} ...
+# --
+\documentclass[11pt]{scrartcl}
+
+\usepackage{mathpazo}
+\usepackage{mathtools,amsmath,amssymb,revsymb}
+\usepackage{xspace}
+\usepackage{microtype}
+\usepackage{isomath}
+
+\usepackage[dvipsnames]{xcolor}
+\definecolor{halfgray}{gray}{0.55}
+\definecolor{webgreen}{rgb}{0,.5,0}
+\definecolor{webbrown}{rgb}{.6,0,0}
+\usepackage[pdftex,hyperfootnotes=false,pdfpagelabels]{hyperref}
+\hypersetup{%
+    colorlinks=true, pdfstartview=FitV,%
+    breaklinks=true, pdfpagemode=UseNone, pageanchor=true, pdfpagemode=UseOutlines,%
+    plainpages=false,%
+    bookmarksnumbered, bookmarksopen=true, bookmarksopenlevel=1,%
+    hypertexnames=true, pdfhighlight=/O,%
+    urlcolor=webbrown, linkcolor=RoyalBlue, citecolor=webgreen,%
+    pdftitle={$1},%
+    pdfauthor={\textcopyright\ $2},%
+    pdfsubject={},%
+    pdfkeywords={},%
+    pdfcreator={pdfLaTeX},%
+    pdfproducer={LaTeX with hyperref}}
+
+\newcommand{\ie}{i.\,e.\xspace}
+\newcommand{\eg}{e.\,g.\xspace}
+\newcommand{\cf}{cf.\xspace}
+
+\newcommand{\Ie}{I.\,e.\xspace}
+\newcommand{\Eg}{E.\,g.\xspace}
+
+
+\let\oldhat\hat
+\renewcommand{\vec}[1]{\mathbf{#1}}
+\renewcommand{\hat}[1]{\oldhat{\mathbf{#1}}}
+
+\newcommand*{\partiald}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand*{\tens}[1]{\ensuremath{\tensorsym{#1}}\xspace}
+
+
+
+\title{${1:title}}
+\author{${2:Author Name}}
+
+\begin{document}
+\maketitle
+
+
+\bibliographystyle{${3:plain}}
+\bibliography{${4:literature.bib}}
+
+\end{document}

@@ -1,0 +1,19 @@
+Deft Notes
+
+i really have no idea what i'm doing here, but here's a list of things
+to try:
+1. read the manual ?
+2. experiment
+3. this requires making a few files.
+
+actually, this is pretty slick.  f5 to open up deft, and type the name
+of a title to narrow down choices.  then enter to select a file.
+type, save.  C-c C-c to clear the search.
+
+according to the website: Common file operations can also be carried
+out from within Deft. Files can be renamed using C-c C-r or deleted
+using C-c C-d. New files can also be created using C-c C-n for quick
+creation or C-c C-m for a filename prompt. You can leave Deft at any
+time with C-c C-q.
+
+

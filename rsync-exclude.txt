@@ -1,0 +1,13 @@
+.git*
+ido.last
+smex.save
+tramp
+auto-save-list
+recentf
+savehist
+saveplace
+semanticdb
+url
+eshell
+el-get
+elpa
