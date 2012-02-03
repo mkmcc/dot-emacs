@@ -1,7 +1,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; customizing ido mode
 ;;;
-;;; Time-stamp: <2012-02-02 12:32:41 (mkmcc)>
+;;; Time-stamp: <2012-02-02 14:08:19 (mkmcc)>
 
 (ido-mode 'both)
 (ido-everywhere 1)
@@ -78,10 +78,12 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; yasnippet
+(require 'yasnippet)
 (add-to-list 'yas/snippet-dirs
-             '"~/.emacs.d/personal/plugins/yasnippet/snippets")
+             (concat prelude-personal-dir "plugins/yasnippet/snippets"))
 
-(yas/reload-all)
+(yas/initialize)
+;(yas/reload-all)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
