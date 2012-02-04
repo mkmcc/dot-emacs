@@ -40,6 +40,9 @@
                           -CAfile ~/.private/certs/CAs.pem
                           -cert ~/.private/certs/nick.pem"))
 
+(setq erc-autojoin-channels-alist
+      '(("newton.cx" "#badchat")))
+
 (defun start-irc ()
   "Connect to IRC."
   (interactive)
