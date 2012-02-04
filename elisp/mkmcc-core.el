@@ -4,8 +4,6 @@
 ;;     path and load path and initializes some constants.  Most of the
 ;;     work is done in ~/.emacs.d/elisp/personal/
 ;;
-;; Time-stamp: <2012-02-02 11:02:14 (mkmcc)>;
-;;
 ;; Begun by Mike McCourt 2009
 ;;
 

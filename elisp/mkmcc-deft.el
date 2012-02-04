@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; deft customizations
-;;; Time-stamp: <2012-02-02 09:50:39 (mkmcc)>
+;;
 (setq deft-extension "org")
 (setq deft-text-mode 'org-mode)
 

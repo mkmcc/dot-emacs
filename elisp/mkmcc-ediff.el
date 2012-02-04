@@ -1,8 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; customizations for ediff
-;;;
-;;; Time-stamp: <2012-02-02 09:50:51 (mkmcc)>
-
+;;
 (setq ediff-split-window-function 'split-window-horizontally)
 
 (defun dired-ediff-marked-files ()
