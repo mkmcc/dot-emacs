@@ -1,0 +1,10 @@
+#+TITLE: New emacs Configuration
+
+The biggest change is that I now use el-get and elpa to manage
+packages.  The functions to do this come from the emacs-prelude
+package, and I need to add a few packages.  Another thing to do would
+be to migrate packages from elpa to el-get, which seems to have much
+fresher content.
+
+Note that this only works with emacs 24.  
+
