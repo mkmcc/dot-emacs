@@ -57,11 +57,11 @@ there are loaded automatically by Prelude.")
 (require 'mkmcc-gdb)
 
 ;; other
-(require 'prelude-erc)
+(require 'mkmcc-erc)
 
 
 ;; load the personal settings (this includes `custom-file')
 (when (file-exists-p prelude-personal-dir)
   (mapc 'load (directory-files prelude-personal-dir nil "^[^#].*el$")))
 
-;;; init.el ends here
+;;; fin
