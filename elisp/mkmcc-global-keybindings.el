@@ -1,6 +1,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; global keybindings
 ;;
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; fix the keybindings on osx
 (setq mac-command-modifier 'meta)
@@ -33,6 +34,7 @@
 
 (global-set-key (kbd "C-x C-b") nil)    ; turn off list-buffers (annoying)
 
+(global-set-key (kbd "M-/") 'hippie-expand)
 
 ;; duplicate the current line or region
 (global-set-key (kbd "C-c d") 'prelude-duplicate-current-line-or-region)
@@ -41,9 +43,6 @@
 (global-set-key (kbd "C-x f") 'prelude-recentf-ido-find-file)
 (global-set-key (kbd "C-c r") 'bury-buffer)
 (global-set-key (kbd "M-`")   'file-cache-minibuffer-complete)
-
-;; replace buffer-menu with ibuffer
-(global-set-key (kbd "C-x C-b") 'ibuffer)
 
 ;; swap windows
 (global-set-key (kbd "C-c s") 'prelude-swap-windows)
@@ -56,9 +55,6 @@
 
 ;; open in external application
 (global-set-key (kbd "C-c o") 'prelude-open-with)
-
-;; use hippie-expand instead of dabbrev
-(global-set-key (kbd "M-/") 'hippie-expand)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
