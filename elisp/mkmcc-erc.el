@@ -27,6 +27,11 @@
 (setq erc-server-coding-system '(utf-8 . utf-8))
 
 
+;; Make C-c RET (or C-c C-RET) send messages instead of RET.
+(define-key erc-mode-map (kbd "RET") nil)
+(define-key erc-mode-map (kbd "C-c RET") 'erc-send-current-line)
+(define-key erc-mode-map (kbd "C-c C-RET") 'erc-send-current-line)
+
 ;;; logging
 (setq erc-log-channels-directory "~/.erc/logs/")
 
