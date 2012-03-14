@@ -1,8 +1,0 @@
-Emacs Notes
-
-Things to do with the new emacs 24.
-
-1. figure out the package manager thing.
-2. finish merging my elisp with the prelude.
-3. decide if I actually want to maintain compatibility with prelude
-   (eg, so that i can pull) or to go it alone.
