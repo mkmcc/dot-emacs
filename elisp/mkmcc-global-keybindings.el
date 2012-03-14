@@ -75,6 +75,8 @@
 
 (global-set-key [(control tab)] 'tag-complete-symbol) ; tags
 (global-set-key (kbd "C-x C-t") 'mkmcc-update-tags)
+
+(global-set-key [f7] 'compile)          ; can't live without it!
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
