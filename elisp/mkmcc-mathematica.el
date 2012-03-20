@@ -1,6 +1,8 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Mathematica
 
+(load-file "~/.emacs.d/vendor/mathematica.el")  ; FIXME
+
 (if mkmcc-macosx-p
     (setq mathematica-command-line
           "/Applications/Mathematica.app/Contents/MacOS/MathKernel")
