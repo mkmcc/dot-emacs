@@ -44,6 +44,7 @@ there are loaded automatically by Prelude.")
 (require 'mkmcc-latex)
 (require 'prelude-python)
 (require 'prelude-ruby)
+(require 'mkmcc-gnuplot)
 
 ;; lisps
 (require 'mkmcc-emacs-lisp)
