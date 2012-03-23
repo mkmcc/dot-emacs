@@ -61,6 +61,7 @@ there are loaded automatically by Prelude.")
 
 ;; other
 (require 'mkmcc-erc)
+(require 'mkmcc-sudoku)
 
 
 ;; load the personal settings (this includes `custom-file')
