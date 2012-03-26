@@ -52,6 +52,7 @@ there are loaded automatically by Prelude.")
 (require 'prelude-clojure)
 (require 'prelude-common-lisp)
 (require 'mkmcc-mathematica)
+(require 'mkmcc-scheme)
 
 ;; productivity
 (require 'mkmcc-deft)
