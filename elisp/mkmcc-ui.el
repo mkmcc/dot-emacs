@@ -22,8 +22,8 @@
   (file-name-shadow-mode 1))             ; be smart about filenames in minbuffer
 
 ;;; TODO check for window system
-(add-to-list 'custom-theme-load-path (concat prelude-dir "themes/"))
-(load-theme 'solarized-dark t)
+(require 'solarized-theme)
+(load-theme 'solarized-light t)
 (add-to-list 'default-frame-alist '(font . "Menlo-13"))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 

@@ -16,10 +16,14 @@ available in ELPA (or Marmalade).")
   "Users of Emacs Prelude are encouraged to keep their personal
 configuration changes in this directory. All Emacs Lisp files
 there are loaded automatically by Prelude.")
+(defvar prelude-themes-dir (concat prelude-dir "themes/")
+  "Themes not installed via the package mangers.")
 
 (add-to-list 'load-path prelude-elisp-dir)
 (add-to-list 'load-path prelude-vendor-dir)
 (add-to-list 'load-path prelude-personal-dir)
+(add-to-list 'load-path prelude-themes-dir)
+
 
 ;; config changes made through the customize UI will be store here
 (setq custom-file (concat prelude-personal-dir "custom.el"))
