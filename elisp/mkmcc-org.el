@@ -2,8 +2,8 @@
 ;; org-mode
 ;;
 
-(require 'org-install)
-(require 'org-publish)
+;(require 'org-install)
+;(require 'org-publish)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Basic setup
