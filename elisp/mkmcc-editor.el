@@ -44,7 +44,7 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; tramp mode
-(require 'tramp)
+;(require 'tramp)
 (setq tramp-default-method "ssh")       ; can access work computer using
                                         ; /strada.berkeley.edu:~/file
 (setq tramp-default-user "mkmcc"
@@ -78,11 +78,6 @@
       savehist-file (concat user-emacs-directory "savehist"))
 (savehist-mode t)
 
-;; save recent files
-(setq recentf-save-file (concat user-emacs-directory "recentf")
-      recentf-max-saved-items 200
-      recentf-max-menu-items 15)
-(recentf-mode t)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
