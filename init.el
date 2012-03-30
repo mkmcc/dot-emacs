@@ -4,8 +4,9 @@
 ;; (if (eq system-type 'darwin)
 ;;     (push "/usr/local/bin" exec-path))   ;; need to do something better
 
-(defvar prelude-dir (file-name-directory load-file-name)
-  "The root dir of the Emacs Prelude distribution.")
+;; (defvar prelude-dir (file-name-directory load-file-name)
+;;   "The root dir of the Emacs Prelude distribution.")
+(defvar prelude-dir "~/.emacs.d/")
 (defvar prelude-elisp-dir (concat prelude-dir "elisp/")
   "This directory houses all of the built-in Prelude module. You
 should avoid modifying the configuration there.")
