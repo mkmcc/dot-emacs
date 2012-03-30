@@ -27,15 +27,29 @@
 
 (setq completion-ignore-case t          ; ignore case when completing
       read-file-name-completion-ignore-case t)
+
+;; set the file permissions on the ido.last file.  This is a potential
+;; security concern.
+;;; NB: recentf and saveplace already do this.
+(defvar ido-save-file-modes 384
+  "Mode bits for the ido save file.  Integer or nil.  If non-nil,
+set the mode bits to that value.  By default give R/W access only
+to the owner of the file.  See the function `set-file-modes'.")
+
+(defadvice ido-save-history (after ido-set-file-mode)
+  "Set the permissions bit for the .ido.last file"
+  (when ido-save-file-modes
+    (set-file-modes ido-save-directory-list-file ido-save-file-modes)))
+
+(ad-activate 'ido-save-history)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; recentf using ido
+;;
 (require 'recentf)
 
-;; get rid of `find-file-read-only' and replace it with something
-;; more useful.
 (global-set-key (kbd "C-x C-r") 'ido-recentf-open)
 
 ;; enable recent files mode.
