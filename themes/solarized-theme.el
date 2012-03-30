@@ -422,10 +422,6 @@
 (add-to-list 'custom-theme-load-path
              (file-name-as-directory (file-name-directory load-file-name)))
 
-;; Local Variables:
-;; no-byte-compile: t
-;; End:
-
 (provide 'solarized-theme)
 
 ;;; solarized-core.el ends here.
