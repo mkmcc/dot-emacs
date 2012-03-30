@@ -41,8 +41,9 @@
 ;; enable recent files mode.
 (recentf-mode t)
 
-; 50 files ought to be enough.
-(setq recentf-max-saved-items 50)
+(setq recentf-save-file (concat user-emacs-directory "recentf")
+      recentf-max-saved-items 50
+      recentf-max-menu-items 15)
 
 (defun ido-recentf-open ()
   "Use `ido-completing-read' to \\[find-file] a recent file"
@@ -77,12 +78,12 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; yasnippet
-(require 'yasnippet)
-(add-to-list 'yas/snippet-dirs
-             (concat prelude-personal-dir "plugins/yasnippet/snippets"))
+;; (require 'yasnippet)
+;; (add-to-list 'yas/snippet-dirs
+;;              (concat prelude-personal-dir "plugins/yasnippet/snippets"))
 
-(yas/initialize)
-;(yas/reload-all)
+;; (yas/initialize)
+;; ;(yas/reload-all)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
