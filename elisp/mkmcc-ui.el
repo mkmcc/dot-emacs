@@ -17,8 +17,7 @@
 (column-number-mode t)
 (size-indication-mode t)
 
-(when (fboundp file-name-shadow-mode)    ; emacs22+
-  (file-name-shadow-mode 1))             ; be smart about filenames in minbuffer
+(file-name-shadow-mode 1)
 
 ;;; TODO check for window system
 (require 'solarized-theme)
