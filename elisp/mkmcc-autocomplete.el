@@ -48,8 +48,6 @@ to the owner of the file.  See the function `set-file-modes'.")
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; recentf using ido
 ;;
-(require 'recentf)
-
 (global-set-key (kbd "C-x C-r") 'ido-recentf-open)
 
 ;; enable recent files mode.
