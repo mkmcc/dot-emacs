@@ -251,16 +251,14 @@ line instead."
            (line-beginning-position 2)))))
 
 (defun prelude-copy-file-name-to-clipboard ()
-  "Put the current file name on the clipboard."
+  "Copy the current buffer file name to the clipboard."
   (interactive)
   (let ((filename (if (equal major-mode 'dired-mode)
                       default-directory
                     (buffer-file-name))))
     (when filename
-      (with-temp-buffer
-        (insert filename)
-        (clipboard-kill-region (point-min) (point-max)))
-      (message filename))))
+      (kill-new filename)
+      (message "Copied buffer file name '%s' to the clipboard." filename))))
 
 (defun prelude-duplicate-current-line-or-region (arg)
   "Duplicates the current line or region ARG times.
