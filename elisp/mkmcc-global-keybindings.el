@@ -44,7 +44,6 @@
 
 ;; File finding
 (global-set-key (kbd "C-x f") 'prelude-recentf-ido-find-file)
-(global-set-key (kbd "C-c r") 'bury-buffer)
 (global-set-key (kbd "M-`")   'file-cache-minibuffer-complete)
 
 ;; swap windows
