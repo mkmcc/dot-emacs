@@ -29,6 +29,9 @@
 (global-set-key (kbd "M-g")      'goto-line)     ; M-g  'goto-line
 (global-set-key (kbd "C-M-g")    'revert-buffer) ;
 
+(global-set-key [(control shift up)]   'prelude-move-line-up)
+(global-set-key [(control shift down)] 'prelude-move-line-down)
+
 (global-set-key (kbd "C-Z") nil)
 (global-set-key (kbd "C-x C-Z") nil)
 

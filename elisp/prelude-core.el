@@ -118,16 +118,12 @@ the curson at its beginning, according to the current mode."
   (transpose-lines 1)
   (previous-line 2))
 
-(global-set-key [(control shift up)] 'prelude-move-line-up)
-
 (defun prelude-move-line-down ()
   "Move down the current line."
   (interactive)
   (next-line 1)
   (transpose-lines 1)
   (previous-line 1))
-
-(global-set-key [(control shift down)] 'prelude-move-line-down)
 
 ;; add the ability to copy and cut the current line, without marking it
 (defadvice kill-ring-save (before slick-copy activate compile)
