@@ -10,7 +10,6 @@
 (unless (eq system-type 'darwin)
   (menu-bar-mode -1))
 
-(global-hl-line-mode +1)                 ; annoyances
 (blink-cursor-mode -1)
 (setq inhibit-startup-screen t)
 
@@ -78,10 +77,6 @@
 (setq kill-buffer-query-functions       ; don't prompt me
   (remq 'process-kill-buffer-query-function
         kill-buffer-query-functions))
-
-(require 'which-func)
-(add-to-list 'which-func-modes 'org-mode)
-(which-func-mode 1)
 
 (setq redisplay-dont-pause t)           ; more responsive display
 (setq-default indent-tabs-mode nil)     ; death to tabs!
