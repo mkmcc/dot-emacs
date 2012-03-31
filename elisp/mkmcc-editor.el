@@ -3,18 +3,18 @@
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; spell check
-(setq ispell-program-name "aspell")     ; options specified in ~/.aspell.conf
-(eval-after-load "ispell"
-  (setq ispell-silently-savep t))
+(eval-after-load "ispell"               ; why in the eval-after-load?
+  (setq ispell-silently-savep t
+        ispell-program-name   "aspell"))
 (autoload 'flyspell-mode "flyspell" "On-the-fly spelling checker." t)
 
-(defun prelude-turn-on-flyspell ()
+(defun mkmcc-turn-on-flyspell ()
   "Force flyspell-mode on using a positive argument.  For use in hooks."
   (interactive)
   (flyspell-mode +1))
 
-(add-hook 'message-mode-hook 'prelude-turn-on-flyspell)
-(add-hook 'text-mode-hook 'prelude-turn-on-flyspell)
+(add-hook 'message-mode-hook 'mkmcc-turn-on-flyspell)
+(add-hook 'text-mode-hook    'mkmcc-turn-on-flyspell)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 

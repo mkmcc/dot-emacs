@@ -11,6 +11,8 @@
 ;;; for now things work just fine without it.
 (setq scheme-program-name "scheme-mech")
 
+(add-hook 'scheme-mode-hook 'prelude-lisp-coding-hook)
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; fin
 (provide 'mkmcc-scheme)

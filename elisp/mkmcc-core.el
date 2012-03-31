@@ -13,20 +13,10 @@
   (or (eq system-type 'gnu/linux) (eq system-type 'linux)))
 (defconst mkmcc-macosx-p
   (eq system-type 'darwin))
-(defconst mkmcc-aquamacs-p
-  (boundp 'aquamacs-version))
 (defconst mkmcc-console-p
   (eq (symbol-value 'window-system) nil))
 (defconst mkmcc-machine
   (substring (shell-command-to-string "hostname") 0 -1))
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; require-maybe
-(defmacro require-maybe (feature &optional file)
-  "Try to require FEATURE, but don't signal an error if `require' fails."
-  `(require ,feature ,file 'noerror))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
@@ -100,39 +90,28 @@ determine what program to run."
   (interactive)
   (let (extention-alist fname suffix progName cmdStr)
     (setq extention-alist
-          '(("php" . "php")
-            ("pl" . "perl")
-            ("py" . "python")
-            ("rb" . "ruby")
-            ("js" . "js")
-            ("sh" . "bash")
-            ("ml" . "ocaml")
-            ("vbs" . "cscript")
+          '(("php"  . "php")
+            ("pl"   . "perl")
+            ("py"   . "python")
+            ("rb"   . "ruby")
+            ("js"   . "js")
+            ("sh"   . "bash")
+            ("m"    . "mash")
+            ("ml"   . "ocaml")
+            ("vbs"  . "cscript")
             ("java" . "javac")
-            ("clj" . "clojure")))
+            ("clj"  . "clojure")))
     (setq fname (buffer-file-name))
     (setq suffix (file-name-extension fname))
     (setq progName (cdr (assoc suffix extention-alist)))
     (setq cmdStr (concat progName " \""   fname "\""))
 
-    (if (string-equal suffix "el")
-        (load-file fname)
-      (if (string-equal suffix "m")
-          (progn
-            (message "Running...")
-            (setq cmdStr
-                  (concat "/Applications/Mathematica.app/Contents/MacOS/MathKernel"
-                          " -noinit -noprompt -run \"<<"
-                          fname "\""))
-            (shell-command cmdStr))
-        (if progName                    ; is not nil
-            (progn
-              (message "Running...")
-              (shell-command cmdStr))
-          (message "No recognized program file suffix for this file."))))))
+    (cond ((string-equal suffix "el")
+           (load-file fname))
+          ((progName)
+           (message "Running...")
+           (shell-command cmdStr)))))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-
 
 
 (provide 'mkmcc-core)

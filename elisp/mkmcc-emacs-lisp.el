@@ -14,7 +14,7 @@
 (defun mkmcc-emacs-lisp-mode-hook ()
   (prelude-lisp-coding-hook)
   (turn-on-eldoc-mode)
-  (mkmcc-remove-elc-on-save))         ; mkmcc removed rainbow mode
+  (mkmcc-remove-elc-on-save))
 
 (add-hook 'emacs-lisp-mode-hook 'mkmcc-emacs-lisp-mode-hook)
 
