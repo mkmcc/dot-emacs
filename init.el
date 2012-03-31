@@ -40,7 +40,7 @@ Prelude.")
 (require 'prelude-programming)
 (require 'mkmcc-c)
 (require 'mkmcc-latex)
-(require 'prelude-python)
+;(require 'prelude-python)
 (require 'prelude-ruby)
 (require 'mkmcc-gnuplot)
 (require 'mkmcc-athena)
@@ -59,7 +59,8 @@ Prelude.")
 (require 'mkmcc-gdb)
 
 ;; other
-(require 'mkmcc-erc)
+(eval-after-load "erc"
+  '(require 'mkmcc-erc))
 (require 'mkmcc-sudoku)
 (require 'mkmcc-web)
 
