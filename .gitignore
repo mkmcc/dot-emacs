@@ -11,3 +11,4 @@ el-get
 elpa
 deft
 url
+*.elc
