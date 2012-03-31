@@ -1,33 +1,22 @@
 ;;; Code:
 (require 'cl)
 
-;; (if (eq system-type 'darwin)
-;;     (push "/usr/local/bin" exec-path))   ;; need to do something better
+(defvar base-dir     "~/.emacs.d/")
+(defvar elisp-dir    (concat base-dir "elisp/"))
+(defvar vendor-dir   (concat base-dir "vendor/"))
+(defvar themes-dir   (concat base-dir "themes/"))
+(defvar personal-dir (concat base-dir "personal/")
+  "All Emacs Lisp files here are loaded automatically by
+Prelude.")
 
-;; (defvar prelude-dir (file-name-directory load-file-name)
-;;   "The root dir of the Emacs Prelude distribution.")
-(defvar prelude-dir "~/.emacs.d/")
-(defvar prelude-elisp-dir (concat prelude-dir "elisp/")
-  "This directory houses all of the built-in Prelude module. You
-should avoid modifying the configuration there.")
-(defvar prelude-vendor-dir (concat prelude-dir "vendor/")
-  "This directory house Emacs Lisp packages that are not yet
-available in ELPA (or Marmalade).")
-(defvar prelude-personal-dir (concat prelude-dir "personal/")
-  "Users of Emacs Prelude are encouraged to keep their personal
-configuration changes in this directory. All Emacs Lisp files
-there are loaded automatically by Prelude.")
-(defvar prelude-themes-dir (concat prelude-dir "themes/")
-  "Themes not installed via the package mangers.")
-
-(add-to-list 'load-path prelude-elisp-dir)
-(add-to-list 'load-path prelude-vendor-dir)
-(add-to-list 'load-path prelude-personal-dir)
-(add-to-list 'load-path prelude-themes-dir)
+(add-to-list 'load-path elisp-dir)
+(add-to-list 'load-path vendor-dir)
+(add-to-list 'load-path personal-dir)
+(add-to-list 'load-path themes-dir)
 
 
 ;; config changes made through the customize UI will be store here
-(setq custom-file (concat prelude-personal-dir "custom.el"))
+(setq custom-file (concat personal-dir "custom.el"))
 
 ;; packages
 (require 'mkmcc-packages)
@@ -70,9 +59,8 @@ there are loaded automatically by Prelude.")
 (require 'mkmcc-sudoku)
 (require 'mkmcc-web)
 
-
 ;; load the personal settings (this includes `custom-file')
-(when (file-exists-p prelude-personal-dir)
-  (mapc 'load (directory-files prelude-personal-dir nil "^[^#].*el$")))
+(when (file-exists-p personal-dir)
+  (mapc 'load (directory-files personal-dir nil "^[^#].*el$")))
 
 ;;; fin
