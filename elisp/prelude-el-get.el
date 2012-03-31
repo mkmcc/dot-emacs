@@ -1,5 +1,5 @@
-(add-to-list 'load-path (concat prelude-dir "el-get/el-get"))
-(setq el-get-dir (concat prelude-dir "el-get/"))
+(add-to-list 'load-path (concat base-dir "el-get/el-get"))
+(setq el-get-dir (concat base-dir "el-get/"))
 
 (unless (require 'el-get nil t)
   (with-current-buffer
