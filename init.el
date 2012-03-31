@@ -26,6 +26,10 @@ Prelude.")
 (require 'prelude-core)
 (require 'mkmcc-core)
 
+;; add the first level subfolders of themes and vendor automatically
+(prelude-add-subfolders-to-load-path vendor-dir)
+(prelude-add-subfolders-to-load-path themes-dir)
+
 ;; interface
 (require 'mkmcc-ui)
 (require 'mkmcc-editor)
