@@ -50,9 +50,6 @@
 ;; swap windows
 (global-set-key (kbd "C-c s") 'prelude-swap-windows)
 
-;; rename buffer & visited file
-(global-set-key (kbd "C-c r") 'prelude-rename-file-and-buffer)
-
 ;; kill other buffers
 (global-set-key (kbd "C-c k o") 'prelude-kill-other-buffers)
 

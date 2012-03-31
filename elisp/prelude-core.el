@@ -60,9 +60,6 @@ file of a buffer in an external program."
                     " "
                     buffer-file-name))))
 
-(defun prelude-buffer-mode (buffer-or-name)
-  (with-current-buffer buffer-or-name major-mode))
-
 (defun prelude-visit-term-buffer ()
   (interactive)
   (if (not (get-buffer "*ansi-term*"))
@@ -99,18 +96,6 @@ to markdown blockquote rules (useful to copy snippets to StackOverflow, Assembla
 to markdown blockquote rules. Useful to add snippets under bullet points."
   (interactive "r")
   (prelude-indent-rigidly-and-copy-to-clipboard begin end 6))
-
-(defun prelude-insert-empty-line ()
-  "Insert an empty line after the current line and positon
-the curson at its beginning, according to the current mode."
-  (interactive)
-  (move-end-of-line nil)
-  (open-line 1)
-  (next-line 1)
-  (indent-according-to-mode))
-
-;; mimic popular IDEs binding, note that it doesn't work in a terminal session
-(global-set-key [(shift return)] 'prelude-insert-empty-line)
 
 (defun prelude-move-line-up ()
   "Move up the current line."
