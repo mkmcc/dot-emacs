@@ -1,7 +1,0 @@
-Cluster Galaxy Formation
-
-Groups and clusters of galaxies are interesting laboratories to study
-the cooling and feedback processes that govern galaxy formation
-because these non-gravitational processes have clearly altered the
-state of the intracluster and intragroup medium.
-
