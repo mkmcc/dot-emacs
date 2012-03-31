@@ -4,16 +4,16 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; appearance (superficial)
-(scroll-bar-mode 0)                      ; disable useless things
+(scroll-bar-mode 0)                     ; disable useless things
 (when (fboundp 'tool-bar-mode)
   (tool-bar-mode -1))
 (unless (eq system-type 'darwin)
   (menu-bar-mode -1))
 
-(blink-cursor-mode -1)
+(blink-cursor-mode -1)                  ; annoyances
 (setq inhibit-startup-screen t)
 
-(line-number-mode t)                     ; modeline settings
+(line-number-mode t)                    ; modeline settings
 (column-number-mode t)
 (size-indication-mode t)
 
@@ -101,7 +101,7 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; games
-(setq tetris-score-file                  ; keep my ~/ clean
+(setq tetris-score-file                 ; keep my ~/ clean
       "~/.emacs.d/games/tetris-scores")
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
