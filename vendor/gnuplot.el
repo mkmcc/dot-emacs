@@ -154,30 +154,37 @@ indentation for continued plot and splot lines."
 ;;(setq gnuplot-program "/usr/bin/gnuplot")
 (setq gnuplot-program "/opt/local/bin/gnuplot")
 
-(defun run-gnuplot-on-file (file)
+(defun gnuplot-run-file (file)
   "Runs gnuplot -persist on the file given as an argument.
 Gnuplot program is stored in the variable gnuplot-program"
-  (let (x)
-    (setq x (call-process gnuplot-program file
-              "*gnuplot errors*" nil "-persist"))
-    (if (eq x 0) (kill-buffer "*gnuplot errors*")
-      (switch-to-buffer-other-window "*gnuplot errors*"))))
+  (let ((gp-exit-status (call-process gnuplot-program file
+                                      "*gnuplot errors*" nil "-persist")))
+    (message "Running gnuplot...")
+    (cond
+     ((eq gp-exit-status 0)
+      (kill-buffer "*gnuplot errors*")
+      (message "Running gnuplot... done."))
+     (t
+      (switch-to-buffer-other-window "*gnuplot errors*")
+      (toggle-read-only)
+      (local-set-key (kbd "q") (lambda () (interactive) (kill-buffer)))
+      (message "Gnuplot encountered errors.")))))
 
-(defun call-gnuplot-on-buffer ()
+(defun gnuplot-run-buffer ()
   "Runs gnuplot -persist as a synchronous process and passes the
 current buffer to it.  Buffer must be visiting a file for it to
 work."
   (interactive)
   (if (or (buffer-modified-p) (eq (buffer-file-name) nil))
     (message "buffer isn't saved")
-    (run-gnuplot-on-file (buffer-file-name))))
+    (gnuplot-run-file (buffer-file-name))))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; define the mode
 (define-derived-mode gnuplot-mode fundamental-mode
-  "Gnuplot Mode"
+  "Gnuplot"
   "Major mode for editing gnuplot files"
 
   ;; other stuff
@@ -211,7 +218,7 @@ work."
   (setq gp-commands nil)
 
   ;; apply keybindings
-  (local-set-key (kbd "C-x p")   'call-gnuplot-on-buffer)
+  (local-set-key (kbd "C-x p")   'gnuplot-run-buffer)
   (local-set-key (kbd "C-c C-c") 'comment-region)
   (local-set-key (kbd "C-c C-u") 'uncomment-region)
   (define-key gnuplot-mode-map [remap comment-dwim] 'gnuplot-comment-dwim)
