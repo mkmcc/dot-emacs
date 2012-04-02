@@ -1,7 +1,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; gnuplot-mkmcc.el
 ;;
-;; Time-stamp: <2012-03-14 00:14:09 (mkmccjr)>
+;; Time-stamp: <2012-04-02 14:14:44 (mkmcc)>
 ;;
 ;; Defines a major mode for editing gnuplot scripts.  I wanted to keep
 ;; it simpler than other modes -- just syntax hilighting, indentation,
@@ -13,44 +13,44 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; dumbly define syntax types
 (defvar gp-math-functions
-  '( "abs" "acos" "acosh" "arg" "asin" "asinh" "atan" "atan2" "atanh"
-     "besj0" "besj1" "besy0" "besy1" "ceil" "cos" "cosh" "erf" "erfc"
-     "exp" "floor" "gamma" "ibeta" "inverf" "igamma" "imag" "invnorm"
-     "int" "lambertw" "lgamma" "log" "log10" "norm" "rand" "real"
-     "sgn" "sin" "sinh" "sqrt" "tan" "tanh" )
+  '("abs" "acos" "acosh" "arg" "asin" "asinh" "atan" "atan2" "atanh"
+    "besj0" "besj1" "besy0" "besy1" "ceil" "cos" "cosh" "erf" "erfc"
+    "exp" "floor" "gamma" "ibeta" "inverf" "igamma" "imag" "invnorm"
+    "int" "lambertw" "lgamma" "log" "log10" "norm" "rand" "real"
+    "sgn" "sin" "sinh" "sqrt" "tan" "tanh")
   "Gnuplot math functions.")
 
 (defvar gp-other-functions
-  '( "gprintf" "sprintf" "strlen" "strstrr" "substr" "strftime"
-     "strptime" "system" "word" "words" "column" "exists"
-     "stringcolumn" "timecolumn" "tm_hour" "tm_mday" "tm_min"
-     "tm_mon" "tm_sec" "tm_wday" "tm_yday" "tm_year" "valid" )
+  '("gprintf" "sprintf" "strlen" "strstrr" "substr" "strftime"
+    "strptime" "system" "word" "words" "column" "exists"
+    "stringcolumn" "timecolumn" "tm_hour" "tm_mday" "tm_min"
+    "tm_mon" "tm_sec" "tm_wday" "tm_yday" "tm_year" "valid")
   "Gnuplot other functions.")
 
 (defvar gp-reserved-modifiers
-  '( "axes" "every" "index" "title" "notitle"
-     "ps" "pt" "pointsize" "pointtype"
-     "ls" "lw" "lt" "linestyle" "linewidth" "linetype"
-     "smooth" "thru" "using" "with")
+  '("axes" "every" "index" "title" "notitle"
+    "ps" "pt" "pointsize" "pointtype"
+    "ls" "lw" "lt" "linestyle" "linewidth" "linetype"
+    "smooth" "thru" "using" "with")
   "Gnuplot reserved words.")
 
 (defvar gp-other-keywords
-  '( "term" "xrange" "yrange" "logscale" "out" )
+  '("term" "xrange" "yrange" "logscale" "out" "output")
   "Gnuplot keywords")
 
 (defvar gp-term-types
-  '( "dumb" "x11" "postscript" "png" "gif" "enhanced" )
+  '("dumb" "x11" "postscript" "png" "gif" "enhanced")
   "Gnuplot term types")
 
 (defvar gp-plot-types
-  '( "lines" "points" "linespoints" "lp" "impulses" "dots" "steps"
-     "errorbars" "xerrorbars" "yerrorbars" "xyerrorbars" "boxes"
-     "boxerrorbars" "boxxyerrorbars" "candlesticks" "financebars"
-     "histeps" "vector")
+  '("lines" "points" "linespoints" "lp" "impulses" "dots" "steps"
+    "errorbars" "xerrorbars" "yerrorbars" "xyerrorbars" "boxes"
+    "boxerrorbars" "boxxyerrorbars" "candlesticks" "financebars"
+    "histeps" "vector")
   "Gnuplot plot styles")
 
 (defvar gp-commands
-  '( "plot" "splot" "fit" "replot" "set" "unset" )
+  '("plot" "splot" "fit" "replot" "set" "unset")
   "Gnuplot commands")
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
