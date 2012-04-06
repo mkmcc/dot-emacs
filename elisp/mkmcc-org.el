@@ -2,9 +2,6 @@
 ;; org-mode
 ;;
 
-;(require 'org-install)
-;(require 'org-publish)
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Basic setup
 (add-to-list 'auto-mode-alist
@@ -22,12 +19,6 @@
       org-log-done 'time                     ; log time when marking as DONE
       org-enforce-to-checkbox-dependencies t ; parents can't be closed...
       org-enforce-todo-dependencies t)       ; ...before their children
-
-
-(defun mkmcc-org-mode-hook ()
-  (electric-indent-mode -1))
-
-(add-hook 'org-mode-hook 'mkmcc-org-mode-hook)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
@@ -87,22 +78,6 @@
 (setq org-export-html-style-include-scripts nil
       org-export-html-preamble              nil)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-
-;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; ;; TODO States
-;; (setq org-todo-keywords
-;;       '((sequence "TODO(t)" "STARTED(s)" "DEFERRED(f)" "|" "DONE(d)")
-;;         (sequence "BUG(b)" "KNOWNCAUSE(k)" "|" "FIXED(i)")
-;;         (sequence "|" "CANCELED(c)")))
-
-;; (setq org-todo-keyword-faces
-;;       '(("TODO"      . org-warning)
-;;         ("STARTED"  . shadow)
-;;         ("DEFERRED"  . shadow)
-;;         ("KNOWNCAUSE"  . shadow)
-;;         ("CANCELED"  . (:foreground "blue" :weight bold))))
-;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
