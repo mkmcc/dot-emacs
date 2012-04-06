@@ -108,20 +108,35 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Publish my website
 ;; Publish using M-x org-publish-project
+(defvar website-static-extensions
+  '("css" "js" "png" "gif" "pdf" "nb" "c" "rb" "m" "awk" "gpg" "asc")
+  "Extensions of static files to copy for my website.")
+
+(defvar website-static-extensions-regexp
+  (regexp-opt-group
+   (sort website-static-extensions 'string<)))
+
 (setq org-publish-project-alist
-      '(("website-org-files"
-         :base-directory "~/public_html/"
-         :base-extension "org"
-         :publishing-directory "~/public_html/"
-         :recursive t
-         :publishing-function org-publish-org-to-html
-         :headline-levels 4
-         :auto-preamble t
-         :auto-sitemap t
-         :sitemap-filename "sitemap.org"
-         :sitemap-title "sitemap")
-        ("website"                      ;can include static files here
-         :components ("website-org-files"))))
+      `(("website-org-files"
+         :base-directory       "~/Documents/Website/src"
+         :base-extension       "org"
+         :publishing-directory "~/Documents/Website/site/"
+         :recursive            t
+         :publishing-function  org-publish-org-to-html
+         :headline-levels      4
+         :auto-preamble        t
+         :auto-sitemap         t
+         :sitemap-filename     "sitemap.org"
+         :sitemap-title        "sitemap")
+        ("website-static"
+         :base-directory       "~/Documents/Website/src"
+         :publishing-directory "~/Documents/Website/site/"
+         :recursive            t
+         :publishing-function  org-publish-attachment
+         :base-extension       ,website-static-extensions-regexp
+         )
+        ("website"
+         :components ("website-org-files" "website-static"))))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (provide 'mkmcc-org)
