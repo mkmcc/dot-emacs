@@ -73,46 +73,19 @@
      </a>
    </p>")
 
-
-;; The default export style includes the line
-;;  'textarea { overflow-x: auto; },'
-;; which doesn't validate.
-;;; TODO: simplify this?  check out the help for this variable.
+;; use my own css
 (setq org-export-html-style-include-default nil)
 (defconst org-export-html-style
-  "<style type=\"text/css\">
- <!--/*--><![CDATA[/*><!--*/
-  html { font-family: Times, serif; font-size: 12pt; }
-  .title  { text-align: center; }
-  .todo   { color: red; }
-  .done   { color: green; }
-  .tag    { background-color: #add8e6; font-weight:normal }
-  .target { }
-  .timestamp { color: #bebebe; }
-  .timestamp-kwd { color: #5f9ea0; }
-  p.verse { margin-left: 3% }
-  pre {
-        border: 1pt solid #AEBDCC;
-        background-color: #F3F5F7;
-        padding: 5pt;
-        font-family: courier, monospace;
-        font-size: 90%;
-        overflow:auto;
-  }
-  table { border-collapse: collapse; }
-  td, th { vertical-align: top; }
-  dt { font-weight: bold; }
-  div.figure { padding: 0.5em; }
-  div.figure p { text-align: center; }
-  .linenr { font-size:smaller }
-  .code-highlighted {background-color:#ffff00;}
-  .org-info-js_info-navigation { border-style:none; }
-  #org-info-js_console-label { font-size:10px; font-weight:bold;
-                               white-space:nowrap; }
-  .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
-                                 font-weight:bold; }
-  /*]]>*/-->
-</style>")
+  "<link rel=\"stylesheet\" type=\"text/css\"
+      href=\"css/screen.css\"
+      media=\"screen, projection\">
+<link rel=\"stylesheet\" type=\"text/css\"
+      href=\"css/print.css\"
+      media=\"print\">")
+
+;; unnecessary
+(setq org-export-html-style-include-scripts nil
+      org-export-html-preamble              nil)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
