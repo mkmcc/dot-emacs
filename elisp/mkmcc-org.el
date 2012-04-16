@@ -19,6 +19,12 @@
       org-log-done 'time                     ; log time when marking as DONE
       org-enforce-to-checkbox-dependencies t ; parents can't be closed...
       org-enforce-todo-dependencies t)       ; ...before their children
+
+
+(defun mkmcc-org-mode-hook ()
+  (electric-indent-mode -1))
+
+(add-hook 'org-mode-hook 'mkmcc-org-mode-hook)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
