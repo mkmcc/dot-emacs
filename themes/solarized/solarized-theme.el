@@ -81,7 +81,7 @@
      `(lazy-highlight ((,class (:foreground ,yellow :background ,solarized-hl))))
 
      `(menu ((,class (:foreground ,solarized-fg :background ,solarized-bg))))
-     `(minibuffer-prompt ((,class (:foreground ,solarized-emph))))
+     `(minibuffer-prompt ((,class (:foreground ,solarized-emph :weight bold))))
      `(mode-line
        ((,class (:foreground ,solarized-fg
                              :background ,solarized-hl
@@ -99,7 +99,7 @@
 
      ;; font lock
      `(font-lock-builtin-face ((,class (:foreground ,blue))))
-     `(font-lock-comment-face ((,class (:foreground ,solarized-comments))))
+     `(font-lock-comment-face ((,class (:foreground ,solarized-comments :slant italic))))
      `(font-lock-comment-delimiter-face ((,class (:foreground ,solarized-comments))))
      `(font-lock-constant-face ((,class (:foreground ,blue))))
      `(font-lock-doc-face ((,class (:foreground ,cyan))))
