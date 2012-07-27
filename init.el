@@ -67,4 +67,7 @@ Prelude.")
 (when (file-exists-p personal-dir)
   (mapc 'load (directory-files personal-dir nil "^[^#].*el$")))
 
+;; necessary to run gnuplot.  may not be the right solution?
+(setenv "DISPLAY" ":0")
+
 ;;; fin
