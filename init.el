@@ -59,8 +59,7 @@ Prelude.")
 (require 'mkmcc-gdb)
 
 ;; other
-(eval-after-load "erc"
-  '(require 'mkmcc-erc))
+(require 'mkmcc-erc)
 (require 'mkmcc-sudoku)
 (require 'mkmcc-web)
 
