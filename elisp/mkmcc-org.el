@@ -75,10 +75,10 @@
 (defconst org-export-html-style
   "<link rel=\"stylesheet\" type=\"text/css\"
       href=\"css/screen.css\"
-      media=\"screen, projection\">
+      media=\"screen, projection\"/>
 <link rel=\"stylesheet\" type=\"text/css\"
       href=\"css/print.css\"
-      media=\"print\">")
+      media=\"print\"/>")
 
 ;; unnecessary
 (setq org-export-html-style-include-scripts nil
