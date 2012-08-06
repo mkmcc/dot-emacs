@@ -23,6 +23,22 @@
 (require 'solarized-theme)
 (load-theme 'solarized-light t)
 (add-to-list 'default-frame-alist '(font . "Menlo-13"))
+
+(defun readability ()
+  (interactive)
+
+  ;; buffer-face-mode is both a function and a variable
+  (if (and (boundp 'buffer-face-mode)
+           (symbol-value 'buffer-face-mode))
+      (progn
+        (variable-pitch-mode -1)
+        (setq line-spacing nil))
+    (progn
+      (set-face-attribute 'variable-pitch
+                          nil
+                          :font "Warnock Pro-22")
+      (variable-pitch-mode t)
+      (setq line-spacing 7))))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
