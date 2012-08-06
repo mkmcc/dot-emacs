@@ -1,8 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; gnuplot-mkmcc.el
 ;;
-;; Time-stamp: <2012-04-02 14:14:44 (mkmcc)>
-;;
 ;; Defines a major mode for editing gnuplot scripts.  I wanted to keep
 ;; it simpler than other modes -- just syntax hilighting, indentation,
 ;; and a command to plot the file
@@ -10,28 +8,42 @@
 ;; Begun by Mike McCourt June 2010
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+;;; TODO:
+;;;
+;;; 1. what's the deal with 'comment-start, etc in the derived mode
+;;;    body? necessary?
+;;;
+;;; 2. what's going on with comment-start-skip?
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; customizable variables and keybindings
+(setq gnuplot-program "/opt/local/bin/gnuplot")
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; dumbly define syntax types
 (defvar gp-math-functions
-  '("abs" "acos" "acosh" "arg" "asin" "asinh" "atan" "atan2" "atanh"
-    "besj0" "besj1" "besy0" "besy1" "ceil" "cos" "cosh" "erf" "erfc"
-    "exp" "floor" "gamma" "ibeta" "inverf" "igamma" "imag" "invnorm"
-    "int" "lambertw" "lgamma" "log" "log10" "norm" "rand" "real"
-    "sgn" "sin" "sinh" "sqrt" "tan" "tanh")
+  '("abs"   "acos"     "acosh"  "arg"   "asin"   "asinh"  "atan" "atan2" "atanh"
+    "besj0" "besj1"    "besy0"  "besy1" "ceil"   "cos"    "cosh" "erf"   "erfc"
+    "exp"   "floor"    "gamma"  "ibeta" "inverf" "igamma" "imag" "invnorm"
+    "int"   "lambertw" "lgamma" "log"   "log10"  "norm"   "rand" "real"
+    "sgn"   "sin"      "sinh"   "sqrt"  "tan"    "tanh")
   "Gnuplot math functions.")
 
 (defvar gp-other-functions
-  '("gprintf" "sprintf" "strlen" "strstrr" "substr" "strftime"
-    "strptime" "system" "word" "words" "column" "exists"
+  '("gprintf"      "sprintf"    "strlen"  "strstrr" "substr" "strftime"
+    "strptime"     "system"     "word"    "words"   "column" "exists"
     "stringcolumn" "timecolumn" "tm_hour" "tm_mday" "tm_min"
-    "tm_mon" "tm_sec" "tm_wday" "tm_yday" "tm_year" "valid")
+    "tm_mon"       "tm_sec"     "tm_wday" "tm_yday" "tm_year" "valid")
   "Gnuplot other functions.")
 
 (defvar gp-reserved-modifiers
-  '("axes" "every" "index" "title" "notitle"
-    "ps" "pt" "pointsize" "pointtype"
-    "ls" "lw" "lt" "linestyle" "linewidth" "linetype"
-    "smooth" "thru" "using" "with")
+  '("axes"   "every" "index"     "title"     "notitle"
+    "ps"     "pt"    "pointsize" "pointtype" "linetype"
+    "ls"     "lw"    "lt"        "linestyle" "linewidth"
+    "smooth" "thru"  "using"     "with")
   "Gnuplot reserved words.")
 
 (defvar gp-other-keywords
@@ -83,16 +95,15 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; apply font lock commands
 (setq gnuplot-font-lock-keywords
-  `(
-     (,gp-commands-regexp . font-lock-constant-face)
-     (,gp-math-functions-regexp . font-lock-function-name-face)
-     (,gp-other-functions-regexp . font-lock-constant-face)
-     (,gp-reserved-modifiers-regexp . font-lock-type-face)
-     (,gp-other-keywords-regexp . font-lock-preprocessor-face)
-     (,gp-term-types-regexp . font-lock-string-face)
-     (,gp-plot-types-regexp . font-lock-function-name-face)
-     ("\$[0-9]+" . font-lock-string-face)                     ; columns
-     ("\\[\\([^]]+\\)\\]" 1 font-lock-string-face)))          ; brackets
+  `((,gp-commands-regexp           . font-lock-constant-face)
+    (,gp-math-functions-regexp     . font-lock-function-name-face)
+    (,gp-other-functions-regexp    . font-lock-constant-face)
+    (,gp-reserved-modifiers-regexp . font-lock-type-face)
+    (,gp-other-keywords-regexp     . font-lock-preprocessor-face)
+    (,gp-term-types-regexp         . font-lock-string-face)
+    (,gp-plot-types-regexp         . font-lock-function-name-face)
+    ("\$[0-9]+"                    . font-lock-string-face)   ; columns
+    ("\\[\\([^]]+\\)\\]"           1 font-lock-string-face))) ; brackets
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
@@ -144,16 +155,15 @@ indentation for continued plot and splot lines."
 (defun gnuplot-comment-dwim (arg)
   (interactive "*P")
   (require 'newcomment)
-  (let ((deactivate-mark nil) (comment-start "#") (comment-end ""))
+  (let ((deactivate-mark nil)
+        (comment-start   "#")
+        (comment-end     ""))
     (comment-dwim arg)))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; function to call gnuplot on the buffer
-;;(setq gnuplot-program "/usr/bin/gnuplot")
-(setq gnuplot-program "/opt/local/bin/gnuplot")
-
 (defun gnuplot-run-file (file)
   "Runs gnuplot -persist on the file given as an argument.
 Gnuplot program is stored in the variable gnuplot-program"
@@ -221,8 +231,7 @@ work."
   (local-set-key (kbd "C-x p")   'gnuplot-run-buffer)
   (local-set-key (kbd "C-c C-c") 'comment-region)
   (local-set-key (kbd "C-c C-u") 'uncomment-region)
-  (define-key gnuplot-mode-map [remap comment-dwim] 'gnuplot-comment-dwim)
-)
+  (define-key gnuplot-mode-map [remap comment-dwim] 'gnuplot-comment-dwim))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (provide 'gnuplot)
