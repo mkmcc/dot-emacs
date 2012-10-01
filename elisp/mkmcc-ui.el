@@ -19,6 +19,12 @@
 
 (file-name-shadow-mode 1)
 
+(unless (string= system-name "strada.berkeley.edu")
+  (setq battery-mode-line-format "[%b%p%%]"
+        display-time-format      "%b %e %l:%M%p")
+  (display-battery-mode 1))
+(display-time-mode 1)
+
 ;;; TODO check for window system
 (require 'solarized-theme)
 (load-theme 'solarized-light t)
