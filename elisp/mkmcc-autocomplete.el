@@ -88,15 +88,4 @@ to the owner of the file.  See the function `set-file-modes'.")
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; yasnippet
-;; (require 'yasnippet)
-;; (add-to-list 'yas/snippet-dirs
-;;              (concat personal-dir "plugins/yasnippet/snippets"))
-
-;; (yas/initialize)
-;; ;(yas/reload-all)
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-
 (provide 'mkmcc-autocomplete)

@@ -20,7 +20,7 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; version control
-
+;;
 ;; backups  (emacs will write backups and number them)
 (setq make-backup-files t                                ; do make backups
       backup-by-copying t                                ; and copy them...
@@ -44,7 +44,7 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; tramp mode
-;(require 'tramp)
+;;
 (setq tramp-default-method "ssh")       ; can access work computer using
                                         ; /strada.berkeley.edu:~/file
 (setq tramp-default-user "mkmcc"
@@ -54,6 +54,7 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; meaningful names for buffers with the same name
+;;
 (require 'uniquify)
 (setq uniquify-buffer-name-style 'post-forward ; make buffer names more unique
       uniquify-separator ":"
