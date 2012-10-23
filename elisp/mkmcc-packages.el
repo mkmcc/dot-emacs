@@ -23,7 +23,7 @@
 ;; automatically update or install some packages
 (defvar mkmcc-packages
   '(auctex clojure-mode full-ack gist inf-ruby org paredit
-           python rainbow-mode yari
+           python rainbow-mode yari deft magit
            zenburn-theme)
   "A list of packages to ensure are installed at launch.")
 
