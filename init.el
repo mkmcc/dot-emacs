@@ -2,10 +2,10 @@
 (require 'cl)
 
 (defvar base-dir     "~/.emacs.d/")
-(defvar elisp-dir    (concat base-dir "elisp/"))
-(defvar vendor-dir   (concat base-dir "vendor/"))
-(defvar themes-dir   (concat base-dir "themes/"))
-(defvar personal-dir (concat base-dir "personal/")
+(defvar elisp-dir    (expand-file-name "elisp/" base-dir))
+(defvar vendor-dir   (expand-file-name "vendor/" base-dir))
+(defvar themes-dir   (expand-file-name "themes/" base-dir))
+(defvar personal-dir (expand-file-name "personal/" base-dir)
   "All Emacs Lisp files here are loaded automatically by
 Prelude.")
 
@@ -16,7 +16,7 @@ Prelude.")
 
 
 ;; config changes made through the customize UI will be store here
-(setq custom-file (concat personal-dir "custom.el"))
+(setq custom-file (expand-file-name "custom.el" personal-dir))
 
 ;; packages
 (require 'mkmcc-packages)
