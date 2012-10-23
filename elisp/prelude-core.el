@@ -130,13 +130,6 @@ Emacs load path."
       (find-file (concat "/sudo:root@localhost:" (ido-read-file-name "File: ")))
     (find-alternate-file (concat "/sudo:root@localhost:" buffer-file-name))))
 
-(defun prelude-recentf-ido-find-file ()
-  "Find a recent file using ido."
-  (interactive)
-  (let ((file (ido-completing-read "Choose recent file: " recentf-list nil t)))
-    (when file
-      (find-file file))))
-
 (defun prelude-swap-windows ()
   "If you have 2 windows, it swaps them."
   (interactive)

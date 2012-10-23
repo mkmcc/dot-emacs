@@ -6,8 +6,6 @@
 ;; fix the keybindings on osx
 (setq mac-command-modifier 'meta)
 (setq mac-option-modifier 'super)
-
-(global-set-key [f2] 'ispell-word)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
@@ -32,6 +30,8 @@
 (global-set-key [(control shift up)]   'prelude-move-line-up)
 (global-set-key [(control shift down)] 'prelude-move-line-down)
 
+(global-set-key [f2] 'ispell-word)
+
 (global-set-key (kbd "C-Z") nil)
 (global-set-key (kbd "C-x C-Z") nil)
 
@@ -43,8 +43,8 @@
 (global-set-key (kbd "C-c d") 'prelude-duplicate-current-line-or-region)
 
 ;; File finding
-(global-set-key (kbd "C-x f") 'prelude-recentf-ido-find-file)
 (global-set-key (kbd "M-`")   'file-cache-minibuffer-complete)
+(global-set-key (kbd "C-x C-r") 'ido-recentf-open)
 
 ;; swap windows
 (global-set-key (kbd "C-c s") 'prelude-swap-windows)
@@ -54,6 +54,14 @@
 
 ;; open in external application
 (global-set-key (kbd "C-c o") 'prelude-open-with)
+
+;; Activate occur easily inside isearch (this is great!)
+(define-key isearch-mode-map (kbd "C-o")
+  (lambda () (interactive)
+    (let ((case-fold-search isearch-case-fold-search))
+      (occur (if isearch-regexp
+                 isearch-string
+               (regexp-quote isearch-string))))))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
@@ -101,15 +109,5 @@
 (global-set-key (kbd "C-c g") 'prelude-google)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-
-;; Activate occur easily inside isearch
-(define-key isearch-mode-map (kbd "C-o")
-  (lambda () (interactive)
-    (let ((case-fold-search isearch-case-fold-search))
-      (occur (if isearch-regexp
-                 isearch-string
-               (regexp-quote isearch-string))))))
-
 
 (provide 'mkmcc-global-keybindings)
