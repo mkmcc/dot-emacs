@@ -19,7 +19,8 @@
       org-log-done 'time                     ; log time when marking as DONE
       org-enforce-to-checkbox-dependencies t ; parents can't be closed...
       org-enforce-todo-dependencies t        ; ...before their children
-      org-cycle-include-plain-lists nil)     ; indent, not fold, lists
+      org-cycle-include-plain-lists nil      ; indent, not fold, lists
+      org-src-fontify-natively t)            ; fontify code in src blocks
 
 (defun mkmcc-org-mode-hook ()
   (electric-indent-mode -1))
