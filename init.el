@@ -20,7 +20,6 @@ Prelude.")
 
 ;; packages
 (require 'mkmcc-packages)
-(require 'prelude-el-get)
 
 ;; core functions
 (require 'prelude-core)
@@ -43,7 +42,7 @@ Prelude.")
 (require 'mkmcc-latex)
 ;(require 'prelude-python)
 (require 'prelude-ruby)
-(require 'mkmcc-gnuplot)
+;(require 'mkmcc-gnuplot)
 (require 'mkmcc-athena)
 
 ;; lisps
@@ -63,7 +62,7 @@ Prelude.")
 (require 'mkmcc-erc)
 (require 'mkmcc-sudoku)
 (require 'mkmcc-web)
-(require 'mkmcc-weather)
+;(require 'mkmcc-weather)
 
 ;; load the personal settings (this includes `custom-file')
 (when (file-exists-p personal-dir)
