@@ -64,7 +64,7 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; saveplace remembers your location in a file when saving files
-(setq save-place-file (concat user-emacs-directory "saveplace"))
+(setq save-place-file (expand-file-name "saveplace" base-dir))
 (setq-default save-place t)
 (require 'saveplace)
 
@@ -75,7 +75,7 @@
       ;; save every minute
       savehist-autosave-interval 60
       ;; keep the home clean
-      savehist-file (concat user-emacs-directory "savehist"))
+      savehist-file (expand-file-name "savehist" base-dir))
 (savehist-mode t)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

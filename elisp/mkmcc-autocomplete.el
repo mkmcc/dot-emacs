@@ -53,7 +53,7 @@ to the owner of the file.  See the function `set-file-modes'.")
 ;; enable recent files mode.
 (recentf-mode t)
 
-(setq recentf-save-file (concat user-emacs-directory "recentf")
+(setq recentf-save-file (expand-file-name "recentf" base-dir)
       recentf-max-saved-items 50
       recentf-max-menu-items 15)
 
