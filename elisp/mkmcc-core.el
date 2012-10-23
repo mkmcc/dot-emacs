@@ -84,33 +84,32 @@ the source tree using ido."
 (defun run-current-file ()
   "Execute or compile the current file.
 For example, if the current buffer is the file x.pl, then it'll
-call “perl x.pl” in a shell.  The file can be php, perl, python,
+call \"perl x.pl\" in a shell.  The file can be php, perl, python,
 ruby, javascript, bash, ocaml, java.  File suffix is used to
 determine what program to run."
   (interactive)
-  (let (extention-alist fname suffix progName cmdStr)
-    (setq extention-alist
-          '(("php"  . "php")
-            ("pl"   . "perl")
-            ("py"   . "python")
-            ("rb"   . "ruby")
-            ("js"   . "js")
-            ("sh"   . "bash")
-            ("m"    . "mash")
-            ("ml"   . "ocaml")
-            ("vbs"  . "cscript")
-            ("java" . "javac")
-            ("clj"  . "clojure")))
-    (setq fname (buffer-file-name))
-    (setq suffix (file-name-extension fname))
-    (setq progName (cdr (assoc suffix extention-alist)))
-    (setq cmdStr (concat progName " \""   fname "\""))
+  (let ((extension-alist '(("pl"  . "perl")
+                           ("py"  . "python")
+                           ("rb"  . "ruby")
+                           ("sh"  . "bash")
+                           ("m"   . "mash")
+                           ("clj" . "clojure")))
+        (executable-name nil)
+        file-name
+        file-suffix
+        command-string)
 
-    (cond ((string-equal suffix "el")
-           (load-file fname))
-          ((progName)
-           (message "Running...")
-           (shell-command cmdStr)))))
+    (setq file-name         (buffer-file-name)
+          file-suffix       (file-name-extension file-name)
+          executable-name   (cdr (assoc file-suffix extension-alist))
+          command-string    (concat executable-name " \"" file-name "\""))
+
+    (cond ((string-equal file-suffix "el")
+           (load-file file-name))
+          ((stringp executable-name)
+           (shell-command command-string))
+          (t
+           (message "Couldn't interpret file extension.")))))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
