@@ -39,6 +39,7 @@ Prelude.")
 ;; programming & markup languages support
 (require 'prelude-programming)
 (require 'mkmcc-c)
+(require 'mkmcc-text)
 (require 'mkmcc-latex)
 ;(require 'prelude-python)
 (require 'prelude-ruby)
