@@ -20,7 +20,7 @@
 
 ;; other
 (setq
-  ido-save-directory-list-file "~/.emacs.d/ido.last"
+  ido-save-directory-list-file (expand-file-name "ido.last" base-dir)
   ido-ignore-buffers
   '( "\\` " "^\*Mess" "^\*Back" ".*Completion" "^\*Ido"
      "*compilation*" "*gnuplot errors*" ))
