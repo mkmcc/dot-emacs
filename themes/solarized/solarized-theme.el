@@ -82,15 +82,51 @@
 
      `(menu ((,class (:foreground ,solarized-fg :background ,solarized-bg))))
      `(minibuffer-prompt ((,class (:foreground ,solarized-emph :weight bold))))
+
+     ;; modeline
      `(mode-line
        ((,class (:foreground ,solarized-fg
                              :background ,solarized-hl
-                             :box (:line-width -1 :style released-button)))))
-     `(mode-line-buffer-id ((,class (:foreground ,solarized-emph :weight bold))))
+                             :box (:line-width 6 :color ,solarized-hl
+                                               :style nil)))))
      `(mode-line-inactive
        ((,class (:foreground ,solarized-fg
                              :background ,solarized-bg
-                             :box (:line-width -1 :style released-button)))))
+                             :box (:line-width 6 :color ,solarized-bg
+                                               :style nil)))))
+     `(mode-line-read-only-face
+       ((,class (:foreground ,blue
+                             :box (:line-width 2 :color ,blue :style nil)))))
+     `(mode-line-blank-face
+       ((,class (:inherit mode-line-face
+                          :box (:line-width 2 :color ,solarized-hl
+                                            :style nil)))))
+     `(mode-line-modified-face
+       ((,class (:inherit font-lock-warning-face :underline nil
+                           :box (:line-width 2)))))
+     `(mode-line-folder-face
+       ((,class (:inherit mode-line-face :foreground ,solarized-comments))))
+
+     `(mode-line-folder-face
+       ((,class (:inherit mode-line-face :foreground ,yellow :weight bold))))
+
+     `(mode-line-position-face
+       ((,class (:foreground ,solarized-comments))))
+
+     `(mode-line-mode-face
+       ((,class (:foreground ,solarized-emph :weight bold))))
+
+     `(mode-line-minor-mode-face
+       ((,class (:foreground ,solarized-emph :height 110))))
+
+     `(mode-line-process-face
+       ((,class (:inherit mode-line-face :foreground ,green))))
+
+     `(mode-line-80col-face
+       ((,class (:foreground "black" :background ,yellow))))
+
+     `(mode-line-buffer-id ((,class (:foreground ,solarized-emph :weight bold))))
+
      ;`(region ((,class (:background ,solarized-hl))))
      `(region ((,class (:background ,cyan :foreground ,base03))))
      `(secondary-selection ((,class (:background ,solarized-bg))))

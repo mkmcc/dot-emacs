@@ -63,7 +63,7 @@ compatibility.")
    `(fringe ((t (:background ,brown-7 :foreground ,white-3))))
    `(header-line ((,class (:foreground ,yellow-2
                                        :background ,brown-4
-                                       :box (:line-width -1 :style released-button)))))
+                                       :box (:line-width -1 :style nil)))))
    `(highlight ((t (:background ,black-1 :foreground ,white-1))))
    `(highlight-indentation-current-column-face ((t (:background ,brown-4))))
    `(highlight-indentation-face ((t (:background ,brown-3))))
@@ -95,16 +95,54 @@ compatibility.")
 
    `(menu ((,class (:foreground ,white-1 :background ,brown-1))))
    `(minibuffer-prompt ((t (:foreground ,blue-2 :weight bold)))) ;todo
-   `(mode-line
-     ((,class (:foreground ,white-1
-                           :background ,brown-2
-                           :box (:line-width -1 :style released-button)))))
-   `(mode-line-buffer-id ((,class (:foreground ,white-3 :weight bold))))
-   `(mode-line-inactive ((,class (:foreground ,white-1 :background ,brown-4 :box (:line-width -1 :style released-button)))))
    `(region ((t (:background ,brown-4 :foreground ,white-1))))
    `(secondary-selection ((,class (:background ,brown-1))))
    `(trailing-whitespace ((,class (:background ,red-1))))
    `(vertical-border ((t (:foreground ,brown-4))))
+
+  ;; modeline
+   `(mode-line
+     ((,class (:foreground ,white-1
+                           :background ,brown-2
+                           :box (:line-width 6 :color ,brown-2
+                                             :style nil)))))
+   `(mode-line-inactive
+     ((,class (:foreground ,white-1
+                           :background ,brown-4
+                           :box (:line-width 6 :color ,brown-4
+                                             :style nil)))))
+   `(mode-line-read-only-face
+     ((,class (:foreground ,blue-4
+                           :box (:line-width 2 :color ,blue-4 :style nil)))))
+   `(mode-line-blank-face
+     ((,class (:inherit mode-line-face
+                        :box (:line-width 2 :color ,brown-2
+                                          :style nil)))))
+   `(mode-line-modified-face
+     ((,class (:inherit font-lock-warning-face :underline nil
+                        :box (:line-width 2)))))
+   `(mode-line-folder-face
+     ((,class (:inherit mode-line-face :foreground ,brown-1))))
+
+   `(mode-line-folder-face
+     ((,class (:inherit mode-line-face :foreground ,yellow-1 :weight bold))))
+
+   `(mode-line-position-face
+     ((,class (:foreground ,brown-1))))
+
+   `(mode-line-mode-face
+     ((,class (:foreground ,blue-1 :weight bold))))
+
+   `(mode-line-minor-mode-face
+     ((,class (:foreground ,blue-3 :height 110))))
+
+   `(mode-line-process-face
+     ((,class (:inherit mode-line-face :foreground ,green-2))))
+
+   `(mode-line-80col-face
+     ((,class (:foreground "black" :background ,yellow-2))))
+
+   `(mode-line-buffer-id ((,class (:foreground ,white-3 :weight bold))))
 
 
    ;; font lock
@@ -329,7 +367,7 @@ compatibility.")
    `(org-agenda-date-today ((,class (:foreground ,white-1 :slant italic :weight bold))) t)
    `(org-agenda-structure ((,class (:inherit font-lock-comment-face))))
    `(org-archived ((,class (:foreground ,white-1 :weight bold))))
-   `(org-checkbox ((,class (:background ,brown-1 :foreground ,white-1 :box (:line-width 1 :style released-button)))))
+   `(org-checkbox ((,class (:background ,brown-1 :foreground ,white-1 :box (:line-width 1 :style nil)))))
    `(org-date ((,class (:foreground ,blue-2 :underline t))))
    `(org-deadline-announce ((,class (:foreground ,red-1))))
    `(org-done ((,class (:bold t :weight bold :foreground ,green-2))))
@@ -463,4 +501,4 @@ compatibility.")
   (add-to-list 'custom-theme-load-path
                (file-name-as-directory (file-name-directory load-file-name))))
 
-(provide-theme 'birds-of-paradise)
+(provide 'birds-of-paradise-theme)
