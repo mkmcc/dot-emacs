@@ -3,10 +3,10 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; enable the package
-(require 'gnuplot)
+(require 'gnuplot-mode)
 
 (if mkmcc-macosx-p
-  (setq gnuplot-program "~/build/bin/gnuplot")
+  (setq gnuplot-program "gnuplot")
   (setq gnuplot-program "/usr/bin/gnuplot"))
 
 (setq auto-mode-alist
