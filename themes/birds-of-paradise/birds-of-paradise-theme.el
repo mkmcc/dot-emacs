@@ -51,7 +51,7 @@ compatibility.")
   (custom-theme-set-faces
    'birds-of-paradise
 
-   `(button ((t (:foreground ,yellow-1 :background ,blue-1 :weight bold :underline t))))
+   `(button ((t (:foreground ,yellow-1 :background ,brown-3 :weight bold :underline t))))
    `(link ((t (:foreground ,yellow-1))))
    `(link-visited ((,class (:foreground ,yellow-1 :underline t :weight normal))))
 
