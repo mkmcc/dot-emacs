@@ -15,6 +15,7 @@ Prelude.")
 (add-to-list 'load-path themes-dir)
 
 (setq custom-file (expand-file-name "custom.el" personal-dir))
+(setq custom-theme-directory themes-dir)
 
 ;; packages
 (require 'mkmcc-packages)
@@ -26,6 +27,15 @@ Prelude.")
 ;; add the first level subfolders of themes and vendor automatically
 (prelude-add-subfolders-to-load-path vendor-dir)
 (prelude-add-subfolders-to-load-path themes-dir)
+
+;;; TODO: make add-subfolders-to-load-path take an optional argument
+;;; to add to lists other than 'load-path
+(dolist (f (directory-files themes-dir))
+  (let ((name (expand-file-name f themes-dir)))
+    (when (and (file-directory-p name)
+               (not (equal f ".."))
+               (not (equal f ".")))
+      (add-to-list 'custom-theme-load-path name))))
 
 ;; interface
 (require 'mkmcc-ui)

@@ -153,9 +153,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; appearance (superficial)
 ;;; TODO check for window system
-(require 'solarized-theme)
-(require 'birds-of-paradise-theme)
-(load-theme 'solarized-light t)
+(load-theme 'birds-of-paradise t)
 (add-to-list 'default-frame-alist '(font . "Menlo-13"))
 
 (defun readability ()

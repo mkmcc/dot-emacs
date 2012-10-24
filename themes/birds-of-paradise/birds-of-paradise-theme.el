@@ -501,4 +501,4 @@ compatibility.")
   (add-to-list 'custom-theme-load-path
                (file-name-as-directory (file-name-directory load-file-name))))
 
-(provide 'birds-of-paradise-theme)
+(provide-theme 'birds-of-paradise)
