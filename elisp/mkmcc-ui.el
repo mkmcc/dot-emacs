@@ -19,11 +19,11 @@
 
 (file-name-shadow-mode 1)
 
+(display-time-mode 1)
 (unless (string= system-name "strada.berkeley.edu")
-  (setq battery-mode-line-format "[%b%p%%]"
+  (setq battery-mode-line-format " [%b%p%%]"
         display-time-format      "%b %e %l:%M%p")
   (display-battery-mode 1))
-(display-time-mode 1)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
@@ -147,9 +147,6 @@
 (set-face-attribute 'mode-line-80col-face nil
     :inherit 'mode-line-position-face
     :foreground "black" :background "#eab700")
-
-(provide 'mkmcc-modeline)
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
