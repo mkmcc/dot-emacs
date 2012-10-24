@@ -2,9 +2,9 @@
 (require 'cl)
 
 (defvar base-dir     "~/.emacs.d/")
-(defvar elisp-dir    (expand-file-name "elisp/" base-dir))
-(defvar vendor-dir   (expand-file-name "vendor/" base-dir))
-(defvar themes-dir   (expand-file-name "themes/" base-dir))
+(defvar elisp-dir    (expand-file-name "elisp/"    base-dir))
+(defvar vendor-dir   (expand-file-name "vendor/"   base-dir))
+(defvar themes-dir   (expand-file-name "themes/"   base-dir))
 (defvar personal-dir (expand-file-name "personal/" base-dir)
   "All Emacs Lisp files here are loaded automatically by
 Prelude.")
@@ -14,8 +14,6 @@ Prelude.")
 (add-to-list 'load-path personal-dir)
 (add-to-list 'load-path themes-dir)
 
-
-;; config changes made through the customize UI will be store here
 (setq custom-file (expand-file-name "custom.el" personal-dir))
 
 ;; packages
@@ -62,7 +60,7 @@ Prelude.")
 (require 'mkmcc-erc)
 (require 'mkmcc-sudoku)
 (require 'mkmcc-web)
-;(require 'mkmcc-weather)
+(require 'mkmcc-weather)
 
 ;; load the personal settings (this includes `custom-file')
 (when (file-exists-p personal-dir)
