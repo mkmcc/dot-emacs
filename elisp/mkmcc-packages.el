@@ -24,7 +24,7 @@
 (defvar mkmcc-packages
   '(melpa auctex clojure-mode full-ack gist inf-ruby org paredit
           python rainbow-mode yari deft magit
-          zenburn-theme)
+          zenburn-theme gnuplot-mode)
   "A list of packages to ensure are installed at launch.")
 
 (defun mkmcc-packages-installed-p ()
