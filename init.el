@@ -6,8 +6,7 @@
 (defvar vendor-dir   (expand-file-name "vendor/"   base-dir))
 (defvar themes-dir   (expand-file-name "themes/"   base-dir))
 (defvar personal-dir (expand-file-name "personal/" base-dir)
-  "All Emacs Lisp files here are loaded automatically by
-Prelude.")
+  "All Emacs Lisp files here are loaded automatically.")
 
 (add-to-list 'load-path elisp-dir)
 (add-to-list 'load-path vendor-dir)
@@ -24,7 +23,7 @@ Prelude.")
 (require 'prelude-core)
 (require 'mkmcc-core)
 
-;; add the first level subfolders of themes and vendor automatically
+;; add the first level subfolders of themes and vendor
 (prelude-add-subfolders-to-load-path vendor-dir)
 (prelude-add-subfolders-to-load-path themes-dir 'custom-theme-load-path)
 
