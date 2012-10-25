@@ -69,14 +69,14 @@ to the Emacs load path."
   "Move up the current line."
   (interactive)
   (transpose-lines 1)
-  (previous-line 2))
+  (forward-line -2))
 
 (defun prelude-move-line-down ()
   "Move down the current line."
   (interactive)
-  (next-line 1)
+  (forward-line 1)
   (transpose-lines 1)
-  (previous-line 1))
+  (forward-line -1))
 
 (defun prelude-indent-buffer ()
   "Indents the entire buffer."
