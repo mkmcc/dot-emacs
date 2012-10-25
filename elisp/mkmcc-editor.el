@@ -59,17 +59,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
-;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; ;; meaningful names for buffers with the same name
-;; ;;
-;; (require 'uniquify)
-;; (setq uniquify-buffer-name-style 'post-forward ; make buffer names more unique
-;;       uniquify-separator ":"
-;;       uniquify-after-kill-buffer-p t
-;;       uniquify-ignore-buffers-re "^\\*")
-;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; saveplace remembers your location in a file when saving files
 (setq save-place-file (expand-file-name "saveplace" base-dir))
