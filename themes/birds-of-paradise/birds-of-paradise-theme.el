@@ -298,8 +298,8 @@ compatibility.")
    `(hl-line ((t (:background ,brown-7))))
 
    ;; ido-mode
-   `(ido-first-match ((,class (:foreground ,red-1 :weight bold))))
-   `(ido-only-match ((,class (:foreground ,orange-1 :weight bold))))
+   `(ido-first-match ((,class (:foreground ,orange-1 :weight bold))))
+   `(ido-only-match ((,class (:foreground ,purple-3 :weight bold))))
    `(ido-subdir ((,class (:foreground ,yellow-2))))
 
    ;; linum-mode
