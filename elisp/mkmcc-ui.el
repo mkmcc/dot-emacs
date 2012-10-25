@@ -19,10 +19,11 @@
 
 (file-name-shadow-mode 1)
 
+(setq display-time-format "%b %e %l:%M%#p"
+      display-time-load-average-threshold 1.0)
 (display-time-mode 1)
 (unless (string= system-name "strada.berkeley.edu")
-  (setq battery-mode-line-format " [%b%p%%]"
-        display-time-format      "%b %e %l:%M%p")
+  (setq battery-mode-line-format " [%b%p%%]")
   (display-battery-mode 1))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -62,7 +63,7 @@
    (:propertize mode-line-process
                 face mode-line-process-face)
    ;; pad to right and show the time/battery status
-   (:eval (propertize " " 'display '((space :align-to (- right-fringe 30)))))
+   (:eval (propertize " " 'display '((space :align-to (- right-fringe 20)))))
    (global-mode-string global-mode-string)))
 
 ;; Helper function
