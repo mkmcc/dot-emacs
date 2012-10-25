@@ -134,7 +134,7 @@ compatibility.")
      ((,class (:foreground ,blue-1 :weight bold))))
 
    `(mode-line-minor-mode-face
-     ((,class (:foreground ,blue-3 :height 110))))
+     ((,class (:foreground ,blue-3 :height 0.75))))
 
    `(mode-line-process-face
      ((,class (:inherit mode-line-face :foreground ,green-2))))

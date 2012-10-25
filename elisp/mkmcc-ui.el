@@ -150,7 +150,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; appearance (superficial)
 ;;; TODO check for window system
-;(load-theme 'birds-of-paradise t)
+(load-theme 'birds-of-paradise t)
 (add-to-list 'default-frame-alist '(font . "Menlo-13"))
 
 (defun readability ()
