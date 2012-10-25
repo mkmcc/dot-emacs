@@ -48,7 +48,9 @@
           (t (propertize "    " 'face 'mode-line-blank-face))))
    "  "
    ;; directory and buffer/file name
-   (:propertize (:eval (shorten-directory default-directory 30))
+   (:propertize (:eval (if (stringp (buffer-file-name))
+                           (shorten-directory default-directory 20)
+                         ""))
                 face mode-line-folder-face)
    (:propertize "%b"
                 face mode-line-filename-face)
@@ -94,13 +96,13 @@
 
 (set-face-attribute 'mode-line nil
                     :box `(:line-width 6
-                                       :color ,(face-attribute 'mode-line :background)
-                                       :style nil))
+                           :color ,(face-attribute 'mode-line :background)
+                           :style nil))
 
 (set-face-attribute 'mode-line-inactive nil
                     :box `(:line-width 6
-                                       :color ,(face-attribute 'mode-line-inactive :background)
-                                       :style nil))
+                           :color ,(face-attribute 'mode-line-inactive :background)
+                           :style nil))
 
 (set-face-attribute 'mode-line-read-only-face nil
                     :inherit 'mode-line-face
@@ -112,8 +114,8 @@
                     :inherit 'mode-line-face
                     :family "Menlo"     ; should be mono-spaced
                     :box `(:line-width 2
-                                       :color ,(face-attribute 'mode-line :background)
-                                       :style nil))
+                           :color ,(face-attribute 'mode-line :background)
+                           :style nil))
 
 (set-face-attribute 'mode-line-modified-face nil
                     :inherit 'mode-line-face
