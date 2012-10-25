@@ -16,15 +16,20 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; utility
-(defun prelude-add-subfolders-to-load-path (parent-dir)
-  "Adds all first level `parent-dir' subdirs to the
-Emacs load path."
+(defun prelude-add-subfolders-to-load-path (parent-dir &optional the-list)
+  "Adds all first level `parent-dir' subdirs to a list.  Default
+to the Emacs load path."
+  (let ((mlist (if the-list the-list 'load-path )))
+    (prelude-add-subfolders-to-list parent-dir mlist)))
+
+(defun prelude-add-subfolders-to-list (parent-dir the-list)
+  "Adds all first level `parent-dir' subdirs to a list."
   (dolist (f (directory-files parent-dir))
     (let ((name (expand-file-name f parent-dir)))
       (when (and (file-directory-p name)
                  (not (equal f ".."))
                  (not (equal f ".")))
-        (add-to-list 'load-path name)))))
+        (add-to-list the-list name)))))
 
 (defun prelude-recompile-init ()
   "Byte-compile all your dotfiles again."
