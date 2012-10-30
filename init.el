@@ -32,6 +32,7 @@
 (require 'mkmcc-editor)
 (require 'mkmcc-autocomplete)
 (require 'mkmcc-global-keybindings)
+(require 'mkmcc-dired)
 
 ;; programming & markup languages support
 (require 'prelude-programming)
