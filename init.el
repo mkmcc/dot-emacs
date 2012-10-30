@@ -60,6 +60,7 @@
 (require 'mkmcc-erc)
 (require 'mkmcc-sudoku)
 (require 'mkmcc-web)
+(require 'mkmcc-mu4e)
 (require 'mkmcc-weather)
 
 ;; load the personal settings (this includes `custom-file')
