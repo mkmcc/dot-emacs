@@ -94,35 +94,14 @@
 (make-face 'mode-line-process-face)
 (make-face 'mode-line-80col-face)
 
-(set-face-attribute 'mode-line nil
-                    :box `(:line-width 6
-                           :color ,(face-attribute 'mode-line :background)
-                           :style nil))
-
-(set-face-attribute 'mode-line-inactive nil
-                    :box `(:line-width 6
-                           :color ,(face-attribute 'mode-line-inactive :background)
-                           :style nil))
-
 (set-face-attribute 'mode-line-read-only-face nil
-                    :inherit 'mode-line-face
-                    :foreground "#4271ae"
-                    :family "Menlo"     ; should be mono-spaced
-                    :box '(:line-width 2 :color "#4271ae"))
+                    :inherit 'mode-line-face)
 
 (set-face-attribute 'mode-line-blank-face nil
-                    :inherit 'mode-line-face
-                    :family "Menlo"     ; should be mono-spaced
-                    :box `(:line-width 2
-                           :color ,(face-attribute 'mode-line :background)
-                           :style nil))
+                    :inherit 'mode-line-face)
 
 (set-face-attribute 'mode-line-modified-face nil
-                    :inherit 'mode-line-face
-                    :foreground "#c82829"
-                    :background "#ffffff"
-                    :family "Menlo"     ; should be mono-spaced
-                    :box '(:line-width 2 :color "#c82829"))
+                    :inherit 'mode-line-face)
 
 (set-face-attribute 'mode-line-folder-face nil
                     :inherit 'mode-line-face)
@@ -132,8 +111,7 @@
                     :weight 'bold)
 
 (set-face-attribute 'mode-line-position-face nil
-                    :inherit 'mode-line-face
-                    :family "Menlo")
+                    :inherit 'mode-line-face)
 
 (set-face-attribute 'mode-line-mode-face nil
                     :inherit 'mode-line-face)

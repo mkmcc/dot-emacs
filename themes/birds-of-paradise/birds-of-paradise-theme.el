@@ -104,13 +104,11 @@ compatibility.")
    `(mode-line
      ((,class (:foreground ,white-1
                            :background ,brown-2
-                           :box (:line-width 6 :color ,brown-2
-                                             :style nil)))))
+                           :box (:line-width 6 :color ,brown-2 :style nil)))))
    `(mode-line-inactive
      ((,class (:foreground ,white-1
                            :background ,brown-4
-                           :box (:line-width 6 :color ,brown-4
-                                             :style nil)))))
+                           :box (:line-width 6 :color ,brown-4 :style nil)))))
    `(mode-line-read-only-face
      ((,class (:foreground ,blue-4
                            :box (:line-width 2 :color ,blue-4 :style nil)))))
