@@ -11,7 +11,7 @@
 (add-to-list 'load-path elisp-dir)
 (add-to-list 'load-path vendor-dir)
 (add-to-list 'load-path personal-dir)
-(add-to-list 'load-path themes-dir)
+(add-to-list 'load-path (expand-file-name "solarized" themes-dir))
 
 (setq custom-file (expand-file-name "custom.el" personal-dir))
 (setq custom-theme-directory themes-dir)
