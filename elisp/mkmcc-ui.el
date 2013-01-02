@@ -130,23 +130,24 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; appearance (superficial)
 ;;; TODO check for window system
-(load-theme 'birds-of-paradise t)
-(add-to-list 'default-frame-alist '(font . "Menlo-13"))
+
+(unless (eq window-system nil)
+  (load-theme 'birds-of-paradise t)
+  (set-face-attribute 'fixed-pitch    nil :font "Menlo-13")
+  (set-face-attribute 'variable-pitch nil :font "Warnock Pro-13"))
 
 (defun readability ()
   (interactive)
-
   ;; buffer-face-mode is both a function and a variable
   (if (and (boundp 'buffer-face-mode)
            (symbol-value 'buffer-face-mode))
       (progn
         (variable-pitch-mode -1)
+        (text-scale-increase -3)
         (setq line-spacing nil))
     (progn
-      (set-face-attribute 'variable-pitch
-                          nil
-                          :font "Warnock Pro-22")
       (variable-pitch-mode t)
+      (text-scale-increase 3)
       (setq line-spacing 7))))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
