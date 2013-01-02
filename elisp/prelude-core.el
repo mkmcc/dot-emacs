@@ -289,10 +289,12 @@ there's a region, all lines that region covers will be duplicated."
 ;; that a lambda doesn't already exist in the list.
 
 (defun prelude-turn-on-whitespace ()
-  (whitespace-mode +1))
+  (unless (eq window-system nil)
+    (whitespace-mode +1)))
 
 (defun prelude-turn-off-whitespace ()
-  (whitespace-mode -1))
+  (unless (eq window-system nil)
+    (whitespace-mode -1)))
 
 (defun prelude-turn-on-abbrev ()
   (abbrev-mode +1))
