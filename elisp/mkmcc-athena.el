@@ -22,16 +22,16 @@
     '("#.*$" . font-lock-comment-face)
 
     ;; Variable defs
-    '("^\\([a-zA-Z0-9_]+\\)[ \t]*=[ \t]*\\([a-zA-Z]+[a-zA-Z0-9_\'\" ]*\\)[ \t]*" .
-       ((1 font-lock-keyword-face)
-         (2 font-lock-string-face)) )
+    '("^\\([a-zA-Z0-9_]+\\)[ \t]*=[ \t]*\\([a-zA-Z]+[a-zA-Z0-9_\'\"\-\.]*\\)[ \t]*" .
+      ((1 font-lock-keyword-face)
+       (2 font-lock-string-face)) )
 
     '("^\\([a-zA-Z0-9_]+\\)[ \t]*=[ \t]*\\([-0-9.eE]+\\)" .
-       ((1 font-lock-keyword-face)
-         (2 font-lock-constant-face)) )
+      ((1 font-lock-keyword-face)
+       (2 font-lock-constant-face)) )
 
     '("^\\(\<\\w+\>\\)[ \t]*" .
-       ((1 font-lock-type-face)) ) )
+      ((1 font-lock-type-face)) ) )
   "Info for function `font-lock-mode'.")
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
