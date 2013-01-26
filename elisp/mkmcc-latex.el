@@ -49,8 +49,6 @@
 ;;; make rubber the default method for compiling.  bind f9 to compile
 ;;; and f12 to view.
 (defun mkmcc-latex-mode-hook ()
-  (turn-on-auto-fill)
-  (abbrev-mode +1)
   (define-key TeX-mode-map (kbd "<f9>")
     (lambda ()
       (interactive)
@@ -65,6 +63,8 @@
   (setq TeX-command-default '"Rubber"))
 
 (add-hook 'LaTeX-mode-hook 'mkmcc-latex-mode-hook)
+(add-hook 'LaTeX-mode-hook 'abbrev-mode)
+(add-hook 'LaTeX-mode-hook 'turn-on-auto-fill)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 

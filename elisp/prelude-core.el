@@ -295,12 +295,6 @@ there's a region, all lines that region covers will be duplicated."
 (defun prelude-turn-off-whitespace ()
   (unless (eq window-system nil)
     (whitespace-mode -1)))
-
-(defun prelude-turn-on-abbrev ()
-  (abbrev-mode +1))
-
-(defun prelude-turn-off-abbrev ()
-  (abbrev-mode -1))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 

@@ -79,8 +79,9 @@
                 (get-text-property 1 'org-imenu-marker symbol))))
         (unless (or (null position) (null name)
                     (string= (car imenu--rescan-item) name))
-          (add-to-list 'symbol-names name)
-          (add-to-list 'name-and-pos (cons name position))))))))
+          (add-to-list 'symbol-names (substring-no-properties name))
+          (add-to-list 'name-and-pos
+                       (cons (substring-no-properties name) position))))))))
 
 (defun prelude-local-comment-auto-fill ()
   (set (make-local-variable 'comment-auto-fill-only-comments) t)
@@ -100,7 +101,7 @@
   (flyspell-prog-mode)
   (prelude-local-comment-auto-fill)
   (prelude-turn-on-whitespace)
-  (prelude-turn-on-abbrev)
+  (flycheck-mode +1)
   (prelude-add-watchwords)
   ;; keep the whitespace decent all the time
   (add-hook 'before-save-hook 'whitespace-cleanup nil t))
