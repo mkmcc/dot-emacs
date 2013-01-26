@@ -41,7 +41,9 @@
          (solarized-comments (if (eq variant 'light) base1 base01)))
     (custom-theme-set-faces
      (if (eq variant 'light) 'solarized-light 'solarized-dark)
-     '(button ((t (:underline t))))
+     `(button
+       ((,class (:inherit default :underline t))))
+
      `(link ((,class (:foreground ,yellow :underline t :weight bold))))
      `(link-visited ((,class (:foreground ,yellow :underline t :weight normal))))
 
