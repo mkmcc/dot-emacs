@@ -135,6 +135,34 @@
   (load-theme 'birds-of-paradise t)
   (set-face-attribute 'fixed-pitch    nil :font "Menlo-13")
   (set-face-attribute 'variable-pitch nil :font "Warnock Pro-13"))
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; coding -> reading
+(defun writeroom-enable ()
+  "set generous margins and delete the fringe."
+  (interactive)
+  (delete-other-windows)
+  (let ((margin
+         (/ (- (window-body-width) fill-column) 3)))
+    (setq left-margin-width  margin
+          right-margin-width 0
+          left-fringe-width  0
+          right-fringe-width 0)
+    (setq writeroom-mode-line mode-line-format
+          mode-line-format    nil))
+  (set-window-buffer nil (current-buffer)))
+
+(defun writeroom-disable ()
+  "restore margins and fringe."
+  (interactive)
+  (setq left-margin-width  0
+        right-margin-width 0
+        left-fringe-width  nil
+        right-fringe-width nil)
+  (setq mode-line-format    writeroom-mode-line
+        writeroom-mode-line nil)
+  (set-window-buffer nil (current-buffer)))
 
 (defun readability ()
   (interactive)
@@ -144,11 +172,13 @@
       (progn
         (variable-pitch-mode -1)
         (text-scale-increase -3)
-        (setq line-spacing nil))
+        (setq line-spacing nil)
+        (writeroom-disable))
     (progn
       (variable-pitch-mode t)
       (text-scale-increase 3)
-      (setq line-spacing 7))))
+      (setq line-spacing 7)
+      (writeroom-enable))))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
