@@ -20,7 +20,7 @@
 
 ;; other
 (setq
-  ido-save-directory-list-file (expand-file-name "ido.last" base-dir)
+  ido-save-directory-list-file (expand-file-name "ido.last" savefile-dir)
   ido-ignore-buffers
   '( "\\` " "^\*Mess" "^\*Back" ".*Completion" "^\*Ido"
      "*compilation*" "*gnuplot errors*" ))
@@ -51,7 +51,7 @@ to the owner of the file.  See the function `set-file-modes'.")
 ;; enable recent files mode.
 (recentf-mode t)
 
-(setq recentf-save-file (expand-file-name "recentf" base-dir)
+(setq recentf-save-file (expand-file-name "recentf" savefile-dir)
       recentf-max-saved-items 50
       recentf-max-menu-items 15)
 

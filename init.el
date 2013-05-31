@@ -5,6 +5,7 @@
 (defvar elisp-dir    (expand-file-name "elisp/"    base-dir))
 (defvar vendor-dir   (expand-file-name "vendor/"   base-dir))
 (defvar themes-dir   (expand-file-name "themes/"   base-dir))
+(defvar savefile-dir (expand-file-name "savefile" base-dir))
 (defvar personal-dir (expand-file-name "personal/" base-dir)
   "All Emacs Lisp files here are loaded automatically.")
 
