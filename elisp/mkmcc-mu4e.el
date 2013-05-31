@@ -54,6 +54,10 @@
 ;;
 ;; make the "from" e-mail address in a reply match the one that the
 ;;   original was sent to
+;;;
+;;; TODO: this doesn't work with compose (complains that msg is nil).
+;;;
+(setq mu4e-compose-pre-hook '())
 (add-hook 'mu4e-compose-pre-hook
 (defun my-set-from-address ()
   "Set the From address based on the To address of the original."

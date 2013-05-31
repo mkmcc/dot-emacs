@@ -132,7 +132,7 @@
 ;;; TODO check for window system
 
 (unless (eq window-system nil)
-  (load-theme 'birds-of-paradise t)
+  (load-theme 'solarized-light t)
   (set-face-attribute 'fixed-pitch    nil :font "Menlo-13")
   (set-face-attribute 'variable-pitch nil :font "Warnock Pro-13"))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
