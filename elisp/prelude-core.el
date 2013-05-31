@@ -36,6 +36,17 @@ to the Emacs load path."
   (interactive)
   (byte-recompile-directory base-dir   0))
 
+(defun prelude-start-or-switch-to (function buffer-name)
+  "Invoke FUNCTION if there is no buffer with BUFFER-NAME.
+Otherwise switch to the buffer named BUFFER-NAME. Don't clobber
+the current buffer."
+  (if (not (get-buffer buffer-name))
+      (progn
+        (split-window-sensibly (selected-window))
+        (other-window 1)
+        (funcall function))
+    (switch-to-buffer-other-window buffer-name)))
+
 (defun prelude-regen-autoloads (&optional force-regen)
   "Regenerate the autoload definitions file if necessary and load it."
   (interactive "P")
@@ -74,6 +85,32 @@ to the Emacs load path."
   (forward-line 1)
   (transpose-lines 1)
   (forward-line -1))
+
+(defun prelude-move-beginning-of-line (arg)
+  "Move point back to indentation of beginning of line.
+
+Move point to the first non-whitespace character on this line.
+If point is already there, move to the beginning of the line.
+Effectively toggle between the first non-whitespace character and
+the beginning of the line.
+
+If ARG is not nil or 1, move forward ARG - 1 lines first. If
+point reaches the beginning or end of the buffer, stop there."
+  (interactive "^p")
+  (setq arg (or arg 1))
+
+  ;; Move lines first
+  (when (/= arg 1)
+    (let ((line-move-visual nil))
+      (forward-line (1- arg))))
+
+  (let ((orig-point (point)))
+    (back-to-indentation)
+    (when (= orig-point (point))
+      (move-beginning-of-line 1))))
+
+(global-set-key [remap move-beginning-of-line]
+                'prelude-move-beginning-of-line)
 
 (defun prelude-indent-buffer ()
   "Indents the entire buffer."
@@ -126,11 +163,35 @@ to the Emacs load path."
       (message "Deleted file %s" filename)))
   (kill-buffer))
 
+(defun prelude-rename-file-and-buffer ()
+  "Renames current buffer and file it is visiting."
+  (interactive)
+  (let ((filename (buffer-file-name)))
+    (if (not (and filename (file-exists-p filename)))
+        (message "Buffer is not visiting a file!")
+      (let ((new-name (read-file-name "New name: " filename)))
+        (cond
+         ((vc-backend filename) (vc-rename-file filename new-name))
+         (t
+          (rename-file filename new-name t)
+          (set-visited-file-name new-name t t)))))))
+
 (defun prelude-sudo-edit (&optional arg)
-  (interactive "p")
+  "Edit currently visited file as root.
+
+With a prefix ARG prompt for a file to visit.
+Will also prompt for a file to visit if current
+buffer is not visiting a file."
+  (interactive "P")
   (if (or arg (not buffer-file-name))
-      (find-file (concat "/sudo:root@localhost:" (ido-read-file-name "File: ")))
+      (find-file (concat "/sudo:root@localhost:"
+                         (ido-read-file-name "Find file(as root): ")))
     (find-alternate-file (concat "/sudo:root@localhost:" buffer-file-name))))
+
+(defun prelude-insert-date ()
+  "Insert a timestamp according to locale's date and time format."
+  (interactive)
+  (insert (format-time-string "%c" (current-time))))
 
 (defun prelude-swap-windows ()
   "If you have 2 windows, it swaps them."
@@ -171,13 +232,14 @@ file of a buffer in an external program."
                         "open"
                       (read-shell-command "Open current file with: "))
                     " "
-                    buffer-file-name))))
+                    (shell-quote-argument buffer-file-name)))))
 
 (defun prelude-visit-term-buffer ()
+  "Create or visit a terminal buffer."
   (interactive)
-  (if (not (get-buffer "*ansi-term*"))
-      (ansi-term "/bin/bash")
-    (switch-to-buffer "*ansi-term*")))
+  (prelude-start-or-switch-to (lambda ()
+                                (ansi-term (getenv "SHELL")))
+                              "*ansi-term*"))
 
 (defun prelude-google ()
   "Googles a query or region if any."
@@ -196,8 +258,7 @@ file of a buffer in an external program."
          (url (read-from-minibuffer "URL: " default)))
     (switch-to-buffer (url-retrieve-synchronously url))
     (rename-buffer url t)
-    ;; TODO: switch to nxml/nxhtml mode
-    (cond ((search-forward "<?xml" nil t) (xml-mode))
+    (cond ((search-forward "<?xml" nil t) (nxml-mode))
           ((search-forward "<html" nil t) (html-mode)))))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
