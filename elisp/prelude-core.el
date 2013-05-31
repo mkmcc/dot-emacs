@@ -34,10 +34,7 @@ to the Emacs load path."
 (defun prelude-recompile-init ()
   "Byte-compile all your dotfiles again."
   (interactive)
-  (byte-recompile-directory base-dir   0)
-  (byte-recompile-directory elisp-dir  0)
-  (byte-recompile-directory vendor-dir 0)
-  (byte-recompile-directory themes-dir 0))
+  (byte-recompile-directory base-dir   0))
 
 (defun prelude-regen-autoloads (&optional force-regen)
   "Regenerate the autoload definitions file if necessary and load it."
