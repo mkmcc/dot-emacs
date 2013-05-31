@@ -102,6 +102,7 @@
   (prelude-local-comment-auto-fill)
   (prelude-turn-on-whitespace)
   (flycheck-mode +1)
+  (subword-mode +1)
   (prelude-add-watchwords)
   ;; keep the whitespace decent all the time
   (add-hook 'before-save-hook 'whitespace-cleanup nil t))

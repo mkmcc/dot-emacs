@@ -4,6 +4,8 @@
 
 (ido-mode 'both)
 (ido-everywhere 1)
+(require 'ido-ubiquitous)
+(ido-ubiquitous +1)
 
 (setq
   ido-case-fold  t                      ; be case-insensitive
@@ -42,6 +44,12 @@ to the owner of the file.  See the function `set-file-modes'.")
     (set-file-modes ido-save-directory-list-file ido-save-file-modes)))
 
 (ad-activate 'ido-save-history)
+
+(require 'smex)
+(setq smex-save-file (expand-file-name ".smex-items" savefile-dir))
+(smex-initialize)
+(global-set-key (kbd "M-x") 'smex)
+(global-set-key (kbd "M-X") 'smex-major-mode-commands)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
