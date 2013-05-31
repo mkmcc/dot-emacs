@@ -1,10 +1,6 @@
 auto-save-list
 eshell
-ido.last
-recentf
-savehist
-saveplace
-smex.save
+savefile
 tramp
 semanticdb
 el-get
