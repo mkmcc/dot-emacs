@@ -1,12 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; dired enhancements
 ;;
-(defun dired-multi-occur (string)
-  "Search string in files marked by dired."
-  (interactive "MList lines matching regexp: ")
-  (require 'dired)
-  (multi-occur (mapcar 'find-file (dired-get-marked-files)) string))
-
 (defun dired-ediff-marked-files ()
   "Run ediff on marked ediff files."
   (interactive)
@@ -29,7 +23,12 @@
 (eval-after-load "dired"
   '(progn
      (define-key dired-mode-map "o" 'dired-open-mac)
-     (define-key dired-mode-map "-" 'dired-up-directory)))
+     (define-key dired-mode-map "-" 'dired-up-directory)
+
+     (defun dired-multi-occur (string)
+       "Search string in files marked by dired."
+       (interactive "MList lines matching regexp: ")
+       (multi-occur (mapcar 'find-file (dired-get-marked-files)) string))))
 
 ; prefer dired over dumping dir list to buffer
 (global-set-key "\C-x\C-d" 'dired)
