@@ -64,6 +64,9 @@
                       'face 'mode-line-minor-mode-face))
    (:propertize mode-line-process
                 face mode-line-process-face)
+   ; nyan-mode uses nyan cat as an alternative to %p
+   "   "
+   (:eval (when nyan-mode (list (nyan-create))))
    ;; pad to right and show the time/battery status
    (:eval (propertize " " 'display '((space :align-to (- right-fringe 20)))))
    (global-mode-string global-mode-string)))

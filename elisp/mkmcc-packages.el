@@ -25,7 +25,7 @@
   '(melpa auctex clojure-mode full-ack gist inf-ruby org paredit python
           rainbow-mode yari deft magit gitconfig-mode gitignore-mode
           zenburn-theme gnuplot-mode flycheck ido-ubiquitous smex
-          volatile-highlights diminish)
+          volatile-highlights diminish nyan-mode)
   "A list of packages to ensure are installed at launch.")
 
 (defun mkmcc-packages-installed-p ()
