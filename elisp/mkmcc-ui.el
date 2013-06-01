@@ -139,6 +139,9 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; coding -> reading
+(defvar writeroom-mode-line nil
+  "storage variable for the `mode-line-format' variable")
+
 (defun writeroom-enable ()
   "set generous margins and delete the fringe."
   (interactive)
