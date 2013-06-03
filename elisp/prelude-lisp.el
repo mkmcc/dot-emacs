@@ -46,6 +46,19 @@
 
 (add-hook 'scheme-mode-hook 'prelude-lisp-coding-hook)
 
+
+(eval-after-load "paredit"
+  '(progn
+     (defun paredit-wrap-round-from-behind ()
+       (interactive)
+       (forward-sexp -1)
+       (paredit-wrap-round)
+       (insert " ")
+       (forward-char -1))
+
+     (define-key paredit-mode-map (kbd "M-)")
+       'paredit-wrap-round-from-behind)))
+
 (provide 'prelude-lisp)
 
 ;;; prelude-lisp.el ends here
