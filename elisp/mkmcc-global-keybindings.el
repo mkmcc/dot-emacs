@@ -6,6 +6,7 @@
 ;; fix the keybindings on osx
 (setq mac-command-modifier 'meta)
 (setq mac-option-modifier 'super)
+(setq ns-function-modifier 'hyper)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
