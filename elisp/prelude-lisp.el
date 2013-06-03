@@ -59,6 +59,9 @@
      (define-key paredit-mode-map (kbd "M-)")
        'paredit-wrap-round-from-behind)))
 
+(eval-after-load "paredit"
+  '(diminish 'paredit-mode " π"))
+
 (provide 'prelude-lisp)
 
 ;;; prelude-lisp.el ends here

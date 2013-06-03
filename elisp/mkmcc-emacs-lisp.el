@@ -27,6 +27,13 @@
 (add-hook 'ielm-mode-hook 'mkmcc-ielm-mode-hook)
 
 (define-key emacs-lisp-mode-map (kbd "M-.") 'find-function-at-point)
+
+(eval-after-load "elisp-slime-nav"
+  '(diminish 'elisp-slime-nav-mode))
+(eval-after-load "rainbow-mode"
+  '(diminish 'rainbow-mode))
+(eval-after-load "eldoc"
+  '(diminish 'eldoc-mode))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (provide 'mkmcc-emacs-lisp)
