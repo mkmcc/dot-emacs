@@ -73,6 +73,27 @@ the current buffer."
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; editing
+(defun prelude-smart-open-line-above ()
+  "Insert an empty line above the current line.
+Position the cursor at it's beginning, according to the current mode."
+  (interactive)
+  (move-beginning-of-line nil)
+  (newline-and-indent)
+  (forward-line -1)
+  (funcall indent-line-function))
+
+(defun prelude-smart-open-line ()
+  "Insert an empty line after the current line.
+Position the cursor at its beginning, according to the current mode."
+  (interactive)
+  (move-end-of-line nil)
+  (newline-and-indent))
+
+(defun prelude-top-join-line ()
+  "Join the current line with the line beneath it."
+  (interactive)
+  (delete-indentation 1))
+
 (defun prelude-move-line-up ()
   "Move up the current line."
   (interactive)
@@ -85,6 +106,13 @@ the current buffer."
   (forward-line 1)
   (transpose-lines 1)
   (forward-line -1))
+
+(defun prelude-kill-whole-line (&optional arg)
+  "A simple wrapper around command `kill-whole-line' that respects indentation.
+Passes ARG to command `kill-whole-line' when provided."
+  (interactive "P")
+  (kill-whole-line arg)
+  (back-to-indentation))
 
 (defun prelude-move-beginning-of-line (arg)
   "Move point back to indentation of beginning of line.
