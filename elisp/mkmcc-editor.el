@@ -32,8 +32,37 @@
       kept-old-versions 5
       delete-old-versions t)
 
+;; autosave on window switches
 (setq auto-save-file-name-transforms
       `((".*" ,temporary-file-directory t)))
+
+(defun prelude-auto-save-command ()
+  "Save the current buffer if appropriate."
+  (when (and buffer-file-name
+             (buffer-modified-p (current-buffer))
+             (file-writable-p buffer-file-name))
+    (save-buffer)))
+
+(defadvice switch-to-buffer (before save-buffer-now activate)
+  "Invoke `prelude-auto-save-command' before `switch-to-window'."
+  (prelude-auto-save-command))
+(defadvice other-window (before other-window-now activate)
+  "Invoke `prelude-auto-save-command' before `other-window'."
+  (prelude-auto-save-command))
+(defadvice windmove-up (before other-window-now activate)
+  "Invoke `prelude-auto-save-command' before `windmove-up'."
+  (prelude-auto-save-command))
+(defadvice windmove-down (before other-window-now activate)
+  "Invoke `prelude-auto-save-command' before `windmove-down'."
+  (prelude-auto-save-command))
+(defadvice windmove-left (before other-window-now activate)
+  "Invoke `prelude-auto-save-command' before `windmove-left'."
+  (prelude-auto-save-command))
+(defadvice windmove-right (before other-window-now activate)
+  "Invoke `prelude-auto-save-command' before `windmove-right'."
+  (prelude-auto-save-command))
+
+(add-hook 'mouse-leave-buffer-hook 'prelude-auto-save-command)
 
 ;; time-stamps
 (setq
