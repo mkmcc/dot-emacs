@@ -16,7 +16,7 @@
 (add-to-list 'package-archives
              '("melpa" . "http://melpa.milkbox.net/packages/") t)
 
-(setq package-user-dir (expand-file-name "elpa" prelude-dir))
+(setq package-user-dir (expand-file-name "elpa" base-dir))
 (package-initialize)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -29,12 +29,12 @@
   '(melpa auctex clojure-mode full-ack gist inf-ruby org paredit python
           rainbow-mode yari deft magit gitconfig-mode gitignore-mode
           zenburn-theme gnuplot-mode flycheck ido-ubiquitous smex
-          volatile-highlights diminish nyan-mode dash)
+          volatile-highlights diminish nyan-mode expand-region dash)
   "A list of packages to ensure are installed at launch.")
 
 (defun mkmcc-packages-installed-p ()
-  "Check if all packages in `prelude-packages' are installed."
-  (every #'package-installed-p prelude-packages))
+  "Check if all packages in `mkmcc-packages' are installed."
+  (every #'package-installed-p mkmcc-packages))
 
 (defun mkmcc-install-packages ()
   "Install all packages listed in `mkmcc-packages'."
@@ -45,7 +45,7 @@
     (message "%s" " done.")
     ;; install the missing packages
     (mapc #'package-install
-          (remove-if #'package-installed-p prelude-packages))))
+          (remove-if #'package-installed-p mkmcc-packages))))
 
 (mkmcc-install-packages)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
