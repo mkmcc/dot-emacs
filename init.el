@@ -19,7 +19,7 @@
 (setq custom-theme-directory themes-dir)
 
 ;; packages
-(require 'mkmcc-packages)
+(require 'mkmcc-packages)               ; should come first!
 
 ;; core functions
 (require 'prelude-core)
