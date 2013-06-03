@@ -2,6 +2,7 @@
 ;; package repositories
 ;;
 
+(require 'cl)
 (require 'package)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -15,12 +16,15 @@
 (add-to-list 'package-archives
              '("melpa" . "http://melpa.milkbox.net/packages/") t)
 
+(setq package-user-dir (expand-file-name "elpa" prelude-dir))
 (package-initialize)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; automatically update or install some packages
+;;; NB. should not use dash list functions here -- it may not be
+;;; installed yet!
 (defvar mkmcc-packages
   '(melpa auctex clojure-mode full-ack gist inf-ruby org paredit python
           rainbow-mode yari deft magit gitconfig-mode gitignore-mode
@@ -29,19 +33,21 @@
   "A list of packages to ensure are installed at launch.")
 
 (defun mkmcc-packages-installed-p ()
-  (loop for p in mkmcc-packages
-        when (not (package-installed-p p)) do (return nil)
-        finally (return t)))
+  "Check if all packages in `prelude-packages' are installed."
+  (every #'package-installed-p prelude-packages))
 
-(unless (mkmcc-packages-installed-p)
-  ;; check for new packages (package versions)
-  (message "%s" "Emacs is now refreshing its package database...")
-  (package-refresh-contents)
-  (message "%s" " done.")
-  ;; install the missing packages
-  (dolist (p mkmcc-packages)
-    (when (not (package-installed-p p))
-      (package-install p))))
+(defun mkmcc-install-packages ()
+  "Install all packages listed in `mkmcc-packages'."
+  (unless (mkmcc-packages-installed-p)
+    ;; check for new packages (package versions)
+    (message "%s" "Emacs is now refreshing its package database...")
+    (package-refresh-contents)
+    (message "%s" " done.")
+    ;; install the missing packages
+    (mapc #'package-install
+          (remove-if #'package-installed-p prelude-packages))))
+
+(mkmcc-install-packages)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
