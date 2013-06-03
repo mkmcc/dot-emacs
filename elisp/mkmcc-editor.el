@@ -30,7 +30,8 @@
       version-control t
       kept-new-versions 5
       kept-old-versions 5
-      delete-old-versions t)
+      delete-old-versions t
+      vc-make-backup-files t)
 
 ;; autosave on window switches
 (setq auto-save-file-name-transforms
