@@ -6,7 +6,7 @@
 (ido-mode 'both)
 (ido-everywhere 1)
 (require 'ido-ubiquitous)
-(ido-ubiquitous +1)
+(ido-ubiquitous-mode)
 
 (setq
   ido-case-fold  t                      ; be case-insensitive
