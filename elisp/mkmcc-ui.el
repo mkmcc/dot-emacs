@@ -30,12 +30,10 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; modeline
-(defmacro rename-modeline (package-name mode new-name)
-  `(eval-after-load ,package-name
-     '(defadvice ,mode (after rename-modeline activate)
-        (setq mode-name ,new-name))))
-
-(rename-modeline "clojure-mode" clojure-mode "Clj")
+(require 'uniquify)
+(setq
+  uniquify-buffer-name-style 'post-forward
+  uniquify-separator ":")
 
 (setq-default
  mode-line-format
@@ -55,10 +53,10 @@
           (t (propertize "    " 'face 'mode-line-blank-face))))
    "  "
    ;; directory and buffer/file name
-   (:propertize (:eval (if (stringp (buffer-file-name))
-                           (shorten-directory default-directory 20)
-                         ""))
-                face mode-line-folder-face)
+   ;; (:propertize (:eval (if (stringp (buffer-file-name))
+   ;;                         (shorten-directory default-directory 20)
+   ;;                       ""))
+   ;;              face mode-line-folder-face)
    (:propertize "%b"
                 face mode-line-filename-face)
    ;; mode indicators: vc, recursive edit, major mode, etc.
