@@ -42,7 +42,7 @@
 (global-set-key (kbd "C-Z") nil)
 (global-set-key (kbd "C-x C-Z") nil)
 
-(global-set-key (kbd "C-x C-b") nil)    ; turn off list-buffers (annoying)
+(global-set-key (kbd "C-x C-b") 'ibuffer)
 
 (global-set-key (kbd "M-/") 'hippie-expand)
 
