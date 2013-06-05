@@ -5,11 +5,13 @@
 ;; define a custom mode for athena input files
 (defcustom athena-mode-hook nil
   "*Hook to be run when `athena-mode' is entered."
-  :type  'hook)
+  :type  'hook
+  :group 'athena)
 
 (defcustom athena-indent-offset 0
   "Number of spaces to indent lines in athena mode"
-  :type 'integer)
+  :type 'integer
+  :group 'athena)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
