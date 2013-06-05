@@ -37,6 +37,8 @@
 
 (global-set-key (kbd "C-^") 'prelude-top-join-line)
 
+(global-set-key (kbd "C-=") 'er/expand-region)
+
 (global-set-key (kbd "C-Z") nil)
 (global-set-key (kbd "C-x C-Z") nil)
 
