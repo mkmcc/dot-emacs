@@ -20,6 +20,9 @@
 
 (add-hook 'message-mode-hook 'flyspell-mode)
 (add-hook 'text-mode-hook    'flyspell-mode)
+
+(eval-after-load "flyspell"
+  '(diminish 'flyspell-mode))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 

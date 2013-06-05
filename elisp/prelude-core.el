@@ -374,6 +374,9 @@ there's a region, all lines that region covers will be duplicated."
 ;; hook value will repeatedly add it since there's no way to ensure
 ;; that a lambda doesn't already exist in the list.
 
+(eval-after-load "whitespace"
+  '(diminish 'whitespace-mode))
+
 (defun prelude-turn-on-whitespace ()
   (unless (eq window-system nil)
     (whitespace-mode +1)))
