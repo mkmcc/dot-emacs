@@ -13,9 +13,11 @@
             t))
 
 (defun mkmcc-emacs-lisp-mode-hook ()
+  "defaults for `emacs-lisp-mode'."
   (prelude-lisp-coding-hook)
   (turn-on-eldoc-mode)
-  (mkmcc-remove-elc-on-save))
+  (mkmcc-remove-elc-on-save)
+  (flycheck-select-checker 'emacs-lisp))
 
 (add-hook 'emacs-lisp-mode-hook 'mkmcc-emacs-lisp-mode-hook)
 
