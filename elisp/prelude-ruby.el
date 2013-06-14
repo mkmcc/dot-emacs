@@ -18,17 +18,21 @@
 
 ;; yari provides a nice Emacs interface to ri
 (require 'yari)
-
-; TODO fix ruby-end and package ruby-block for marmalade
-;(require 'ruby-block)
+(require 'ruby-block)
 (require 'ruby-end)
 
+(eval-after-load 'ruby-mode
+  '(progn
+     (ruby-block-mode t)
+     (setq ruby-block-highlight-toggle 'overlay)))
+
 (defun prelude-ruby-mode-hook ()
-  (inf-ruby-keys)
+  (inf-ruby-setup-keybindings)
   ;; turn off the annoying input echo in irb
   (setq comint-process-echoes t)
-;  (ruby-block-mode t)
   (local-set-key (kbd "C-h r") 'yari))
+
+(define-key 'help-command (kbd "R") 'yari)
 
 (add-hook 'ruby-mode-hook 'prelude-ruby-mode-hook)
 
