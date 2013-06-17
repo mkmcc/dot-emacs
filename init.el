@@ -65,6 +65,7 @@
 (require 'mkmcc-web)
 (require 'mkmcc-mu4e)
 (require 'mkmcc-weather)
+(require 'mkmcc-shell)
 
 ;; load the personal settings (this includes `custom-file')
 (when (file-exists-p personal-dir)
