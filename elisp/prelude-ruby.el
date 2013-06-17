@@ -21,6 +21,9 @@
 (require 'ruby-block)
 (require 'ruby-end)
 
+(diminish 'ruby-block-mode)
+(diminish 'ruby-end-mode)
+
 (eval-after-load 'ruby-mode
   '(progn
      (ruby-block-mode t)
