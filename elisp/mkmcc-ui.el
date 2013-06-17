@@ -254,6 +254,10 @@
 ;; externally
 (global-auto-revert-mode t)
 
+;; Also auto refresh dired, but be quiet about it
+(setq global-auto-revert-non-file-buffers t)
+(setq auto-revert-verbose nil)
+
 ;; Use elisp ls program.  The osx one doesn't have the full GNU
 ;; functionality.
 (require 'ls-lisp)
