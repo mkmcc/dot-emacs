@@ -17,7 +17,7 @@
   (prelude-lisp-coding-hook)
   (turn-on-eldoc-mode)
   (mkmcc-remove-elc-on-save)
-  (flycheck-select-checker 'emacs-lisp))
+  (setq-local flycheck-checkers 'emacs-lisp))
 
 (add-hook 'emacs-lisp-mode-hook 'mkmcc-emacs-lisp-mode-hook)
 
