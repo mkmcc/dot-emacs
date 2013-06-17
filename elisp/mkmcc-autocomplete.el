@@ -46,6 +46,19 @@ to the owner of the file.  See the function `set-file-modes'.")
 
 (ad-activate 'ido-save-history)
 
+(defun mkmcc-ido-setup ()
+  "sensible "
+  ;; Go straight home
+  (define-key ido-file-completion-map
+    (kbd "~")
+    (lambda ()
+      (interactive)
+      (if (looking-back "/")
+          (insert "~/")
+        (call-interactively 'self-insert-command)))))
+
+(add-hook 'ido-setup-hook 'mkmcc-ido-setup)
+
 (require 'smex)
 (setq smex-save-file (expand-file-name ".smex-items" savefile-dir))
 (smex-initialize)
