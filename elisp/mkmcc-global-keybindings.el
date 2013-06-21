@@ -76,6 +76,10 @@
       (occur (if isearch-regexp
                  isearch-string
                (regexp-quote isearch-string))))))
+
+;; Revert without any fuss
+(global-set-key (kbd "M-<escape>")
+                (lambda () (interactive) (revert-buffer t t)))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
