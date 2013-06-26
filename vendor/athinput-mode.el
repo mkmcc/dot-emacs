@@ -44,12 +44,12 @@
 
 (defun athena-add-par-end ()
   "automatically add the block <par_end> if it isn't present"
+  (interactive)
   (save-excursion
-    (goto-char (point-max))
-    (if (re-search-backward "^\\s-*<" nil t)
-        (unless (looking-at "<par_end>")
-          (goto-char (point-max))
-          (insert "\n<par_end>\n")))))
+    (goto-char (point-min))
+    (unless (re-search-forward "^\\s-*<par_end>" nil t)
+      (goto-char (point-max))
+      (insert "\n\n<par_end>\n"))))
 
 (defun athena-before-save-hook ()
   (athena-add-par-end)
