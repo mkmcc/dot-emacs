@@ -98,10 +98,7 @@
 
 (eval-after-load "flycheck"
   '(progn
-     (diminish 'flycheck-mode)
-     (unless (fboundp 'setq-local)
-       (defmacro setq-local (var val)
-         `(set (make-local-variable ',var) ,val)))))
+     (diminish 'flycheck-mode)))
 
 (defun prelude-prog-mode-hook ()
   "Default coding hook, useful with any programming language."

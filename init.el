@@ -18,6 +18,10 @@
 (setq custom-file (expand-file-name "custom.el" personal-dir))
 (setq custom-theme-directory themes-dir)
 
+(unless (fboundp 'setq-local)
+       (defmacro setq-local (var val)
+         `(set (make-local-variable ',var) ,val)))
+
 ;; packages
 (require 'mkmcc-packages)               ; should come first!
 
