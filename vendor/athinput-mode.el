@@ -53,6 +53,8 @@
     (goto-char (point-min))
     (unless (re-search-forward "^\\s-*<par_end>" nil t)
       (goto-char (point-max))
+      (skip-chars-backward " \t\n\t\f\v")
+      (delete-region (point) (point-max))
       (insert "\n\n<par_end>\n"))))
 
 (defun athena-before-save-hook ()
