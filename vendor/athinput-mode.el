@@ -25,13 +25,22 @@
     (delete-horizontal-space)
     (goto-char (marker-position old-point))))
 
-(defun athena-align-to-equals ()
-  "align all parameter definitions"
+(defun athena-align-to-equals-globally ()
+  "align all parameter definitions in the file"
   (interactive)
   (save-excursion
     (let ((beg (if (region-active-p) (region-beginning) (point-min)))
           (end (if (region-active-p) (region-end)       (point-max))))
       (align-regexp beg end "\\(\\s-*\\) =" 1 1))))
+
+(defun athena-align-to-equals ()
+  "align parameter definitions with each block"
+  (interactive)
+  (save-excursion
+    (while (re-search-forward "<\\sw+>\\([^<]+\\)" nil t)
+      (let ((beg (match-beginning 1))
+            (end (match-end 1)))
+      (align-regexp beg end "\\(\\s-*\\) =" 1 1)))))
 
 (defvar athena-mode-syntax-table
   (let ((table (make-syntax-table conf-unix-mode-syntax-table)))
