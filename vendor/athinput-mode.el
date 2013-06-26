@@ -5,8 +5,15 @@
 
 ;;; Commentary:
 
-;; A major mode for editing athena files.  Provides basic indentation,
-;; syntax highlighting, and some other nice features.
+;; A major mode for editing athena input files.  Provides basic
+;; indentation, syntax highlighting, and some other nice features.
+
+;; Note that this mode takes what some programmers call a "bondage and
+;; dominatrix" approach to formatting: it leaves you with no control
+;; whatsoever over your whitespace.  This is great for files under
+;; version control because it eliminates annoying "whitespace-only
+;; differences."  And you really don't *need* to personalize the
+;; whitespace in your configuration files.  Really.
 
 ;;; Code:
 
