@@ -57,7 +57,7 @@
   "font lock extensions for athinput files")
 
 ;;;###autoload
-(define-derived-mode athinput-mode conf-unix-mode "Athinput"
+(define-derived-mode athinput-mode conf-unix-mode "athinput"
   "A major mode for editing athinput files."
   (conf-mode-initialize "#" athena-mode-font-lock-keywords)
   (setq indent-tabs-mode nil)
@@ -68,8 +68,8 @@
   (run-hooks 'athinput-mode-hook))
 
 ;;;###autoload
-(add-to-list 'auto-mode-alist '("\\athinput$"   . athinput-mode))
-(add-to-list 'auto-mode-alist '("\\athinput.*$" . athinput-mode))
+(add-to-list 'auto-mode-alist '("\\athinput$"     . athinput-mode) t)
+(add-to-list 'auto-mode-alist '("\\athinput\\.*$" . athinput-mode) t)
 
 (provide 'athinput-mode)
 
