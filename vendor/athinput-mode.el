@@ -42,6 +42,19 @@
             (end (match-end 1)))
       (align-regexp beg end "\\(\\s-*\\) =" 1 1)))))
 
+(defun athena-add-par-end ()
+  "automatically add the block <par_end> if it isn't present"
+  (save-excursion
+    (goto-char (point-max))
+    (if (re-search-backward "^\\s-*<" nil t)
+        (unless (looking-at "<par_end>")
+          (goto-char (point-max))
+          (insert "\n<par_end>\n")))))
+
+(defun athena-before-save-hook ()
+  (athena-add-par-end)
+  (athena-align-to-equals))
+
 (defvar athena-mode-syntax-table
   (let ((table (make-syntax-table conf-unix-mode-syntax-table)))
     (modify-syntax-entry ?_ "w" table)
@@ -73,7 +86,7 @@
   (set (make-local-variable 'indent-line-function)
        'athena-indent-line)
   (set-syntax-table athena-mode-syntax-table)
-  (add-hook 'before-save-hook 'athena-align-to-equals nil t)
+  (add-hook 'before-save-hook 'athena-before-save-hook nil t)
   (run-hooks 'athinput-mode-hook))
 
 ;;;###autoload
