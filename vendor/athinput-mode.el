@@ -24,13 +24,16 @@
     (delete-horizontal-space)
     (goto-char (marker-position old-point))))
 
-(defun athena-align-to-equals-globally ()
-  "align all parameter definitions in the file"
-  (interactive)
+(defun athena-align-from-equals ()
+  "align things to the right of the equals sign.  minus signs
+'hang' into the left margin"
   (save-excursion
-    (let ((beg (if (region-active-p) (region-beginning) (point-min)))
-          (end (if (region-active-p) (region-end)       (point-max))))
-      (align-regexp beg end "\\(\\s-*\\) =" 1 1))))
+    (goto-char (point-min))
+    (while (re-search-forward "=\\(\\s-*\\)[^-]" nil t)
+      (replace-match "  " t t nil 1))
+    (goto-char (point-min))
+    (while (re-search-forward "=\\(\\s-*\\)-" nil t)
+      (replace-match " " t t nil 1))))
 
 (defun athena-align-to-equals ()
   "align parameter definitions with each block"
@@ -54,7 +57,9 @@
 
 (defun athena-before-save-hook ()
   (athena-add-par-end)
-  (athena-align-to-equals))
+  (indent-region (point-min) (point-max))
+  (athena-align-to-equals)
+  (athena-align-from-equals))
 
 (defvar athena-mode-syntax-table
   (let ((table (make-syntax-table conf-unix-mode-syntax-table)))
