@@ -5,15 +5,15 @@
 
 ;;; Commentary:
 
-;; A major mode for editing athena files.  Provides basic indentation
-;; and syntax highlighting.
+;; A major mode for editing athena files.  Provides basic indentation,
+;; syntax highlighting, and some other nice features.
 
 ;;; Code:
 
 (require 'conf-mode)
 
 (defcustom athinput-mode-hook nil
-  "*Hook to be run when `athinput-mode' is entered."
+  "Hook to run upon entering `athinput-mode'."
   :type  'hook
   :group 'athinput)
 
@@ -41,7 +41,10 @@
     (while (re-search-forward "<\\sw+>\\([^<]+\\)" nil t)
       (let ((beg (match-beginning 1))
             (end (match-end 1)))
-      (align-regexp beg end "\\(\\s-*\\) =" 1 1)))))
+        ;; the below means "find one or more spaces before an equals
+        ;; sign and pad that sub-expression so that the equals signs
+        ;; line up."
+        (align-regexp beg end "\\(\\s-*\\) =" 1 1)))))
 
 (defun athena-add-par-end ()
   "automatically add the block <par_end> if it isn't present"
