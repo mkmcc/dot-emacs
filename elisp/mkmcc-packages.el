@@ -27,7 +27,8 @@
 ;;; installed yet!
 (defvar mkmcc-packages
   '(melpa auctex clojure-mode full-ack gist inf-ruby org paredit python
-          rainbow-mode yari deft magit gitconfig-mode gitignore-mode
+          rainbow-mode yari deft magit
+          gitconfig-mode gitignore-mode git-commit-mode
           zenburn-theme gnuplot-mode flycheck ido-ubiquitous smex
           volatile-highlights diminish nyan-mode expand-region
           ruby-block ruby-end
