@@ -19,7 +19,6 @@
 
 (defun athena-indent-line ()
   "indent the current line"
-  (interactive)
   (let ((old-point (point-marker)))
     (beginning-of-line)
     (delete-horizontal-space)
@@ -35,7 +34,6 @@
 
 (defun athena-align-to-equals ()
   "align parameter definitions with each block"
-  (interactive)
   (save-excursion
     (goto-char (point-min))
     (while (re-search-forward "<\\sw+>\\([^<]+\\)" nil t)
@@ -48,7 +46,6 @@
 
 (defun athena-add-par-end ()
   "automatically add the block <par_end> if it isn't present"
-  (interactive)
   (save-excursion
     (goto-char (point-min))
     (unless (re-search-forward "^\\s-*<par_end>" nil t)
