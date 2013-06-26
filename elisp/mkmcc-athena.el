@@ -8,8 +8,7 @@
   (flyspell-prog-mode)
   (prelude-local-comment-auto-fill)
   (prelude-turn-on-whitespace)
-  (prelude-add-watchwords)
-  (add-hook 'before-save-hook 'whitespace-cleanup nil t))
+  (prelude-add-watchwords))
 
 (add-hook 'athinput-mode-hook 'prelude-prog-mode-hook)
 

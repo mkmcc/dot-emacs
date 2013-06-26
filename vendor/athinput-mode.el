@@ -59,7 +59,8 @@
   (athena-add-par-end)
   (indent-region (point-min) (point-max))
   (athena-align-to-equals)
-  (athena-align-from-equals))
+  (athena-align-from-equals)
+  (whitespace-cleanup))
 
 (defvar athena-mode-syntax-table
   (let ((table (make-syntax-table conf-unix-mode-syntax-table)))
