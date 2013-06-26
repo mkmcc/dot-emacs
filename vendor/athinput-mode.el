@@ -37,6 +37,7 @@
   "align parameter definitions with each block"
   (interactive)
   (save-excursion
+    (goto-char (point-min))
     (while (re-search-forward "<\\sw+>\\([^<]+\\)" nil t)
       (let ((beg (match-beginning 1))
             (end (match-end 1)))
