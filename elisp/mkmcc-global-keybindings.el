@@ -13,7 +13,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; appearance
 ;;
-(global-set-key [f1] 'ns-toggle-fullscreen) ; fullscreen!
+(global-set-key [f1] 'toggle-fullscreen) ; fullscreen!
 
 ;; Font size
 (global-set-key (kbd "C-+") 'text-scale-increase)
