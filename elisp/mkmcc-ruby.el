@@ -55,7 +55,8 @@ MyPlots.new
 (defun tioga-start ()
   (interactive)
   (erase-buffer)
-  (insert tioga-prototype))
+  (insert tioga-prototype)
+  (search-backward "NAME"))
 
 (provide 'mkmcc-ruby)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
