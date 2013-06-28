@@ -3,11 +3,12 @@
 ; (defvar *emacs-load-start* (current-time))
 
 (defvar base-dir     "~/.emacs.d/")
-(defvar elisp-dir    (expand-file-name "elisp/"    base-dir))
-(defvar vendor-dir   (expand-file-name "vendor/"   base-dir))
-(defvar themes-dir   (expand-file-name "themes/"   base-dir))
+(defvar elisp-dir    (expand-file-name "elisp"    base-dir))
+(defvar vendor-dir   (expand-file-name "vendor"   base-dir))
+(defvar themes-dir   (expand-file-name "themes"   base-dir))
+(defvar snippets-dir (expand-file-name "snippets" base-dir))
 (defvar savefile-dir (expand-file-name "savefile" base-dir))
-(defvar personal-dir (expand-file-name "personal/" base-dir)
+(defvar personal-dir (expand-file-name "personal" base-dir)
   "All Emacs Lisp files here are loaded automatically.")
 
 (unless (file-exists-p savefile-dir)
@@ -64,7 +65,6 @@ to the Emacs load path."
 (require 'mkmcc-latex)
 ;(require 'prelude-python)
 (require 'prelude-ruby)
-(require 'mkmcc-ruby)
 (require 'mkmcc-gnuplot)
 (require 'mkmcc-athena)
 

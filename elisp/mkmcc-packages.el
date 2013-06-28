@@ -26,14 +26,16 @@
 ;;; NB. should not use dash list functions here -- it may not be
 ;;; installed yet!
 (defvar mkmcc-packages
-  '(melpa auctex clojure-mode ack-and-a-half gist org paredit
-          elisp-slime-nav
-          rainbow-mode deft magit
-          gitconfig-mode gitignore-mode git-commit-mode
-          zenburn-theme gnuplot-mode flycheck ido-ubiquitous smex
-          volatile-highlights diminish nyan-mode expand-region
-          ruby-block ruby-end inf-ruby ruby-tools yari
-          dash s ht loop)
+  '(melpa
+    org deft
+    gnuplot-mode
+    rainbow-mode flycheck expand-region
+    zenburn-theme volatile-highlights diminish nyan-mode
+    paredit clojure-mode elisp-slime-nav ack-and-a-half
+    gitconfig-mode gitignore-mode git-commit-mode magit gist
+    ido-ubiquitous smex yasnippet
+    ruby-end inf-ruby yari
+    dash s ht loop)
   "A list of packages to ensure are installed at launch.")
 
 (defun mkmcc-packages-installed-p ()
