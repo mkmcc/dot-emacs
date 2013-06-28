@@ -112,8 +112,10 @@ to the owner of the file.  See the function `set-file-modes'.")
 
 ;; load yasnippet
 (require 'yasnippet)
-(setq yas-snippet-dirs (list snippets-dir))
-(yas-reload-all)
+;(setq yas-snippet-dirs (list snippets-dir))
+(setq yas/root-directory snippets-dir)
+(yas/load-directory yas/root-directory)
+;(yas-reload-all)
 (diminish 'yas-minor-mode)
 
 (defun mkmcc-enable-yasnippet ()
