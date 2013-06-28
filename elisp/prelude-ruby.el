@@ -42,11 +42,6 @@
 (diminish 'ruby-block-mode)
 (diminish 'ruby-end-mode)
 
-(eval-after-load 'ruby-mode
-  '(progn
-     (ruby-block-mode t)
-     (setq ruby-block-highlight-toggle 'overlay)))
-
 (define-key 'help-command (kbd "R") 'yari)
 
 ;; Rake files are ruby, too, as are gemspecs, rackup files, and gemfiles.
@@ -65,23 +60,20 @@
 ;; We never want to edit Rubinius bytecode
 (add-to-list 'completion-ignored-extensions ".rbc")
 
-(eval-after-load 'ruby-mode
-  '(progn
-     (defun prelude-ruby-mode-defaults ()
-       (inf-ruby-setup-keybindings)
-       ;; turn off the annoying input echo in irb
-       (setq comint-process-echoes t)
-       (ruby-end-mode +1)
-       ;; don't spam modeline
-       (diminish 'ruby-end-mode)
-       (diminish 'yas-minor-mode)
-       ;; CamelCase aware editing operations
-       (subword-mode +1))
+(defun prelude-ruby-mode-hook ()
+  (inf-ruby-setup-keybindings)
+  ;; turn off the annoying input echo in irb
+  (setq comint-process-echoes t)
+  (ruby-end-mode +1)
+  (ruby-block-mode t)
+  (setq ruby-block-highlight-toggle 'overlay)
+  ;; don't spam modeline
+  (diminish 'ruby-end-mode)
+  (diminish 'yas-minor-mode)
+  ;; CamelCase aware editing operations
+  (subword-mode +1))
 
-     (setq prelude-ruby-mode-hook 'prelude-ruby-mode-defaults)
-
-     (add-hook 'ruby-mode-hook (lambda ()
-                                 (run-hooks 'prelude-ruby-mode-hook)))))
+(add-hook 'ruby-mode-hook 'prelude-ruby-mode-hook)
 
 (provide 'prelude-ruby)
 ;;; prelude-ruby.el ends here
