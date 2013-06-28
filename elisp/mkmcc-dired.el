@@ -44,6 +44,8 @@
            dired-recursive-copies 'always
            dired-dwim-target t)
 
+     (put 'dired-find-alternate-file 'disabled nil)
+
      (defun dired-multi-occur (string)
        "Search string in files marked by dired."
        (interactive "MList lines matching regexp: ")

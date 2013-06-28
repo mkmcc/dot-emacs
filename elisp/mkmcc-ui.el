@@ -13,6 +13,9 @@
 (blink-cursor-mode -1)                  ; annoyances
 (setq inhibit-startup-screen t)
 
+;; highlight the current line
+;(global-hl-line-mode +1)
+
 (line-number-mode t)                    ; modeline settings
 (column-number-mode t)
 (size-indication-mode t)
@@ -33,7 +36,9 @@
 (require 'uniquify)
 (setq
   uniquify-buffer-name-style 'post-forward
-  uniquify-separator ":")
+  uniquify-separator ":"
+  uniquify-after-kill-buffer-p t        ; rename after killing uniquified
+  uniquify-ignore-buffers-re "^\\*")    ; don't muck with special buffers
 
 (setq-default
  mode-line-format

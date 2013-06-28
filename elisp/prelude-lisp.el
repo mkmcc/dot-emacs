@@ -42,13 +42,14 @@
 ;; interactive modes don't need whitespace checks
 (defun prelude-interactive-lisp-coding-hook ()
   (paredit-mode +1)
-  (prelude-turn-off-whitespace))
+  (whitespace-mode -1))
 
 (add-hook 'scheme-mode-hook 'prelude-lisp-coding-hook)
 
 
 (eval-after-load "paredit"
   '(progn
+     (diminish 'paredit-mode " π")
 
      ;; making paredit work with delete-selection-mode
      (put 'paredit-forward-delete 'delete-selection 'supersede)
@@ -67,9 +68,6 @@
 
      (define-key paredit-mode-map (kbd "M-)")
        'paredit-wrap-round-from-behind)))
-
-(eval-after-load "paredit"
-  '(diminish 'paredit-mode " π"))
 
 (provide 'prelude-lisp)
 

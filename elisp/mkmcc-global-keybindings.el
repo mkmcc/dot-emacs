@@ -5,7 +5,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; fix the keybindings on osx
 (setq mac-command-modifier 'meta)
-(setq mac-option-modifier 'super)
+(setq mac-option-modifier  'super)
 (setq ns-function-modifier 'hyper)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -65,6 +65,9 @@
 (global-set-key (kbd "C-c o") 'prelude-open-with)
 
 
+(global-set-key (kbd "C-c D") 'prelude-delete-file-and-buffer)
+(global-set-key (kbd "C-c r") 'prelude-rename-file-and-buffer)
+
 ;; use regex versions of search
 (global-set-key (kbd "C-s") 'isearch-forward-regexp)
 (global-set-key (kbd "C-r") 'isearch-backward-regexp)
@@ -96,6 +99,7 @@
 
 ;; Indentation help
 (global-set-key (kbd "C-M-\\") 'prelude-indent-region-or-buffer)
+(global-set-key (kbd "C-M-z")  'prelude-indent-defun)
 
 ;; Should be able to eval-and-replace anywhere.
 (global-set-key (kbd "C-c e") 'prelude-eval-and-replace)

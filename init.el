@@ -1,6 +1,6 @@
 ;;; Code:
 (require 'cl)
-(defvar *emacs-load-start* (current-time))
+; (defvar *emacs-load-start* (current-time))
 
 (defvar base-dir     "~/.emacs.d/")
 (defvar elisp-dir    (expand-file-name "elisp/"    base-dir))
@@ -10,6 +10,24 @@
 (defvar personal-dir (expand-file-name "personal/" base-dir)
   "All Emacs Lisp files here are loaded automatically.")
 
+(unless (file-exists-p savefile-dir)
+  (make-directory savefile-dir))
+
+(defun prelude-add-subfolders-to-load-path (parent-dir &optional the-list)
+  "Adds all first level `parent-dir' subdirs to a list.  Default
+to the Emacs load path."
+  (let ((mlist (if the-list the-list 'load-path )))
+    (prelude-add-subfolders-to-list parent-dir mlist)))
+
+(defun prelude-add-subfolders-to-list (parent-dir the-list)
+  "Adds all first level `parent-dir' subdirs to a list."
+  (dolist (f (directory-files parent-dir))
+    (let ((name (expand-file-name f parent-dir)))
+      (when (and (file-directory-p name)
+                 (not (equal f ".."))
+                 (not (equal f ".")))
+        (add-to-list the-list name)))))
+
 (add-to-list 'load-path elisp-dir)
 (add-to-list 'load-path vendor-dir)
 (add-to-list 'load-path personal-dir)
@@ -18,9 +36,8 @@
 (setq custom-file (expand-file-name "custom.el" personal-dir))
 (setq custom-theme-directory themes-dir)
 
-(unless (fboundp 'setq-local)
-       (defmacro setq-local (var val)
-         `(set (make-local-variable ',var) ,val)))
+(require 'init-benchmarking)
+
 
 ;; packages
 (require 'mkmcc-packages)               ; should come first!
@@ -53,7 +70,7 @@
 
 ;; lisps
 (require 'mkmcc-emacs-lisp)
-(require 'prelude-clojure)
+;(require 'prelude-clojure)
 (require 'prelude-common-lisp)
 (require 'mkmcc-mathematica)
 (require 'mkmcc-scheme)
@@ -65,11 +82,11 @@
 (require 'mkmcc-gdb)
 
 ;; other
-(require 'mkmcc-erc)
-(require 'mkmcc-sudoku)
+;(require 'mkmcc-erc)
+;(require 'mkmcc-sudoku)
 (require 'mkmcc-web)
-(require 'mkmcc-mu4e)
-(require 'mkmcc-weather)
+;(require 'mkmcc-mu4e)
+;(require 'mkmcc-weather)
 (require 'mkmcc-shell)
 
 ;; load the personal settings (this includes `custom-file')
@@ -83,5 +100,23 @@
 ;;          (destructuring-bind (hi lo ms) (current-time)
 ;;            (- (+ hi lo)
 ;;               (+ (first *emacs-load-start*) (second *emacs-load-start*)))))
+
+(message "init completed in %.2fms"
+         (sanityinc/time-subtract-millis (current-time) before-init-time))
+
+(require 'dash)
+(require 's)
+
+(defun benchmark/format-item (item)
+  (concat
+   (s-pad-right 20 " " (s-truncate 20 (symbol-name (car item))))
+   (format "%f"   (cdr item))))
+
+(message
+ (concat
+  "leading offenders:\n"
+  (mapconcat 'benchmark/format-item
+             (-take 10 (--sort (> (cdr it) (cdr other)) sanityinc/require-times))
+             "\n")))
 
 ;;; fin

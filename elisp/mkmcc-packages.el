@@ -26,12 +26,13 @@
 ;;; NB. should not use dash list functions here -- it may not be
 ;;; installed yet!
 (defvar mkmcc-packages
-  '(melpa auctex clojure-mode full-ack gist inf-ruby org paredit python
-          rainbow-mode yari deft magit
+  '(melpa auctex clojure-mode ack-and-a-half gist org paredit
+          elisp-slime-nav
+          rainbow-mode deft magit
           gitconfig-mode gitignore-mode git-commit-mode
           zenburn-theme gnuplot-mode flycheck ido-ubiquitous smex
           volatile-highlights diminish nyan-mode expand-region
-          ruby-block ruby-end
+          ruby-block ruby-end inf-ruby ruby-tools yari
           dash s ht loop)
   "A list of packages to ensure are installed at launch.")
 

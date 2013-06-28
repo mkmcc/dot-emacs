@@ -7,7 +7,7 @@
   "defaults for athinput mode"
   (flyspell-prog-mode)
   (prelude-local-comment-auto-fill)
-  (prelude-turn-on-whitespace)
+  (prelude-enable-whitespace)
   (prelude-add-watchwords))
 
 (add-hook 'athinput-mode-hook 'prelude-prog-mode-hook)

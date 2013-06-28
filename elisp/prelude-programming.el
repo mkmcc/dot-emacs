@@ -104,7 +104,7 @@
   "Default coding hook, useful with any programming language."
   (flyspell-prog-mode)
   (prelude-local-comment-auto-fill)
-  (prelude-turn-on-whitespace)
+  (prelude-enable-whitespace)
   (flycheck-mode +1)
   (subword-mode +1)
   (prelude-add-watchwords)
