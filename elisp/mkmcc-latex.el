@@ -3,6 +3,12 @@
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; AUCTeX configuration
+(defvar TeX-auto-save)
+(defvar TeX-parse-self)
+(defvar TeX-PDF-mode)
+(defvar TeX-view-program-selection)
+(defvar TeX-view-program-list)
+
 (setq TeX-auto-save t)
 (setq TeX-parse-self t)
 
@@ -48,6 +54,9 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; make rubber the default method for compiling.  bind f9 to compile
 ;;; and f12 to view.
+(defvar TeX-mode-map)
+(defvar TeX-command-default)
+
 (defun mkmcc-latex-mode-hook ()
   (define-key TeX-mode-map (kbd "<f9>")
     (lambda ()
