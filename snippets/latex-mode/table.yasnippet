@@ -1,0 +1,15 @@
+# -*- mode: snippet -*-
+# key: table
+# group: environments
+# name : \begin{table} ... \end{table}
+# --
+\begin{table}[htbp]
+  \centering
+  \begin{tabular}{${3:format}}
+    $0
+  \end{tabular}
+  %%
+  \caption{${1:caption}}
+  \label{tab:${2}}
+\end{table}
+%
