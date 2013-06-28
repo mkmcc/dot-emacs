@@ -34,6 +34,21 @@
 
 (require 'prelude-programming)
 
+;; yari provides a nice Emacs interface to ri
+(require 'yari)
+(require 'ruby-block)
+(require 'ruby-end)
+
+(diminish 'ruby-block-mode)
+(diminish 'ruby-end-mode)
+
+(eval-after-load 'ruby-mode
+  '(progn
+     (ruby-block-mode t)
+     (setq ruby-block-highlight-toggle 'overlay)))
+
+(define-key 'help-command (kbd "R") 'yari)
+
 ;; Rake files are ruby, too, as are gemspecs, rackup files, and gemfiles.
 (add-to-list 'auto-mode-alist '("\\.rake\\'" . ruby-mode))
 (add-to-list 'auto-mode-alist '("Rakefile\\'" . ruby-mode))
@@ -50,8 +65,6 @@
 ;; We never want to edit Rubinius bytecode
 (add-to-list 'completion-ignored-extensions ".rbc")
 
-(define-key 'help-command (kbd "R") 'yari)
-
 (eval-after-load 'ruby-mode
   '(progn
      (defun prelude-ruby-mode-defaults ()
@@ -59,7 +72,9 @@
        ;; turn off the annoying input echo in irb
        (setq comint-process-echoes t)
        (ruby-end-mode +1)
-       (ruby-tools-mode +1)
+       ;; don't spam modeline
+       (diminish 'ruby-end-mode)
+       (diminish 'yas-minor-mode)
        ;; CamelCase aware editing operations
        (subword-mode +1))
 
