@@ -2,6 +2,13 @@
 ;; global keybindings
 ;;
 
+;; keybindings expect interactive commands.  define a shorthand for
+;; interactive lambdas
+(defmacro λ (&rest body)
+  `(lambda ()
+     (interactive)
+     ,@body))
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; fix the keybindings on osx
 (setq mac-command-modifier 'meta)
@@ -26,7 +33,8 @@
 ;; general editing and navigation
 (global-set-key (kbd "<delete>") 'delete-char)   ; delete == delete
 (global-set-key (kbd "M-g")      'goto-line)     ; M-g  'goto-line
-(global-set-key (kbd "C-M-g")    'revert-buffer) ;
+; revert buffer with no fuss
+(global-set-key (kbd "M-ESC") (λ revert-buffer t t))
 
 (global-set-key [(control shift up)]     'prelude-move-line-up)
 (global-set-key [(control shift down)]   'prelude-move-line-down)
@@ -36,6 +44,7 @@
 (global-set-key (kbd "M-O")              'prelude-smart-open-line-above)
 
 (global-set-key [f2] 'ispell-word)
+(global-set-key [f12] (λ (shell-command "open -a /Applications/Dictionary.app")))
 
 (global-set-key (kbd "C-^") 'prelude-top-join-line)
 
@@ -76,15 +85,11 @@
 
 ;; Activate occur easily inside isearch (this is great!)
 (define-key isearch-mode-map (kbd "C-o")
-  (lambda () (interactive)
+  (λ
     (let ((case-fold-search isearch-case-fold-search))
       (occur (if isearch-regexp
                  isearch-string
                (regexp-quote isearch-string))))))
-
-;; Revert without any fuss
-(global-set-key (kbd "M-<escape>")
-                (lambda () (interactive) (revert-buffer t t)))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
@@ -117,7 +122,7 @@
 ;; Start eshell or switch to it if it's active.
 (global-set-key (kbd "C-x m") 'eshell)
 ;; Start a new eshell even if one is active.
-(global-set-key (kbd "C-x M") (lambda () (interactive) (eshell t)))
+(global-set-key (kbd "C-x M") (λ  (eshell t)))
 ;; open an ansi-term buffer
 (global-set-key (kbd "C-x t") 'prelude-visit-term-buffer)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
