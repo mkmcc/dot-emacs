@@ -24,7 +24,7 @@ class MyPlots
     t.def_figure('$1') do
       mnras_style
       enter_page
-      $2
+      ${1:$(s-snake-case (s-downcase text))}
     end
   end
 
@@ -46,7 +46,7 @@ class MyPlots
     t.default_enter_page_function
   end
 
-  def $2
+  def ${1:$(s-snake-case (s-downcase text))}
     $0
   end
 
