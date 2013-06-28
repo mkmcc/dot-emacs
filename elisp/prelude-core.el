@@ -277,7 +277,7 @@ there's a region, all lines that region covers will be duplicated."
 (defun prelude-recompile-init ()
   "Byte-compile all your dotfiles again."
   (interactive)
-  (byte-recompile-directory prelude-dir 0))
+  (byte-recompile-directory base-dir 0))
 
 (defun prelude-sudo-edit (&optional arg)
   "Edit currently visited file as root.
@@ -413,7 +413,7 @@ Doesn't mess with special buffers."
   (interactive)
   (when (y-or-n-p "Do you want to update Prelude? ")
     (message "Updating Prelude...")
-    (cd prelude-dir)
+    (cd base-dir)
     (shell-command "git pull")
     (prelude-recompile-init)
     (message "Update finished. Restart Emacs to complete the process.")))
