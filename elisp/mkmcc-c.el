@@ -36,16 +36,18 @@ defined, else start in the current directory."
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; c-mode-common
+(defvar c-basic-offset)
+(defvar c-hungry-delete-key)
+
 (defun mkmcc-c-mode-common ()
   (setq
    c-basic-offset 2
    indent-tabs-mode nil
-   c-hungry-delete-key t)
+   c-hungry-delete-key t
+   mode-name "C")
 
   ;; Keybindings
   (local-set-key (kbd "C-c o")   'ff-find-other-file)
-  (local-set-key (kbd "C-c C-c") 'comment-region)
-  (local-set-key (kbd "C-c C-u") 'uncomment-region)
   (local-set-key (kbd "<f8>")    'mkmcc-compile))
 
 ;; this will affect all modes derived from cc-mode, like
