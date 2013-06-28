@@ -1,0 +1,6 @@
+# name: plot
+# key: plot
+# --
+t.show_plot([$1, $2, $3, $4]) do
+  $0
+end
