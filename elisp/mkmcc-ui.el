@@ -13,8 +13,6 @@
 (blink-cursor-mode -1)                  ; annoyances
 (setq inhibit-startup-screen t)
 
-;; highlight the current line
-;(global-hl-line-mode +1)
 (require 'server)
 
 (defun setup-window-system-frame-colours (&rest frame)
@@ -84,6 +82,7 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; isearch
+(defvar dired-isearch-filenames)
 (setq search-highlight t                ; highlight when searching...
       query-replace-highlight t)        ; ...and replacing
 
@@ -102,20 +101,22 @@
 (put 'upcase-region 'disabled nil)      ; ...
 (put 'erase-buffer 'disabled nil)       ; ...useful things
 
-(setq cua-enable-cua-keys nil)          ; only for rectangles
-(setq cua-delete-selection nil)         ; don't delete selection
+(defvar cua-enable-cua-keys)
+(defvar cua-delete-selection)
+(setq cua-enable-cua-keys  nil          ; only for rectangles
+      cua-delete-selection nil)         ; don't delete selection
 (cua-mode t)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; appearance (behavior)
-(when (fboundp 'show-paren-mode)        ; show-paren-mode...
-  (show-paren-mode t)                   ; defaults are ugly
-  (setq show-paren-style 'parenthesis)
-  (set-face-attribute 'show-paren-match-face nil
-                      :weight 'extra-bold :underline nil
-                      :overline nil       :slant 'normal))
+(show-paren-mode t)                     ; defaults are ugly
+(defvar show-paren-style)
+(setq show-paren-style 'parenthesis)
+(set-face-attribute 'show-paren-match-face nil
+                    :weight 'extra-bold :underline nil
+                    :overline nil       :slant 'normal)
 
 ;; smart indenting and pairing for all
 (electric-pair-mode t)
@@ -144,6 +145,8 @@
 (global-auto-revert-mode t)
 
 ;; Also auto refresh dired, but be quiet about it
+(defvar global-auto-revert-non-file-buffers)
+(defvar auto-revert-verbose)
 (setq global-auto-revert-non-file-buffers t)
 (setq auto-revert-verbose nil)
 
@@ -156,6 +159,7 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; games
+(defvar tetris-score-file)
 (setq tetris-score-file                 ; keep my ~/ clean
       "~/.emacs.d/games/tetris-scores")
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
