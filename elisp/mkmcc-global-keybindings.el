@@ -41,17 +41,19 @@
 ; revert buffer with no fuss
 (global-set-key (kbd "M-ESC") (λ revert-buffer t t))
 
+;; manipulate lines
 (global-set-key [(control shift up)]     'prelude-move-line-up)
 (global-set-key [(control shift down)]   'prelude-move-line-down)
 (global-set-key [(shift return)]         'prelude-smart-open-line)
 (global-set-key [(control shift return)] 'prelude-smart-open-line-above)
 (global-set-key (kbd "M-o")              'prelude-smart-open-line)
 (global-set-key (kbd "M-O")              'prelude-smart-open-line-above)
+(global-set-key (kbd "C-^") 'prelude-top-join-line)
 
+;; spelling and dictionaries
 (global-set-key [f2] 'ispell-word)
 (global-set-key [f12] (λ (shell-command "open -a /Applications/Dictionary.app")))
 
-(global-set-key (kbd "C-^") 'prelude-top-join-line)
 
 (global-set-key (kbd "C-=") 'er/expand-region)
 
@@ -69,22 +71,16 @@
 (global-set-key (kbd "M-`")   'file-cache-minibuffer-complete)
 (global-set-key (kbd "C-x C-r") 'ido-recentf-open)
 
-;; swap windows
-(global-set-key (kbd "C-c s") 'prelude-swap-windows)
-
-;; kill other buffers
+;; prelude things
+(global-set-key (kbd "C-c s")   'prelude-swap-windows)
 (global-set-key (kbd "C-c k o") 'prelude-kill-other-buffers)
-
-;; open in external application
-(global-set-key (kbd "C-c o") 'prelude-open-with)
-
-
-(global-set-key (kbd "C-c D") 'prelude-delete-file-and-buffer)
-(global-set-key (kbd "C-c r") 'prelude-rename-file-and-buffer)
+(global-set-key (kbd "C-c o")   'prelude-open-with)
+(global-set-key (kbd "C-c D")   'prelude-delete-file-and-buffer)
+(global-set-key (kbd "C-c r")   'prelude-rename-file-and-buffer)
 
 ;; use regex versions of search
-(global-set-key (kbd "C-s") 'isearch-forward-regexp)
-(global-set-key (kbd "C-r") 'isearch-backward-regexp)
+(global-set-key (kbd "C-s")   'isearch-forward-regexp)
+(global-set-key (kbd "C-r")   'isearch-backward-regexp)
 (global-set-key (kbd "C-M-s") 'isearch-forward)
 (global-set-key (kbd "C-M-r") 'isearch-backward)
 
