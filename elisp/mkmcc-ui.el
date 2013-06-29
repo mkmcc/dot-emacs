@@ -127,8 +127,8 @@
 (setq ring-bell-function 'ignore)       ; turn off the damn bell
 
 (setq kill-buffer-query-functions       ; don't prompt me
-  (remq 'process-kill-buffer-query-function
-        kill-buffer-query-functions))
+      (remq 'process-kill-buffer-query-function
+            kill-buffer-query-functions))
 
 (setq redisplay-dont-pause t)           ; more responsive display
 (setq-default indent-tabs-mode nil)     ; death to tabs!
@@ -179,8 +179,8 @@
   "Toggle full screen"
   (interactive)
   (set-frame-parameter
-     nil 'fullscreen
-     (when (not (frame-parameter nil 'fullscreen)) 'fullboth)))
+   nil 'fullscreen
+   (when (not (frame-parameter nil 'fullscreen)) 'fullboth)))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (provide 'mkmcc-ui)
