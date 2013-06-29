@@ -52,7 +52,7 @@
        (multi-occur (mapcar 'find-file (dired-get-marked-files)) string))))
 
 ; prefer dired over dumping dir list to buffer
-(global-set-key "\C-x\C-d" 'dired)
+(global-set-key (kbd "C-x C-d") 'dired)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (provide 'mkmcc-dired)
