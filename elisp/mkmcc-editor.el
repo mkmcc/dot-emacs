@@ -22,15 +22,16 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; spell check
-(require 'flyspell)
-(setq ispell-silently-savep t
-      ispell-program-name   "aspell")
+(autoload 'flyspell-mode "flyspell.el")
 
 (add-hook 'message-mode-hook 'flyspell-mode)
 (add-hook 'text-mode-hook    'flyspell-mode)
 
 (eval-after-load "flyspell"
-  '(diminish 'flyspell-mode))
+  '(progn
+     (diminish 'flyspell-mode)
+     (setq ispell-silently-savep t
+           ispell-program-name   "aspell")))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
@@ -231,8 +232,8 @@ indent yanked text (with prefix arg don't indent)."
 (add-to-list 'auto-mode-alist '("\\.zsh\\'" . shell-script-mode))
 
 ;; saner regex syntax
-(require 're-builder)
-(setq reb-re-syntax 'string)
+(eval-after-load "re-builder"
+    '(setq reb-re-syntax 'string))
 
 ;; whitespace-mode config
 (require 'whitespace)

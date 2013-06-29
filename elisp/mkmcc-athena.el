@@ -1,7 +1,11 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; athena-mode
 
-(require 'athinput-mode)
+(autoload 'athinput-mode "athinput-mode.el")
+
+(add-to-list 'auto-mode-alist '("\\athinput$"     . athinput-mode) t)
+(add-to-list 'auto-mode-alist '("\\athinput\\.*$" . athinput-mode) t)
+
 
 (defun mkmcc-athinput-mode-hook ()
   "defaults for athinput mode"

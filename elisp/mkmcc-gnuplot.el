@@ -3,11 +3,7 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; enable the package
-(require 'gnuplot-mode)
-
-(if mkmcc-macosx-p
-  (setq gnuplot-program "gnuplot")
-  (setq gnuplot-program "/usr/bin/gnuplot"))
+(autoload 'gnuplot-mode "gnuplot-mode.el")
 
 (setq auto-mode-alist
   (append '(("\\.\\(gp\\|gnuplot\\)$" . gnuplot-mode))

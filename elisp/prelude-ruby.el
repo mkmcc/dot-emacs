@@ -34,13 +34,13 @@
 
 (require 'prelude-programming)
 
-;; yari provides a nice Emacs interface to ri
-(require 'yari)
-(require 'ruby-block)
-(require 'ruby-end)
+;; yari provides a nice Emacs interface to RI
+(autoload 'yari "yari.el")
+(autoload 'ruby-block-mode "ruby-block.el")
+(autoload 'ruby-end-mode "ruby-end.el")
 
-(diminish 'ruby-block-mode)
-(diminish 'ruby-end-mode)
+(eval-after-load "ruby-block" '(diminish 'ruby-block-mode))
+(eval-after-load "ruby-end"   '(diminish 'ruby-end-mode))
 
 (define-key 'help-command (kbd "R") 'yari)
 
@@ -67,9 +67,6 @@
   (ruby-end-mode +1)
   (ruby-block-mode t)
   (setq ruby-block-highlight-toggle 'overlay)
-  ;; don't spam modeline
-  (diminish 'ruby-end-mode)
-  (diminish 'yas-minor-mode)
   ;; CamelCase aware editing operations
   (subword-mode +1))
 
