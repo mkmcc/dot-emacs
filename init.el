@@ -53,6 +53,7 @@ to the Emacs load path."
 
 ;; interface
 (require 'mkmcc-ui)
+(require 'mkmcc-modeline)
 (require 'mkmcc-editor)
 (require 'mkmcc-autocomplete)
 (require 'mkmcc-global-keybindings)
