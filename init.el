@@ -83,7 +83,6 @@ to the Emacs load path."
 
 ;; other
 ;(require 'mkmcc-erc)
-;(require 'mkmcc-sudoku)
 (require 'mkmcc-web)
 ;(require 'mkmcc-mu4e)
 ;(require 'mkmcc-weather)
