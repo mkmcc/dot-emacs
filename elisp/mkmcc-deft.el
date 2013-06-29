@@ -1,6 +1,11 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; deft customizations
 ;;
+(defvar deft-extension)
+(defvar deft-text-mode)
+(defvar deft-directory)
+(defvar deft-strip-title-regexp)
+
 (setq deft-extension "org")
 (setq deft-text-mode 'org-mode)
 
