@@ -15,19 +15,24 @@
 
 ;; highlight the current line
 ;(global-hl-line-mode +1)
+(require 'server)
 
+(defun setup-window-system-frame-colours (&rest frame)
+  (unless (eq window-system nil)
+    (load-theme 'solarized-light t)
+    (set-face-attribute 'fixed-pitch    nil :font "Menlo-13")
+    (set-face-attribute 'variable-pitch nil :font "Warnock Pro-13")))
 
+(defadvice server-create-window-system-frame
+  (after set-window-system-frame-colours ())
+  "Set custom frame colours when creating the first frame on a display"
+  (setup-window-system-frame-colours))
 
+(ad-activate 'server-create-window-system-frame)
 
+(add-hook 'after-make-frame-functions 'setup-window-system-frame-colours t)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; appearance (superficial)
-;;; TODO check for window system
 
-(unless (eq window-system nil)
-  (load-theme 'solarized-light t)
-  (set-face-attribute 'fixed-pitch    nil :font "Menlo-13")
-  (set-face-attribute 'variable-pitch nil :font "Warnock Pro-13"))
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; coding -> reading
