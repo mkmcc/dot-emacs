@@ -1,4 +1,4 @@
-;;; athena-mode.el ---
+;;; athinput-mode.el --- major mode for editing athinput files
 
 ;; Copyright (c) 2013 Mike McCourt (mkmcc@berkeley.edu)
 ;;
@@ -8,12 +8,18 @@
 ;; A major mode for editing athena input files.  Provides basic
 ;; indentation, syntax highlighting, and some other nice features.
 
-;; Note that this mode takes what some programmers call a "bondage and
-;; dominatrix" approach to formatting: it leaves you with no control
-;; whatsoever over your whitespace.  This is great for files under
-;; version control because it eliminates annoying "whitespace-only
-;; differences."  And you really don't *need* to personalize the
-;; whitespace in your configuration files.  Really.
+;; Note that this mode leaves you with no control whatsoever over your
+;; whitespace.  Though it might feel like too much bondage and
+;; discipline at first, this approach is great for files under version
+;; control -- you will never again have to deal with annoying
+;; "whitespace-only" commits.  And you don't *really* want to align
+;; things manually, do you?
+
+;;; TODO:
+;; 1. maybe make athena-align-*-equals ignore comments?
+;;    - not clear whether this is a good thing -- most comments with =
+;;      in them are just commented-out lines, which I *do* want
+;;      aligned.
 
 ;;; Code:
 
