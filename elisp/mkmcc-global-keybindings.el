@@ -39,7 +39,7 @@
 (global-set-key (kbd "<delete>") 'delete-char)   ; delete == delete
 (global-set-key (kbd "M-g")      'goto-line)     ; M-g  'goto-line
 ; revert buffer with no fuss
-(global-set-key (kbd "M-ESC") (λ revert-buffer t t))
+(global-set-key (kbd "M-ESC") (λ (revert-buffer t t)))
 
 ;; manipulate lines
 (global-set-key [(control shift up)]     'prelude-move-line-up)
