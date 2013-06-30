@@ -4,23 +4,24 @@
 (defun dired-ediff-marked-files ()
   "Run ediff on marked ediff files."
   (interactive)
-  (set 'marked-files (dired-get-marked-files))
-  (when (= (safe-length marked-files) 2)
-    (ediff-files (nth 0 marked-files) (nth 1 marked-files)))
-
-  (when (= (safe-length marked-files) 3)
-    (ediff3 (buffer-file-name (nth 0 marked-files))
-            (buffer-file-name (nth 1 marked-files))
-            (buffer-file-name (nth 2 marked-files)))))
+  (let (marked-files (dired-get-marked-files))
+    ;
+    (when (= (safe-length marked-files) 2)
+      (ediff-files (nth 0 marked-files) (nth 1 marked-files)))
+    ;
+    (when (= (safe-length marked-files) 3)
+      (ediff3 (buffer-file-name (nth 0 marked-files))
+              (buffer-file-name (nth 1 marked-files))
+              (buffer-file-name (nth 2 marked-files))))))
 
 (defun dired-back-to-top ()
   (interactive)
-  (beginning-of-buffer)
+  (goto-char (point-min))
   (dired-next-line 4))
 
 (defun dired-jump-to-bottom ()
   (interactive)
-  (end-of-buffer)
+  (goto-char (point-max))
   (dired-next-line -1))
 
 ; remap 'o' in dired mode to open a file
