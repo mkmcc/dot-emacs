@@ -56,6 +56,8 @@ to the Emacs load path."
 (require 'mkmcc-modeline)
 (require 'mkmcc-editor)
 (require 'mkmcc-autocomplete)
+(require 'mkmcc-ido)
+(require 'mkmcc-yasnippet)
 (require 'mkmcc-global-keybindings)
 (require 'mkmcc-dired)
 
@@ -71,15 +73,13 @@ to the Emacs load path."
 
 ;; lisps
 (require 'mkmcc-emacs-lisp)
-;(require 'prelude-clojure)
-(require 'prelude-common-lisp)
 (require 'mkmcc-mathematica)
-(require 'mkmcc-scheme)
 
 ;; productivity
 (require 'mkmcc-deft)
 (require 'mkmcc-ediff)
 (require 'mkmcc-org)
+(require 'mkmcc-org-website)
 (require 'mkmcc-gdb)
 
 ;; other
