@@ -48,7 +48,7 @@
 (global-set-key [(control shift return)] 'prelude-smart-open-line-above)
 (global-set-key (kbd "M-o")              'prelude-smart-open-line)
 (global-set-key (kbd "M-O")              'prelude-smart-open-line-above)
-(global-set-key (kbd "C-^") 'prelude-top-join-line)
+(global-set-key (kbd "C-^")              'prelude-top-join-line)
 
 ;; spelling and dictionaries
 (global-set-key [f2] 'ispell-word)
