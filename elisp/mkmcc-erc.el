@@ -4,6 +4,8 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; personal accounts
+(defvar erc-nick)
+(defvar erc-pass)
 (setq erc-nick "mkmcc"                  ; TODO: make this an alist?
       erc-pass "bears")                 ;       read from another file?
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -11,24 +13,31 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; convenient settings
-(setq erc-interpret-mirc-color t)       ; use color
+(defvar erc-interpret-mirc-color)
+(defvar erc-kill-buffer-on-part)
+(defvar erc-kill-queries-on-quit)
+(defvar erc-kill-server-buffer-on-quit)
 
-(setq erc-kill-buffer-on-part        t  ; don't leave behind a mess
+(setq erc-interpret-mirc-color       t  ; use color
+      erc-kill-buffer-on-part        t  ; don't leave behind a mess
       erc-kill-queries-on-quit       t
       erc-kill-server-buffer-on-quit t)
 
 (erc-truncate-mode 1)
 (erc-spelling-mode 1)
 
+(defvar erc-server-coding-system)
 (setq erc-server-coding-system '(utf-8 . utf-8))
 
 
 ;; Make C-c RET (or C-c C-RET) send messages instead of RET.
+(defvar erc-mode-map)
 (define-key erc-mode-map (kbd "RET") nil)
 (define-key erc-mode-map (kbd "C-c RET") 'erc-send-current-line)
 (define-key erc-mode-map (kbd "C-c C-RET") 'erc-send-current-line)
 
 ;;; logging
+(defvar erc-log-channels-directory)
 (setq erc-log-channels-directory "~/.erc/logs/")
 
 (if (not (file-exists-p erc-log-channels-directory))
@@ -36,6 +45,7 @@
 
 
 ;;; macs don't have gnutls...
+(defvar tls-program)
 (setq tls-program
       '("openssl s_client -connect %h:%p -no_ssl2 -ign_eof"))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -43,6 +53,7 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Berkeley-specific things
+(defvar erc-autojoin-channels-alist)
 (setq erc-autojoin-channels-alist
       '(("newton.cx" "#badchat")))
 

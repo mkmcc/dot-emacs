@@ -66,6 +66,7 @@
   (setq comint-process-echoes t)
   (ruby-end-mode +1)
   (ruby-block-mode t)
+  (defvar ruby-block-highlight-toggle)
   (setq ruby-block-highlight-toggle 'overlay)
   ;; CamelCase aware editing operations
   (subword-mode +1))
