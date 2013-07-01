@@ -1,11 +1,5 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;
-;; emacs-core: Initialization functions for emacs.  Sets up the emacs
-;;     path and load path and initializes some constants.  Most of the
-;;     work is done in ~/.emacs.d/elisp/personal/
-;;
-;; Begun by Mike McCourt 2009
-;;
+;; functions used in later init files.
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; system type: useful to have
@@ -20,6 +14,8 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; define shortcuts for frequently used things
 (defmacro λ (&rest body)
   `(lambda ()
      (interactive)
@@ -31,14 +27,11 @@
   `(eval-after-load ,feature
      '(progn ,@body)))
 
-
-;;----------------------------------------------------------------------------
-;; Handier way to add modes to auto-mode-alist
-;;----------------------------------------------------------------------------
 (defun add-auto-mode (mode &rest patterns)
   "Add entries to `auto-mode-alist' to use `MODE' for all given file `PATTERNS'."
   (dolist (pattern patterns)
     (add-to-list 'auto-mode-alist (cons pattern mode))))
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

@@ -6,8 +6,8 @@
 (prefer-coding-system       'utf-8)
 (set-default-coding-systems 'utf-8)
 
-(setq-default indent-tabs-mode nil)   ;; don't use tabs to indent
-(setq-default tab-width 8)            ;; but maintain correct appearance
+(setq-default indent-tabs-mode nil)  ; don't use tabs to indent
+(setq-default tab-width 8)           ; but maintain correct appearance
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 

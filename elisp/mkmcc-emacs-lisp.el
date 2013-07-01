@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; emacs lisp
-
+;;
 (require 'prelude-lisp)
 
 (defun mkmcc-remove-elc-on-save ()
@@ -37,12 +37,9 @@ Start `ielm' if it's not already running."
 
 (add-hook 'ielm-mode-hook 'mkmcc-ielm-mode-hook)
 
-(after-load 'elisp-slime-nav
-  (diminish 'elisp-slime-nav-mode))
-(after-load 'rainbow
-  (diminish 'rainbow-mode))
-(after-load 'eldoc
-  (diminish 'eldoc-mode))
+(after-load 'elisp-slime-nav (diminish 'elisp-slime-nav-mode))
+(after-load 'rainbow         (diminish 'rainbow-mode))
+(after-load 'eldoc           (diminish 'eldoc-mode))
 
 ;; enable elisp-slime-nav-mode
 (dolist (hook '(emacs-lisp-mode-hook ielm-mode-hook))

@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; athena-mode
-
+;;
 (autoload 'athinput-mode "athinput-mode.el")
 (add-auto-mode 'athinput-mode "athinput\\'" "athinput\\.*\\'" "\\.athinput\\'")
 
@@ -13,7 +13,6 @@
   (prelude-add-watchwords))
 
 (add-hook 'athinput-mode-hook 'prelude-prog-mode-hook)
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (provide 'mkmcc-athena)

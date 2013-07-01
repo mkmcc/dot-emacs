@@ -14,6 +14,11 @@
               (buffer-file-name (nth 1 marked-files))
               (buffer-file-name (nth 2 marked-files))))))
 
+(defun dired-multi-occur (string)
+  "Search string in files marked by dired."
+  (interactive "MList lines matching regexp: ")
+  (multi-occur (mapcar 'find-file (dired-get-marked-files)) string))
+
 (defun dired-back-to-top ()
   (interactive)
   (goto-char (point-min))
@@ -44,12 +49,7 @@
         dired-recursive-copies 'always
         dired-dwim-target t)
 
-  (put 'dired-find-alternate-file 'disabled nil)
-
-  (defun dired-multi-occur (string)
-    "Search string in files marked by dired."
-    (interactive "MList lines matching regexp: ")
-    (multi-occur (mapcar 'find-file (dired-get-marked-files)) string)))
+  (put 'dired-find-alternate-file 'disabled nil))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (provide 'mkmcc-dired)

@@ -13,6 +13,20 @@
 (blink-cursor-mode -1)                  ; annoyances
 (setq inhibit-startup-screen t)
 
+(setq ring-bell-function 'ignore)       ; turn off the damn bell
+
+(show-paren-mode t)                     ; defaults are ugly
+(defvar show-paren-style)
+(setq show-paren-style 'parenthesis)
+(set-face-attribute 'show-paren-match-face nil
+                    :weight 'extra-bold :underline nil
+                    :overline nil       :slant 'normal)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; frame font, colors, and other parameters
 (require 'server)
 
 (defvar mkmcc-fixed-pitch    "Menlo-13")
@@ -39,6 +53,14 @@
          (newalpha (+ incr oldalpha)))
     (when (and (<= frame-alpha-lower-limit newalpha) (>= 100 newalpha))
       (modify-frame-parameters frame (list (cons 'alpha newalpha))))))
+
+;; fullscreen
+(defun toggle-fullscreen ()
+  "Toggle full screen"
+  (interactive)
+  (set-frame-parameter
+   nil 'fullscreen
+   (when (not (frame-parameter nil 'fullscreen)) 'fullboth)))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
@@ -109,32 +131,26 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; appearance (behavior)
-(show-paren-mode t)                     ; defaults are ugly
-(defvar show-paren-style)
-(setq show-paren-style 'parenthesis)
-(set-face-attribute 'show-paren-match-face nil
-                    :weight 'extra-bold :underline nil
-                    :overline nil       :slant 'normal)
+;;
+(setq require-final-newline t)          ; end files with a newline
 
 ;; smart indenting and pairing for all
 (electric-pair-mode t)
 (electric-indent-mode t)
 (electric-layout-mode t)
-(setq require-final-newline t)          ; end files with a newline
-
-(setq ring-bell-function 'ignore)       ; turn off the damn bell
 
 (setq kill-buffer-query-functions       ; don't prompt me
       (remq 'process-kill-buffer-query-function
             kill-buffer-query-functions))
 
-(setq redisplay-dont-pause t)           ; more responsive display
 (setq-default indent-tabs-mode nil)     ; death to tabs!
 
 ;; nice scrolling
 (setq scroll-margin 0
       scroll-conservatively 100000
-      scroll-preserve-screen-position 1)
+      scroll-preserve-screen-position) 1
+
+(setq redisplay-dont-pause t)           ; more responsive display
 
 (set-default 'imenu-auto-rescan t)
 
@@ -168,17 +184,6 @@
 (setq compilation-scroll-output 'first-error ; scroll until first error
       compilation-read-command t             ; require enter to compile
       compilation-window-height 16)          ; keep it readable
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; fullscreen
-(defun toggle-fullscreen ()
-  "Toggle full screen"
-  (interactive)
-  (set-frame-parameter
-   nil 'fullscreen
-   (when (not (frame-parameter nil 'fullscreen)) 'fullboth)))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (provide 'mkmcc-ui)

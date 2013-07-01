@@ -1,5 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; hippie expand
+;; auto-complete using hippie expand
+;;
 (setq hippie-expand-try-functions-list
       '(try-expand-dabbrev
         try-expand-dabbrev-all-buffers
@@ -11,5 +12,6 @@
         try-expand-line
         try-complete-lisp-symbol-partially
         try-complete-lisp-symbol))
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (provide 'mkmcc-autocomplete)
