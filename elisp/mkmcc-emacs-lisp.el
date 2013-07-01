@@ -39,7 +39,6 @@ Start `ielm' if it's not already running."
 (add-hook 'ielm-mode-hook (lambda ()
                             (run-hooks 'mkmcc-ielm-mode-hook)))
 
-(define-key emacs-lisp-mode-map (kbd "M-.") 'find-function-at-point)
 
 (after-load 'elisp-slime-nav
   (diminish 'elisp-slime-nav-mode))
