@@ -12,13 +12,11 @@
             nil
             t))
 
-(defun prelude-visit-ielm ()
+(defun prelude-visit-ielm-buffer ()
   "Switch to default `ielm' buffer.
 Start `ielm' if it's not already running."
   (interactive)
   (prelude-start-or-switch-to 'ielm "*ielm*"))
-
-(define-key emacs-lisp-mode-map (kbd "C-c C-z") 'prelude-visit-ielm)
 
 (defun mkmcc-emacs-lisp-mode-hook ()
   "defaults for `emacs-lisp-mode'."

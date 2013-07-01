@@ -26,52 +26,43 @@
 (global-set-key (kbd "C-M-=") 'text-scale-increase)
 (global-set-key (kbd "C-M--") 'text-scale-decrease)
 (global-unset-key (kbd "C-x C-+"))
+(global-unset-key (kbd "C-x C--"))
 
 ;; opacity
-(global-set-key (kbd "M-C-8") (λ (adjust-opacity nil -5)))
-(global-set-key (kbd "M-C-9") (λ (adjust-opacity nil 5)))
-(global-set-key (kbd "M-C-0") (λ (modify-frame-parameters nil `((alpha . 100)))))
+(global-set-key (kbd "C-M-8") (λ (adjust-opacity nil -5)))
+(global-set-key (kbd "C-M-9") (λ (adjust-opacity nil  5)))
+(global-set-key (kbd "C-M-0") (λ (modify-frame-parameters nil `((alpha . 100)))))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; general editing and navigation
+;;
 (global-set-key (kbd "<delete>") 'delete-char)   ; delete == delete
 (global-set-key (kbd "M-g")      'goto-line)     ; M-g  'goto-line
-; revert buffer with no fuss
-(global-set-key (kbd "M-ESC") (λ (revert-buffer t t)))
+(global-set-key (kbd "M-ESC") (λ (revert-buffer t t))) ; revert buffer
 
-;; manipulate lines
-(global-set-key [(control shift up)]     'prelude-move-line-up)
-(global-set-key [(control shift down)]   'prelude-move-line-down)
-(global-set-key [(shift return)]         'prelude-smart-open-line)
-(global-set-key [(control shift return)] 'prelude-smart-open-line-above)
-(global-set-key (kbd "M-o")              'prelude-smart-open-line)
-(global-set-key (kbd "M-O")              'prelude-smart-open-line-above)
-(global-set-key (kbd "C-^")              'prelude-top-join-line)
+(global-set-key (kbd "C-x g") 'magit-status)
 
-;; spelling and dictionaries
-(global-set-key [f2] 'ispell-word)
-(global-set-key [f12] (λ (shell-command "open -a /Applications/Dictionary.app")))
-
-
-(global-set-key (kbd "C-=") 'er/expand-region)
-
-(global-set-key (kbd "C-Z") nil)
-(global-set-key (kbd "C-x C-Z") nil)
+(global-set-key (kbd "C-z")     nil)
+(global-set-key (kbd "C-x C-z") nil)
 
 (global-set-key (kbd "C-x C-b") 'ibuffer)
+(global-set-key (kbd "C-x C-d") 'dired)
 
 (global-set-key (kbd "M-/") 'hippie-expand)
 
-;; duplicate the current line or region
-(global-set-key (kbd "C-c d") 'prelude-duplicate-current-line-or-region)
+;; expand-region and smart-forward
+(global-set-key (kbd "M-=")       'er/expand-region)
+(global-set-key (kbd "M-<up>")    'smart-up)
+(global-set-key (kbd "M-<down>")  'smart-down)
+(global-set-key (kbd "M-<left>")  'smart-backward)
+(global-set-key (kbd "M-<right>") 'smart-forward)
 
 ;; File finding
-(global-set-key (kbd "M-`")   'file-cache-minibuffer-complete)
-(global-set-key (kbd "C-x C-r") 'ido-recentf-open)
+(global-set-key (kbd "C-x C-r") 'prelude-recentf-ido-find-file)
 
-;; prelude things
+;; buffer commands
 (global-set-key (kbd "C-c s")   'prelude-swap-windows)
 (global-set-key (kbd "C-c k o") 'prelude-kill-other-buffers)
 (global-set-key (kbd "C-c o")   'prelude-open-with)
@@ -87,10 +78,50 @@
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; programming
+;; spelling and dictionaries
+(global-set-key [f2] 'ispell-word)
+(defvar mkmcc-dictionary-command "open -a /Applications/Dictionary.app")
+(global-set-key [f12] (λ (shell-command mkmcc-dictionary-command)))
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; manipulate lines
+;;
+(global-set-key (kbd "C-S-<up>")   'prelude-move-line-up)
+(global-set-key (kbd "C-S-<down>") 'prelude-move-line-down)
+(global-set-key (kbd "S-RET")      'prelude-smart-open-line)
+(global-set-key (kbd "C-S-RET")    'prelude-smart-open-line-above)
+(global-set-key (kbd "M-o")        'prelude-smart-open-line)
+(global-set-key (kbd "M-O")        'prelude-smart-open-line-above)
+
+(global-set-key [remap kill-whole-line] 'prelude-kill-whole-line)
+
+;; duplicate the current line or region
+(global-set-key (kbd "C-c d") 'prelude-duplicate-current-line-or-region)
+
+;; join lines from above and below
+(global-set-key (kbd "C-^") 'prelude-top-join-line)
+(global-set-key (kbd "M-^") 'delete-indentation)
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; whitespace
+
+;; delete whitespace around point
+(global-set-key (kbd "M-SPC") 'just-one-space)
+(global-set-key (kbd "M-\\")  'just-one-space)
+
+(global-set-key (kbd "C-x \\") 'align-regexp)
 
 ;; Perform general cleanup.
 (global-set-key (kbd "C-c n") 'prelude-cleanup-buffer)
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; programming
 
 ;; Jump to a definition in the current file. (This is awesome.)
 (global-set-key (kbd "M-i") 'prelude-ido-goto-symbol)
@@ -102,7 +133,7 @@
 ;; Should be able to eval-and-replace anywhere.
 (global-set-key (kbd "C-c e") 'prelude-eval-and-replace)
 
-(global-set-key [(control tab)] 'tag-complete-symbol) ; tags
+(global-set-key (kbd "C-TAB")   'tag-complete-symbol) ; tags
 (global-set-key (kbd "C-x C-t") 'mkmcc-update-tags)
 
 (global-set-key [f7] 'compile)          ; can't live without it!
@@ -110,26 +141,32 @@
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; shell
-
-;; Start eshell or switch to it if it's active.
-(global-set-key (kbd "C-x m") 'eshell)
-;; Start a new eshell even if one is active.
-(global-set-key (kbd "C-x M") (λ  (eshell t)))
-;; open an ansi-term buffer
-(global-set-key (kbd "C-x t") 'prelude-visit-term-buffer)
+;; shells
+(global-set-key (kbd "C-c m") 'eshell)
+(global-set-key (kbd "C-c t") 'prelude-visit-term-buffer)
+(global-set-key (kbd "C-c i") 'prelude-visit-ielm-buffer)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; url
-
 ;; Fetch the contents at a URL, display it raw.
 (global-set-key (kbd "C-x C-h") 'prelude-view-url)
 
 ;; search with google
 (global-set-key (kbd "C-c g") 'prelude-google)
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;; ;; key chords
+;; (require 'key-chord)
+
+;; (key-chord-define-global "jj" 'ace-jump-word-mode)
+;; (key-chord-define-global "jl" 'ace-jump-line-mode)
+;; (key-chord-define-global "jk" 'ace-jump-char-mode)
+;; (key-chord-define-global "JJ" 'prelude-switch-to-previous-buffer)
+;; (key-chord-define-global "uu" 'undo-tree-visualize)
+
+;; (key-chord-mode +1)
+
 
 (provide 'mkmcc-global-keybindings)

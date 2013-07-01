@@ -50,9 +50,6 @@
     "Search string in files marked by dired."
     (interactive "MList lines matching regexp: ")
     (multi-occur (mapcar 'find-file (dired-get-marked-files)) string)))
-
-; prefer dired over dumping dir list to buffer
-(global-set-key (kbd "C-x C-d") 'dired)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (provide 'mkmcc-dired)
