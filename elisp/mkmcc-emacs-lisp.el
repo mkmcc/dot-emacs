@@ -38,7 +38,7 @@ Start `ielm' if it's not already running."
 (add-hook 'ielm-mode-hook 'mkmcc-ielm-mode-hook)
 
 (after-load 'elisp-slime-nav (diminish 'elisp-slime-nav-mode))
-(after-load 'rainbow         (diminish 'rainbow-mode))
+(after-load 'rainbow-mode    (diminish 'rainbow-mode))
 (after-load 'eldoc           (diminish 'eldoc-mode))
 
 ;; enable elisp-slime-nav-mode

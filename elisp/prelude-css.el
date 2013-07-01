@@ -32,7 +32,7 @@
 
 ;;; Code:
 
-(after-load 'css
+(after-load 'css-mode
   (defun prelude-css-mode-defaults ()
     (setq css-indent-offset 2)
     (rainbow-mode +1))
