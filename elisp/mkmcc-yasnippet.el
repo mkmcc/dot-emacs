@@ -22,4 +22,10 @@
 ;; term-mode does not play well with yasnippet
 (add-hook 'term-mode-hook 'mkmcc-disable-yasnippet)
 
+;; No dropdowns please, yas
+(setq yas-prompt-functions '(yas-ido-prompt yas-completing-prompt))
+
+;; No need to be so verbose
+(setq yas-verbosity 1)
+
 (provide 'mkmcc-yasnippet)
