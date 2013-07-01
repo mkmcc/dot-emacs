@@ -39,23 +39,16 @@
 (autoload 'ruby-block-mode "ruby-block.el")
 (autoload 'ruby-end-mode "ruby-end.el")
 
-(eval-after-load "ruby-block" '(diminish 'ruby-block-mode))
-(eval-after-load "ruby-end"   '(diminish 'ruby-end-mode))
+(after-load 'ruby-block (diminish 'ruby-block-mode))
+(after-load 'ruby-end   (diminish 'ruby-end-mode))
 
 (define-key 'help-command (kbd "R") 'yari)
 
 ;; Rake files are ruby, too, as are gemspecs, rackup files, and gemfiles.
-(add-to-list 'auto-mode-alist '("\\.rake\\'" . ruby-mode))
-(add-to-list 'auto-mode-alist '("Rakefile\\'" . ruby-mode))
-(add-to-list 'auto-mode-alist '("\\.gemspec\\'" . ruby-mode))
-(add-to-list 'auto-mode-alist '("\\.ru\\'" . ruby-mode))
-(add-to-list 'auto-mode-alist '("Gemfile\\'" . ruby-mode))
-(add-to-list 'auto-mode-alist '("Guardfile\\'" . ruby-mode))
-(add-to-list 'auto-mode-alist '("Capfile\\'" . ruby-mode))
-(add-to-list 'auto-mode-alist '("\\.thor\\'" . ruby-mode))
-(add-to-list 'auto-mode-alist '("Thorfile\\'" . ruby-mode))
-(add-to-list 'auto-mode-alist '("Vagrantfile\\'" . ruby-mode))
-(add-to-list 'auto-mode-alist '("\\.jbuilder\\'" . ruby-mode))
+(add-auto-mode 'ruby-mode
+               "\\.rake\\'"  "Rakefile\\'"    "\\.gemspec\\'"  "\\.ru\\'"
+               "Gemfile\\'"  "Guardfile\\'"   "Capfile\\'"     "\\.thor\\'"
+               "Thorfile\\'" "Vagrantfile\\'" "\\.jbuilder\\'")
 
 ;; We never want to edit Rubinius bytecode
 (add-to-list 'completion-ignored-extensions ".rbc")

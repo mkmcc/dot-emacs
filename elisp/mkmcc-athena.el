@@ -2,9 +2,7 @@
 ;; athena-mode
 
 (autoload 'athinput-mode "athinput-mode.el")
-
-(add-to-list 'auto-mode-alist '("\\athinput$"     . athinput-mode) t)
-(add-to-list 'auto-mode-alist '("\\athinput\\.*$" . athinput-mode) t)
+(add-auto-mode 'athinput-mode "athinput\\'" "athinput\\.*\\'" "\\.athinput\\'")
 
 
 (defun mkmcc-athinput-mode-hook ()

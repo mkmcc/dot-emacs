@@ -4,8 +4,7 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Basic setup
-(add-to-list 'auto-mode-alist
-             '("\\.org$" . org-mode))        ; recognize .org files
+(add-auto-mode 'org-mode "\\.org\\'")        ; recognize .org files
 
 (defvar org-directory)
 (defvar org-default-notes-file)

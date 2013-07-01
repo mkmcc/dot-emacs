@@ -229,7 +229,7 @@ indent yanked text (with prefix arg don't indent)."
           'executable-make-buffer-file-executable-if-script-p)
 
 ;; .zsh file is shell script too
-(add-to-list 'auto-mode-alist '("\\.zsh\\'" . shell-script-mode))
+(add-auto-mode 'shell-script-mode "\\.zsh\\'")
 
 ;; saner regex syntax
 (eval-after-load "re-builder"
