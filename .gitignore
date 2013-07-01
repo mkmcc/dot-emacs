@@ -8,3 +8,5 @@ elpa
 deft
 url
 *.elc
+games
+.DS_Store
