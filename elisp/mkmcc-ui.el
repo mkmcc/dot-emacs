@@ -15,11 +15,15 @@
 
 (require 'server)
 
+(defvar mkmcc-fixed-pitch    "Menlo-13")
+(defvar mkmcc-variable-pitch "Warnock Pro-13")
+
 (defun setup-window-system-frame-colours (&rest frame)
   (unless (eq window-system nil)
     (load-theme 'solarized-light t)
-    (set-face-attribute 'fixed-pitch    nil :font "Menlo-13")
-    (set-face-attribute 'variable-pitch nil :font "Warnock Pro-13")))
+    (set-frame-font mkmcc-fixed-pitch)
+    (set-face-attribute 'fixed-pitch    nil :font mkmcc-fixed-pitch)
+    (set-face-attribute 'variable-pitch nil :font mkmcc-variable-pitch)))
 
 (defadvice server-create-window-system-frame
   (after set-window-system-frame-colours ())
