@@ -29,7 +29,8 @@
   '(melpa
     org deft
     gnuplot-mode
-    rainbow-mode flycheck expand-region
+    rainbow-mode flycheck
+    expand-region smart-forward
     zenburn-theme volatile-highlights diminish nyan-mode
     paredit clojure-mode elisp-slime-nav ack-and-a-half
     gitconfig-mode gitignore-mode git-commit-mode magit gist
