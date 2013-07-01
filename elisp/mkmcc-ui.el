@@ -81,18 +81,6 @@
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; isearch
-(defvar dired-isearch-filenames)
-(setq search-highlight t                ; highlight when searching...
-      query-replace-highlight t)        ; ...and replacing
-
-(setq dired-isearch-filenames t)        ; make C-s and C-r only match filenames
-                                        ; ...in dired buffers
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; convenience
 (fset 'yes-or-no-p 'y-or-n-p)           ; enable y/n answers
 

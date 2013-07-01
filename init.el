@@ -55,6 +55,7 @@ to the Emacs load path."
 (require 'mkmcc-ui)
 (require 'mkmcc-modeline)
 (require 'mkmcc-editor)
+(require 'mkmcc-isearch)
 (require 'mkmcc-autocomplete)
 (require 'mkmcc-ido)
 (require 'mkmcc-yasnippet)
