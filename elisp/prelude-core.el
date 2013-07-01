@@ -57,9 +57,7 @@ With a prefix ARG always prompt for command to use."
 (defun prelude-visit-term-buffer ()
   "Create or visit a terminal buffer."
   (interactive)
-  (prelude-start-or-switch-to (lambda ()
-                                (ansi-term (getenv "SHELL")))
-                              "*ansi-term*"))
+  (prelude-start-or-switch-to 'shell "*shell*"))
 
 (defun prelude-google ()
   "Googles a query or region if any."
