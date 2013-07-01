@@ -35,10 +35,7 @@ Start `ielm' if it's not already running."
   (prelude-interactive-lisp-coding-hook)
   (turn-on-eldoc-mode))
 
-; (add-hook 'ielm-mode-hook 'mkmcc-ielm-mode-hook)
-(add-hook 'ielm-mode-hook (lambda ()
-                            (run-hooks 'mkmcc-ielm-mode-hook)))
-
+(add-hook 'ielm-mode-hook 'mkmcc-ielm-mode-hook)
 
 (after-load 'elisp-slime-nav
   (diminish 'elisp-slime-nav-mode))
