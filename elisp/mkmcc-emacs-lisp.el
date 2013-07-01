@@ -22,6 +22,7 @@ Start `ielm' if it's not already running."
   "defaults for `emacs-lisp-mode'."
   (prelude-lisp-coding-hook)
   (turn-on-eldoc-mode)
+  (rainbow-mode +1)
   (mkmcc-remove-elc-on-save)
   ; doc checker is super annoying
   (setq-local flycheck-checkers '(emacs-lisp)))
