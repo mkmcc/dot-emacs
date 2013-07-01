@@ -72,17 +72,6 @@ to the owner of the file.  See the function `set-file-modes'.")
       recentf-max-saved-items 50
       recentf-max-menu-items 15)
 
-;; recentf using ido
-(defun ido-recentf-open ()
-  "Find a recent file using ido."
-  (interactive)
-  (let ((file (ido-completing-read "Choose recent file: "
-                                   (-map 'abbreviate-file-name recentf-list)
-                                   nil t)))
-    (when file
-      (find-file file))))
-
-
 ;; completion in the minibuffer
 (icomplete-mode t)                       ; completion in minibuffer
 (setq icomplete-prospects-height 2)      ; don't spam my minibuffer
