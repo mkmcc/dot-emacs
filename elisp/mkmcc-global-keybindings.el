@@ -23,9 +23,14 @@
 (global-set-key [f1] 'toggle-fullscreen) ; fullscreen!
 
 ;; Font size
-(global-set-key (kbd "C-+") 'text-scale-increase)
-(global-set-key (kbd "C--") 'text-scale-decrease)
+(global-set-key (kbd "C-M-=") 'text-scale-increase)
+(global-set-key (kbd "C-M--") 'text-scale-decrease)
+(global-unset-key (kbd "C-x C-+"))
 
+;; opacity
+(global-set-key (kbd "M-C-8") (λ (adjust-opacity nil -5)))
+(global-set-key (kbd "M-C-9") (λ (adjust-opacity nil 5)))
+(global-set-key (kbd "M-C-0") (λ (modify-frame-parameters nil `((alpha . 100)))))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 

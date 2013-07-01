@@ -29,6 +29,12 @@
 (ad-activate 'server-create-window-system-frame)
 
 (add-hook 'after-make-frame-functions 'setup-window-system-frame-colours t)
+
+(defun adjust-opacity (frame incr)
+  (let* ((oldalpha (or (frame-parameter frame 'alpha) 100))
+         (newalpha (+ incr oldalpha)))
+    (when (and (<= frame-alpha-lower-limit newalpha) (>= 100 newalpha))
+      (modify-frame-parameters frame (list (cons 'alpha newalpha))))))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
