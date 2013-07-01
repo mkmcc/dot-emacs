@@ -96,9 +96,8 @@
 (require 'which-func)
 (which-func-mode 1)
 
-(eval-after-load "flycheck"
-  '(progn
-     (diminish 'flycheck-mode)))
+(after-load 'flycheck
+  (diminish 'flycheck-mode))
 
 (defun prelude-prog-mode-hook ()
   "Default coding hook, useful with any programming language."

@@ -43,12 +43,12 @@ Start `ielm' if it's not already running."
 
 (define-key emacs-lisp-mode-map (kbd "M-.") 'find-function-at-point)
 
-(eval-after-load "elisp-slime-nav"
-  '(diminish 'elisp-slime-nav-mode))
-(eval-after-load "rainbow-mode"
-  '(diminish 'rainbow-mode))
-(eval-after-load "eldoc"
-  '(diminish 'eldoc-mode))
+(after-load 'elisp-slime-nav
+  (diminish 'elisp-slime-nav-mode))
+(after-load 'rainbow
+  (diminish 'rainbow-mode))
+(after-load 'eldoc
+  (diminish 'eldoc-mode))
 
 ;; enable elisp-slime-nav-mode
 (dolist (hook '(emacs-lisp-mode-hook ielm-mode-hook))

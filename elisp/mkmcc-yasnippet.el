@@ -2,11 +2,10 @@
 ;; load yasnippet
 (autoload 'yas-minor-mode "yasnippet.el")
 
-(eval-after-load "yasnippet"
-  '(progn
-     (setq yas/root-directory snippets-dir)
-     (yas/load-directory yas/root-directory)
-     (diminish 'yas-minor-mode)))
+(after-load 'yasnippet
+  (setq yas/root-directory snippets-dir)
+  (yas/load-directory yas/root-directory)
+  (diminish 'yas-minor-mode))
 
 (defun mkmcc-enable-yasnippet ()
   (yas-minor-mode +1))

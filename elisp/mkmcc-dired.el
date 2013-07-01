@@ -31,26 +31,25 @@
     (if (file-exists-p file-name)
         (call-process "/usr/bin/open" nil 0 nil file-name))))
 
-(eval-after-load "dired"
-  '(progn
-     (define-key dired-mode-map "o" 'dired-open-mac)
-     (define-key dired-mode-map "-" 'dired-up-directory)
+(after-load 'dired
+  (define-key dired-mode-map "o" 'dired-open-mac)
+  (define-key dired-mode-map "-" 'dired-up-directory)
 
-     (define-key dired-mode-map
-       (vector 'remap 'beginning-of-buffer) 'dired-back-to-top)
-     (define-key dired-mode-map
-       (vector 'remap 'end-of-buffer) 'dired-jump-to-bottom)
+  (define-key dired-mode-map
+    (vector 'remap 'beginning-of-buffer) 'dired-back-to-top)
+  (define-key dired-mode-map
+    (vector 'remap 'end-of-buffer) 'dired-jump-to-bottom)
 
-     (setq dired-recursive-deletes 'always
-           dired-recursive-copies 'always
-           dired-dwim-target t)
+  (setq dired-recursive-deletes 'always
+        dired-recursive-copies 'always
+        dired-dwim-target t)
 
-     (put 'dired-find-alternate-file 'disabled nil)
+  (put 'dired-find-alternate-file 'disabled nil)
 
-     (defun dired-multi-occur (string)
-       "Search string in files marked by dired."
-       (interactive "MList lines matching regexp: ")
-       (multi-occur (mapcar 'find-file (dired-get-marked-files)) string))))
+  (defun dired-multi-occur (string)
+    "Search string in files marked by dired."
+    (interactive "MList lines matching regexp: ")
+    (multi-occur (mapcar 'find-file (dired-get-marked-files)) string)))
 
 ; prefer dired over dumping dir list to buffer
 (global-set-key (kbd "C-x C-d") 'dired)

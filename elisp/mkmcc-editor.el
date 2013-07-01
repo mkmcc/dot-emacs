@@ -27,11 +27,10 @@
 (add-hook 'message-mode-hook 'flyspell-mode)
 (add-hook 'text-mode-hook    'flyspell-mode)
 
-(eval-after-load "flyspell"
-  '(progn
-     (diminish 'flyspell-mode)
-     (setq ispell-silently-savep t
-           ispell-program-name   "aspell")))
+(after-load 'flyspell
+  (diminish 'flyspell-mode)
+  (setq ispell-silently-savep t
+        ispell-program-name   "aspell"))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
@@ -89,20 +88,19 @@
 
 ;; magit -- run `magit-status' in full-screen mode.  save the previous
 ;; window configuration and return to it afterwards
-(eval-after-load "magit"
-  '(progn
-     (defadvice magit-status (around magit-fullscreen activate)
-       (window-configuration-to-register :magit-fullscreen)
-       ad-do-it
-       (delete-other-windows))
+(after-load 'magit
+  (defadvice magit-status (around magit-fullscreen activate)
+    (window-configuration-to-register :magit-fullscreen)
+    ad-do-it
+    (delete-other-windows))
 
-     (defun magit-quit-session ()
-       "Restores the previous window configuration and kills the magit buffer"
-       (interactive)
-       (kill-buffer)
-       (jump-to-register :magit-fullscreen))
+  (defun magit-quit-session ()
+    "Restores the previous window configuration and kills the magit buffer"
+    (interactive)
+    (kill-buffer)
+    (jump-to-register :magit-fullscreen))
 
-     (define-key magit-status-mode-map (kbd "q") 'magit-quit-session)))
+  (define-key magit-status-mode-map (kbd "q") 'magit-quit-session))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
@@ -232,8 +230,8 @@ indent yanked text (with prefix arg don't indent)."
 (add-auto-mode 'shell-script-mode "\\.zsh\\'")
 
 ;; saner regex syntax
-(eval-after-load "re-builder"
-    '(setq reb-re-syntax 'string))
+(after-load 're-builder
+  (setq reb-re-syntax 'string))
 
 ;; whitespace-mode config
 (require 'whitespace)

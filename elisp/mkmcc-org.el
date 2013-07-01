@@ -58,15 +58,14 @@
 ;; Agenda
 (autoload 'org-agenda "org-agenda.el")
 
-(eval-after-load "org-agenda"
-  '(progn
-     (setq org-agenda-files
-           (directory-files (expand-file-name "agenda/" org-directory)
-                            t  "^[^#].*\\.org$") ; ignore backup files
-           org-agenda-show-all-dates t           ; shows days without items
-           org-agenda-skip-deadline-if-done  t   ; don't show in agenda...
-           org-agenda-skip-scheduled-if-done t   ; ...when done
-           org-agenda-start-on-weekday nil)))    ; start agenda view with today
+(after-load 'org-agenda
+  (setq org-agenda-files
+        (directory-files (expand-file-name "agenda/" org-directory)
+                         t  "^[^#].*\\.org$") ; ignore backup files
+        org-agenda-show-all-dates t           ; shows days without items
+        org-agenda-skip-deadline-if-done  t   ; don't show in agenda...
+        org-agenda-skip-scheduled-if-done t   ; ...when done
+        org-agenda-start-on-weekday nil))     ; start agenda view with today
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
