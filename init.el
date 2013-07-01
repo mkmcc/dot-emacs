@@ -1,6 +1,5 @@
 ;;; Code:
 (require 'cl)
-; (defvar *emacs-load-start* (current-time))
 
 (defvar base-dir     "~/.emacs.d/")
 (defvar elisp-dir    (expand-file-name "elisp"    base-dir))
@@ -103,7 +102,7 @@ to the Emacs load path."
 ;;               (+ (first *emacs-load-start*) (second *emacs-load-start*)))))
 
 (message "init completed in %.2fms"
-         (sanityinc/time-subtract-millis (current-time) before-init-time))
+         (mkmcc-time-subtract-millis (current-time) before-init-time))
 
 (require 'dash)
 (require 's)
@@ -117,7 +116,7 @@ to the Emacs load path."
  (concat
   "leading offenders:\n"
   (mapconcat 'benchmark/format-item
-             (-take 10 (--sort (> (cdr it) (cdr other)) sanityinc/require-times))
+             (-take 10 (--sort (> (cdr it) (cdr other)) mkmcc-require-times))
              "\n")))
 
 ;;; fin
