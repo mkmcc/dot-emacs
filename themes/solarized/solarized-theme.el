@@ -33,8 +33,13 @@
          (cyan      "#2aa198")
          (green     "#859900")
 
+         ;; normal text
          (solarized-fg (if (eq variant 'light) base00 base0))
          (solarized-bg (if (eq variant 'light) base3 base03))
+         ;; "inverse"
+         (solarized-ifg (if (eq variant 'light) base0 base00))
+         (solarized-ibg (if (eq variant 'light) base03 base3))
+         ;; modifications
          (solarized-hl (if (eq variant 'light) base2 base02))
          (solarized-emph (if (eq variant 'light) base01 base1))
          (solarized-ws (if (eq variant 'light) base2 base02))
@@ -129,8 +134,7 @@
 
      `(mode-line-buffer-id ((,class (:foreground ,solarized-emph :weight bold))))
 
-     ;`(region ((,class (:background ,solarized-hl))))
-     `(region ((,class (:background ,cyan :foreground ,base03))))
+     `(region ((,class (:background ,solarized-hl))))
      `(secondary-selection ((,class (:background ,solarized-bg))))
      `(trailing-whitespace ((,class (:background ,red))))
      `(vertical-border ((,class (:foreground ,solarized-fg))))
