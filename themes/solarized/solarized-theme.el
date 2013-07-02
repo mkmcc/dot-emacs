@@ -274,6 +274,9 @@
      ;; hl-line-mode
      `(hl-line-face ((,class (:background ,solarized-bg))))
 
+     ;; volatile-highlight
+     `(vhl/default-face ((,class (:background ,solarized-hl))))
+
      ;; ido-mode
      `(ido-first-match ((,class (:foreground ,yellow :weight bold))))
      `(ido-only-match ((,class (:foreground ,orange :weight bold))))
