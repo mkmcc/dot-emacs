@@ -33,7 +33,9 @@
   (diminish 'abbrev-mode "…")
   (turn-on-auto-fill)
 
+  ;; F7 to compile, F8 to view the file; keep F12 for dictionary.
   (mkmcc-set-latex-compile-command)
+  (local-unset-key (kbd "<f12>"))
   (local-set-key (kbd "<f8>") 'mkmcc-view-latex-file))
 
 (add-hook 'latex-mode-hook 'mkmcc-latex-mode-hook)
