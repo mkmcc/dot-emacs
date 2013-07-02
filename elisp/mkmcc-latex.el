@@ -26,6 +26,16 @@
              (file-name-sans-extension buffer-file-name)
              ".pdf"))))
 
+(defvar reftex-docstruct-symbol)
+(defun mkmccc-find-reftex-label ()
+  "Prompt for a label (with completion) and return it."
+  (interactive)
+  (reftex-access-scan-info)
+  (let* ((docstruct (symbol-value reftex-docstruct-symbol))
+	 (label (completing-read "Label: " docstruct
+                                 (lambda (x) (stringp (car x))) t nil nil)))
+    label))
+
 (defun mkmcc-latex-mode-hook ()
   "defaults for `latex-mode'."
   (turn-on-reftex)
