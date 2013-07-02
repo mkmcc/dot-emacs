@@ -53,3 +53,7 @@ class MyPlots
 end
 
 MyPlots.new
+
+# Local Variables:
+#   compile-command: `(setq-local compile-command (concat "tioga " (if (buffer-file-name) (file-name-nondirectory (buffer-file-name)) "filename") " -s"))` 
+# End:
