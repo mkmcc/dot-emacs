@@ -1,6 +1,12 @@
-;;; Code:
-(require 'cl)
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; init.el -- runs the show
+;;
+;; set up the load path and `require' my various modules.
+;;
+(require 'cl)                           ; can't use dash yet!
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; load path
 (defvar base-dir     "~/.emacs.d/")
 (defvar elisp-dir    (expand-file-name "elisp"    base-dir))
 (defvar vendor-dir   (expand-file-name "vendor"   base-dir))
@@ -10,23 +16,8 @@
 (defvar personal-dir (expand-file-name "personal" base-dir)
   "All Emacs Lisp files here are loaded automatically.")
 
-(unless (file-exists-p savefile-dir)
+(unless (file-exists-p savefile-dir)    ; sometimes emacs is stupid...
   (make-directory savefile-dir))
-
-(defun prelude-add-subfolders-to-load-path (parent-dir &optional the-list)
-  "Adds all first level `parent-dir' subdirs to a list.  Default
-to the Emacs load path."
-  (let ((mlist (if the-list the-list 'load-path )))
-    (prelude-add-subfolders-to-list parent-dir mlist)))
-
-(defun prelude-add-subfolders-to-list (parent-dir the-list)
-  "Adds all first level `parent-dir' subdirs to a list."
-  (dolist (f (directory-files parent-dir))
-    (let ((name (expand-file-name f parent-dir)))
-      (when (and (file-directory-p name)
-                 (not (equal f ".."))
-                 (not (equal f ".")))
-        (add-to-list the-list name)))))
 
 (add-to-list 'load-path elisp-dir)
 (add-to-list 'load-path vendor-dir)
@@ -35,20 +26,26 @@ to the Emacs load path."
 
 (setq custom-file (expand-file-name "custom.el" personal-dir))
 (setq custom-theme-directory themes-dir)
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; load modules
 (require 'init-benchmarking)
-
 
 ;; packages
 (require 'mkmcc-packages)               ; should come first!
 
-;; core functions
-(require 'prelude-core)
+;; core macros and function definitions
 (require 'mkmcc-core)
+(require 'mkmcc-file-defuns)
+(require 'mkmcc-buffer-defuns)
+(require 'mkmcc-editing-defuns)
+(require 'mkmcc-misc)
 
 ;; add the first level subfolders of themes and vendor
-(prelude-add-subfolders-to-load-path vendor-dir)
-(prelude-add-subfolders-to-load-path themes-dir 'custom-theme-load-path)
+(mkmcc-add-subfolders-to-load-path vendor-dir)
+(mkmcc-add-subfolders-to-load-path themes-dir 'custom-theme-load-path)
 
 ;; interface
 (require 'mkmcc-ui)
@@ -58,10 +55,10 @@ to the Emacs load path."
 (require 'mkmcc-autocomplete)
 (require 'mkmcc-ido)
 (require 'mkmcc-yasnippet)
-(require 'mkmcc-global-keybindings)
 (require 'mkmcc-dired)
+(require 'mkmcc-global-keybindings)
 
-;; programming & markup languages support
+;; specific file modes
 (require 'prelude-programming)
 (require 'mkmcc-c)
 (require 'mkmcc-text)
@@ -70,8 +67,6 @@ to the Emacs load path."
 (require 'prelude-ruby)
 (require 'mkmcc-gnuplot)
 (require 'mkmcc-athena)
-
-;; lisps
 (require 'mkmcc-emacs-lisp)
 (require 'mkmcc-mathematica)
 
@@ -93,16 +88,14 @@ to the Emacs load path."
 (when (file-exists-p personal-dir)
   (mapc 'load (directory-files personal-dir nil "^[^#].*el$")))
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; finish up
+
 ;; necessary to run gnuplot.  may not be the right solution?
 (setenv "DISPLAY" ":0")
-
-;; (message "My .emacs loaded in %ds"
-;;          (destructuring-bind (hi lo ms) (current-time)
-;;            (- (+ hi lo)
-;;               (+ (first *emacs-load-start*) (second *emacs-load-start*)))))
-
-(message "init completed in %.2fms"
-         (mkmcc-time-subtract-millis (current-time) before-init-time))
 
 (require 'dash)
 (require 's)
@@ -112,6 +105,9 @@ to the Emacs load path."
    (s-pad-right 20 " " (s-truncate 20 (symbol-name (car item))))
    (format "%f"   (cdr item))))
 
+(message "init completed in %.5fs"
+         (/ (mkmcc-time-subtract-millis (current-time) before-init-time) 1000))
+
 (message
  (concat
   "leading offenders:\n"
@@ -120,3 +116,8 @@ to the Emacs load path."
              "\n")))
 
 ;;; fin
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;; Local Variables:
+;;   no-byte-compile: t
+;; End:
