@@ -3,8 +3,8 @@
 (autoload 'yas-minor-mode "yasnippet.el")
 
 (after-load 'yasnippet
-  (setq yas/root-directory snippets-dir)
-  (yas/load-directory yas/root-directory)
+  (setq yas-snippet-dirs snippets-dir)
+  (yas-load-directory yas-snippet-dirs)
   (diminish 'yas-minor-mode))
 
 (defun mkmcc-enable-yasnippet ()
