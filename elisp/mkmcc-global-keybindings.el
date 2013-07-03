@@ -80,8 +80,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; spelling and dictionaries
 (global-set-key [f2] 'ispell-word)
-(defvar mkmcc-dictionary-command "open -a /Applications/Dictionary.app")
-(global-set-key [f12] (λ (shell-command mkmcc-dictionary-command)))
+(global-set-key [f12] (λ (shell-command (mkmcc-call-dict-command))))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 

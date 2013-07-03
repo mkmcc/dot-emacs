@@ -126,5 +126,11 @@ determine what program to run."
            (message "Couldn't interpret file extension.")))))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+(defun mkmcc-call-dict-command ()
+  (interactive)
+  (let* ((word (word-at-point)))
+    (if word
+        (concat "open dict://" (substring-no-properties word))
+      "open -a /Applications/Dictionary.app")))
 
 (provide 'mkmcc-core)
