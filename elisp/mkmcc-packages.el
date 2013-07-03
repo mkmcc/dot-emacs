@@ -4,6 +4,7 @@
 
 (require 'cl)
 (require 'package)
+(defvar base-dir)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; repositories
