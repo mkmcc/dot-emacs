@@ -64,7 +64,7 @@
 (require 'mkmcc-text)
 (require 'mkmcc-latex)
 ;(require 'prelude-python)
-(require 'prelude-ruby)
+(require 'mkmcc-ruby)
 (require 'mkmcc-gnuplot)
 (require 'mkmcc-athena)
 (require 'mkmcc-emacs-lisp)
