@@ -56,6 +56,12 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Agenda
+(defvar org-agenda-files)
+(defvar org-agenda-show-all-dates)
+(defvar org-agenda-skip-deadline-if-done)
+(defvar org-agenda-skip-scheduled-if-done)
+(defvar org-agenda-start-on-weekday)
+
 (autoload 'org-agenda "org-agenda.el")
 
 (after-load 'org-agenda

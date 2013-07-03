@@ -3,6 +3,9 @@
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; custom window layout
+(defvar gdb-many-windows)
+(defvar gdb-use-separate-io-buffer)
+
 (setq gdb-many-windows t)
 (setq gdb-use-separate-io-buffer t)
 

@@ -1,5 +1,11 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; load yasnippet
+;;
+(defvar snippets-dir)
+(defvar yas-snippet-dirs)
+(defvar yas-prompt-functions)
+(defvar yas-verbosity)
+
 (autoload 'yas-minor-mode "yasnippet.el")
 
 (after-load 'yasnippet

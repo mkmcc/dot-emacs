@@ -1,6 +1,9 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Mathematica
 ;;
+(defvar mkmcc-macosx-p)
+(defvar mathematica-command-line)
+(defvar mathematica-never-start-kernel-with-mode)
 
 (load-file "~/.emacs.d/vendor/mathematica.el")  ; FIXME
 

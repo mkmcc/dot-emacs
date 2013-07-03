@@ -37,6 +37,11 @@
         (call-process "/usr/bin/open" nil 0 nil file-name))))
 
 (after-load 'dired
+  (defvar dired-mode-map)
+  (defvar dired-recursive-deletes)
+  (defvar dired-recursive-copies)
+  (defvar dired-dwim-target)
+
   (define-key dired-mode-map "o" 'dired-open-mac)
   (define-key dired-mode-map "-" 'dired-up-directory)
 
