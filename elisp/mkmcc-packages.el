@@ -20,8 +20,8 @@
     rainbow-mode flycheck
     expand-region smart-forward
     zenburn-theme volatile-highlights diminish nyan-mode
-    paredit clojure-mode elisp-slime-nav ack-and-a-half
-    gitconfig-mode gitignore-mode git-commit-mode magit gist
+    paredit elisp-slime-nav ack-and-a-half
+    gitconfig-mode gitignore-mode git-commit-mode magit
     ido-ubiquitous smex yasnippet
     ruby-end inf-ruby yari
     dash s ht loop)
