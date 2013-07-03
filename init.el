@@ -99,21 +99,7 @@
 
 (require 'dash)
 (require 's)
-
-(defun benchmark/format-item (item)
-  (concat
-   (s-pad-right 20 " " (s-truncate 20 (symbol-name (car item))))
-   (format "%f"   (cdr item))))
-
-(message "init completed in %.5fs"
-         (/ (mkmcc-time-subtract-millis (current-time) before-init-time) 1000))
-
-(message
- (concat
-  "leading offenders:\n"
-  (mapconcat 'benchmark/format-item
-             (-take 10 (--sort (> (cdr it) (cdr other)) mkmcc-require-times))
-             "\n")))
+(message "%s" (benchmark/report-require-times))
 
 ;;; fin
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
