@@ -27,5 +27,6 @@
 
 ;; No need to be so verbose
 (setq yas-verbosity 1)
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (provide 'mkmcc-yasnippet)

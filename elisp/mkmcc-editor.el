@@ -238,6 +238,6 @@ indent yanked text (with prefix arg don't indent)."
   "enable `whitespace-mode'."
   (add-hook 'before-save-hook 'whitespace-cleanup nil t)
   (whitespace-mode +1))
-
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (provide 'mkmcc-editor)

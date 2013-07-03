@@ -1,5 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; isearch
+;;
 (defvar dired-isearch-filenames)
 (setq search-highlight t                ; highlight when searching...
       query-replace-highlight t)        ; ...and replacing
@@ -46,6 +47,6 @@ and the point, not include the isearch word."
      (occur (if isearch-regexp
                 isearch-string
               (regexp-quote isearch-string))))))
-
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (provide 'mkmcc-isearch)

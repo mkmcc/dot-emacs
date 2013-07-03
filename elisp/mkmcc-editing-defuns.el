@@ -1,5 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; editing and whitespace
+;;
 (require 'dash)
 
 ;; whitespace
@@ -132,7 +133,6 @@ there's a region, all lines that region covers will be duplicated."
                   (insert region)
                   (setq end (point))))
       (goto-char (+ origin (* (length region) arg) arg)))))
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (provide 'mkmcc-editing-defuns)

@@ -1,31 +1,18 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; package repositories
+;; package manager
 ;;
-
-(require 'cl)
+(require 'cl)                           ; can't use dash yet!
 (require 'package)
 (defvar base-dir)
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; repositories
-;; (add-to-list 'package-archives
-;;              '("gnu" . "http://elpa.gnu.org/packages/"))
-;; (add-to-list 'package-archives
-;;              '("ELPA" . "http://tromey.com/elpa/"))
-;; (add-to-list 'package-archives
-;;              '("marmalade" . "http://marmalade-repo.org/packages/"))
 (add-to-list 'package-archives
              '("melpa" . "http://melpa.milkbox.net/packages/") t)
 
 (setq package-user-dir (expand-file-name "elpa" base-dir))
 (package-initialize)
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; automatically update or install some packages
-;;; NB. should not use dash list functions here -- it may not be
-;;; installed yet!
 (defvar mkmcc-packages
   '(melpa
     org deft

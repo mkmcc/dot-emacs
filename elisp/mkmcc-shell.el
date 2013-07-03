@@ -1,3 +1,6 @@
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; shell
+;;
 (after-load 'shell
   (defun comint-delchar-or-eof-or-kill-buffer (arg)
     (interactive "p")
@@ -7,5 +10,6 @@
 
   (define-key shell-mode-map
     (kbd "C-d") 'comint-delchar-or-eof-or-kill-buffer))
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (provide 'mkmcc-shell)

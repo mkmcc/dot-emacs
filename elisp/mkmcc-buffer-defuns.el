@@ -1,5 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; buffer defuns
+;;
 (require 'dash)
 
 (defun prelude-buffer-mode (buffer-or-name)
@@ -88,7 +89,6 @@ the current buffer."
   "Create or visit a terminal buffer."
   (interactive)
   (prelude-start-or-switch-to 'shell "*shell*"))
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (provide 'mkmcc-buffer-defuns)

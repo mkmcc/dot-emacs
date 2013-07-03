@@ -1,5 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; customizing ido mode
+;;
 (require 'dash)
 
 (ido-mode 'both)
@@ -75,6 +76,6 @@ to the owner of the file.  See the function `set-file-modes'.")
 ;; completion in the minibuffer
 (icomplete-mode t)                       ; completion in minibuffer
 (setq icomplete-prospects-height 2)      ; don't spam my minibuffer
-
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (provide 'mkmcc-ido)

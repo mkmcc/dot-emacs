@@ -1,5 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; miscellaneous definitions
+;;
 (require 'thingatpt)
 
 ;; use paredit in the minibuffer!
@@ -66,7 +67,6 @@
   "Insert a timestamp according to locale's date and time format."
   (interactive)
   (insert (format-time-string "%c" (current-time))))
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (provide 'mkmcc-misc)

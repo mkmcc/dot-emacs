@@ -2,13 +2,10 @@
 ;; latex mode tweaks
 ;;
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; locate non-ascii characters
 (defun occur-non-ascii ()
   "Find any non-ascii characters in the current buffer."
   (interactive)
   (occur "[^[:ascii:]]"))
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (defun mkmcc-set-latex-compile-command ()
   "create a buffer-local compile command for latex buffers."
@@ -51,6 +48,5 @@
 (add-hook 'latex-mode-hook 'mkmcc-latex-mode-hook)
 (add-hook 'LaTeX-mode-hook 'mkmcc-latex-mode-hook)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
 
 (provide 'mkmcc-latex)

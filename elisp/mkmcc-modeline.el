@@ -1,3 +1,6 @@
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; modeline setup
+;;
 (line-number-mode t)                    ; modeline settings
 (column-number-mode t)
 (size-indication-mode t)
@@ -25,8 +28,8 @@
   uniquify-after-kill-buffer-p t        ; rename after killing uniquified
   uniquify-ignore-buffers-re "^\\*")    ; don't muck with special buffers
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; modeline
+
+;; modeline format
 (setq-default
  mode-line-format
  '(;; Position, including warning for 80 columns
