@@ -89,12 +89,24 @@
 ;;
 (global-set-key (kbd "C-S-<up>")   'prelude-move-line-up)
 (global-set-key (kbd "C-S-<down>") 'prelude-move-line-down)
-(global-set-key (kbd "S-RET")      'prelude-smart-open-line)
-(global-set-key (kbd "C-S-RET")    'prelude-smart-open-line-above)
 (global-set-key (kbd "M-o")        'prelude-smart-open-line)
 (global-set-key (kbd "M-O")        'prelude-smart-open-line-above)
-
 (global-set-key [remap kill-whole-line] 'prelude-kill-whole-line)
+
+;; set RET to newline-and-indent.  I can never get used to C-j or M-j
+;; TODO: why deosn't S-RET work?
+(defun mkmcc-coding-set-newlines ()
+  (local-set-key (kbd "RET") 'prelude-smart-open-line)
+  (local-set-key (kbd "S-<return>") 'prelude-smart-open-line-above))
+
+(-map                                   ; do this only for specific modes...
+ (lambda (language-mode-hook)
+   (add-hook language-mode-hook 'mkmcc-coding-set-newlines))
+ '(c-mode-common-hook
+   ;ruby-mode-hook ; handled by ruby-end.el
+   css-mode-hook
+   emacs-lisp-mode-hook
+   latex-mode-hook))
 
 ;; duplicate the current line or region
 (global-set-key (kbd "C-c d") 'prelude-duplicate-current-line-or-region)
