@@ -7,16 +7,14 @@
 
 (file-name-shadow-mode 1)
 
-(defvar display-time-format)
-(defvar display-time-load-average-threshold)
-(setq display-time-format "%b %e %l:%M%#p"
-      display-time-load-average-threshold 1.0)
+(defvar display-time-format "%b %e %l:%M%#p")
+(defvar display-time-load-average-threshold 1.0e99)
 (display-time-mode 1)
 
-;;; TODO: this takes 400ms to load
-;; (defvar battery-mode-line-format)
+(defvar battery-mode-line-format " [%b%p%%]")
+
+;;; TODO: apparently this takes 400ms to load
 ;; (unless (string= system-name "strada.berkeley.edu")
-;;   (setq battery-mode-line-format " [%b%p%%]")
 ;;   (display-battery-mode 1))
 
 

@@ -166,8 +166,8 @@
 
 ;; Use elisp ls program.  The osx one doesn't have the full GNU
 ;; functionality.
-(require 'ls-lisp)
-(setq ls-lisp-ignore-case t)            ; ignore case
+(defvar ls-lisp-ignore-case t)
+(autoload 'insert-directory "ls-lisp.el")
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
