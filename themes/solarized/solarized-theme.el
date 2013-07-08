@@ -46,12 +46,6 @@
          (solarized-comments (if (eq variant 'light) base1 base01)))
     (custom-theme-set-faces
      (if (eq variant 'light) 'solarized-light 'solarized-dark)
-     `(button
-       ((,class (:inherit default :underline t))))
-
-     `(link ((,class (:foreground ,yellow :underline t :weight bold))))
-     `(link-visited ((,class (:foreground ,yellow :underline t :weight normal))))
-
      ;; basic coloring
      `(default ((,class (:foreground ,solarized-fg :background ,solarized-bg))))
      `(cursor ((,class (:foreground ,solarized-bg :background ,solarized-fg :inverse-video t))))
@@ -61,6 +55,11 @@
                                          :background ,solarized-hl
                                          :box (:line-width -1 :style released-button)))))
      `(highlight ((,class (:background ,solarized-hl))))
+
+     ;; links and buttons
+     `(link ((,class (:inherit default :foreground ,yellow :underline t :weight semi-bold))))
+     `(link-visited ((,class (:inherit default :foreground ,yellow :underline t :weight normal))))
+     `(button ((,class (:inherit link))))
 
      ;; compilation
      `(compilation-column-face ((,class (:foreground ,yellow))))
