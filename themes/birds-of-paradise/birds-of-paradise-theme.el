@@ -295,6 +295,9 @@ compatibility.")
    ;; hl-line-mode
    `(hl-line ((t (:background ,brown-7))))
 
+   ;; volatile-highlight
+   `(vhl/default-face ((,class (:background ,white-3))))
+
    ;; ido-mode
    `(ido-first-match ((,class (:foreground ,orange-1 :weight bold))))
    `(ido-only-match ((,class (:foreground ,purple-3 :weight bold))))
