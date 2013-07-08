@@ -77,15 +77,11 @@ to the owner of the file.  See the function `set-file-modes'.")
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; enable recent files mode.
+(defvar recentf-save-file (expand-file-name "recentf" savefile-dir))
+(defvar recentf-max-saved-items 50)
+(defvar recentf-max-menu-items 15)
+
 (recentf-mode t)
-
-(defvar recentf-save-file)
-(defvar recentf-max-saved-items)
-(defvar recentf-max-menu-items)
-
-(setq recentf-save-file (expand-file-name "recentf" savefile-dir)
-      recentf-max-saved-items 50
-      recentf-max-menu-items 15)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
