@@ -29,11 +29,9 @@ to the owner of the file.  See the function `set-file-modes'.")
   ;; Go straight home
   (define-key ido-file-completion-map
     (kbd "~")
-    (lambda ()
-      (interactive)
-      (if (looking-back "/")
-          (insert "~/")
-        (call-interactively 'self-insert-command)))))
+    (λ (if (looking-back "/")
+           (insert "~/")
+         (call-interactively 'self-insert-command)))))
 
 (add-hook 'ido-setup-hook 'mkmcc-ido-setup)
 
