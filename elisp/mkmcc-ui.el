@@ -30,7 +30,7 @@
 (require 'server)
 
 (defvar mkmcc-fixed-pitch    "Menlo-13")
-(defvar mkmcc-variable-pitch "Warnock Pro-13")
+(defvar mkmcc-variable-pitch "Chaparral Pro-13")
 
 (defun setup-window-system-frame-colours (&rest frame)
   (unless (eq window-system nil)
