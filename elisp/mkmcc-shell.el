@@ -26,6 +26,12 @@
 (defvar eshell-history-size 512)
 (defvar eshell-hist-ignoredups t)
 
+(defvar eshell-prompt-function
+  (lambda ()
+    (concat (file-name-nondirectory (eshell/pwd))
+            (if (= (user-uid) 0) " # " " $ "))))
+
+(defvar eshell-prompt-regexp "^[^#$\n]* [#$] ")
 (after-load 'eshell
   (require 'em-smart))
 
