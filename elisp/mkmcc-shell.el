@@ -32,6 +32,12 @@
             (if (= (user-uid) 0) " # " " $ "))))
 
 (defvar eshell-prompt-regexp "^[^#$\n]* [#$] ")
+
+;;; TODO: make this work with options.
+(defun pcomplete/ruby ()
+  "Completion for `ruby'"
+  (pcomplete-here (pcomplete-entries "\\.rb\\'" 'file-regular-p)))
+
 (after-load 'eshell
   (require 'em-smart))
 
