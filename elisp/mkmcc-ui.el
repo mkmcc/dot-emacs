@@ -15,9 +15,8 @@
 
 (setq ring-bell-function 'ignore)       ; turn off the damn bell
 
-(show-paren-mode t)                     ; defaults are ugly
-(defvar show-paren-style)
-(setq show-paren-style 'parenthesis)
+(defvar show-paren-style 'parenthesis)
+(show-paren-mode t)
 (set-face-attribute 'show-paren-match-face nil
                     :weight 'extra-bold :underline nil
                     :overline nil       :slant 'normal)
@@ -130,10 +129,8 @@
 (put 'upcase-region 'disabled nil)      ; ...
 (put 'erase-buffer 'disabled nil)       ; ...useful things
 
-(defvar cua-enable-cua-keys)
-(defvar cua-delete-selection)
-(setq cua-enable-cua-keys  nil          ; only for rectangles
-      cua-delete-selection nil)         ; don't delete selection
+(defvar cua-enable-cua-keys nil)        ; only for rectangles
+(defvar cua-delete-selection nil)       ; don't delete selection
 (cua-mode t)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -148,7 +145,7 @@
 (electric-indent-mode t)
 (electric-layout-mode t)
 
-(setq kill-buffer-query-functions       ; don't prompt me
+(setq kill-buffer-query-functions       ; don't prompt me about processes
       (remq 'process-kill-buffer-query-function
             kill-buffer-query-functions))
 
@@ -163,15 +160,12 @@
 
 (set-default 'imenu-auto-rescan t)
 
+
 ;; revert buffers automatically when underlying files are changed
 ;; externally
+(defvar global-auto-revert-non-file-buffers t) ; also revert dired
+(defvar auto-revert-verbose nil)
 (global-auto-revert-mode t)
-
-;; Also auto refresh dired, but be quiet about it
-(defvar global-auto-revert-non-file-buffers)
-(defvar auto-revert-verbose)
-(setq global-auto-revert-non-file-buffers t)
-(setq auto-revert-verbose nil)
 
 ;; Use elisp ls program.  The osx one doesn't have the full GNU
 ;; functionality.
@@ -182,17 +176,15 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; games
-(defvar tetris-score-file)
-(setq tetris-score-file                 ; keep my ~/ clean
-      "~/.emacs.d/games/tetris-scores")
+(defvar tetris-score-file "~/.emacs.d/games/tetris-scores")
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; compilation window
-(setq compilation-scroll-output 'first-error ; scroll until first error
-      compilation-read-command t             ; require enter to compile
-      compilation-window-height 16)          ; keep it readable
+(defvar compilation-scroll-output 'first-error) ; scroll until first error
+(defvar compilation-read-command t)             ; require enter to compile
+(defvar compilation-window-height 16)           ; keep it readable
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (provide 'mkmcc-ui)
