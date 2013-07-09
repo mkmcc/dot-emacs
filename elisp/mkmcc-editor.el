@@ -37,10 +37,9 @@
 (add-hook 'message-mode-hook 'flyspell-mode)
 (add-hook 'text-mode-hook    'flyspell-mode)
 
-(after-load 'flyspell
-  (diminish 'flyspell-mode)
-  (setq ispell-silently-savep t
-        ispell-program-name   "aspell"))
+(defvar ispell-silently-savep t)
+(defvar ispell-program-name "aspell")
+(after-load 'flyspell (diminish 'flyspell-mode))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
@@ -90,11 +89,10 @@
 (add-hook 'mouse-leave-buffer-hook 'prelude-auto-save-command)
 
 ;; time-stamps
-(setq
-  time-stamp-active t                                    ; do enable time-stamps
-  time-stamp-line-limit 10                               ; first 10 buffer lines
-  time-stamp-format "%04y-%02m-%02d %02H:%02M:%02S (%u)") ; date format
-(add-hook 'write-file-hooks 'time-stamp)                 ; update when saving
+(defvar time-stamp-active t)
+(defvar time-stamp-line-limit 10)
+(defvar time-stamp-format "%04y-%02m-%02d %02H:%02M:%02S (%u)")
+(add-hook 'write-file-hooks 'time-stamp)
 
 ;; magit -- run `magit-status' in full-screen mode.  save the previous
 ;; window configuration and return to it afterwards
@@ -117,29 +115,23 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; tramp mode
 ;;
-(setq tramp-default-method "ssh")       ; can access work computer using
-                                        ; /strada.berkeley.edu:~/file
-(setq tramp-default-user "mkmcc"
-      tramp-default-host "strada")
+(defvar tramp-default-method "ssh")
+(defvar tramp-default-user "mkmcc")
+(defvar tramp-default-host "strata")
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; saveplace remembers your location in a file when saving files
 (require 'saveplace)
-(setq save-place-file (expand-file-name "saveplace" savefile-dir))
+(defvar save-place-file (expand-file-name "saveplace" savefile-dir))
 (setq-default save-place t)
 
 ;; savehist keeps track of some history
-(setq savehist-additional-variables
-      ;; search entries
-      '(search ring regexp-search-ring)
-      ;; save every minute
-      savehist-autosave-interval 60
-      ;; keep the home clean
-      savehist-file (expand-file-name "savehist" savefile-dir))
+(defvar savehist-additional-variables '(search ring regexp-search-ring))
+(defvar savehist-autosave-interval 60)
+(defvar savehist-file (expand-file-name "savehist" savefile-dir))
 (savehist-mode +1)
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
@@ -228,15 +220,18 @@ indent yanked text (with prefix arg don't indent)."
 ;; .zsh file is shell script too
 (add-auto-mode 'shell-script-mode "\\.zsh\\'")
 
-;; saner regex syntax
-(after-load 're-builder
-  (setq reb-re-syntax 'string))
+;; saner regex syntax (maybe switch to rx?)
+;;   NB: C-c C-w copies and converts to elisp format
+;;   NB 2: C-c TAB cycles formats
+(defvar reb-re-syntax 'string)
 
 ;; whitespace-mode config
-(require 'whitespace)
-(setq whitespace-line-column 80) ;; limit line length
-(setq whitespace-style '(face tabs empty trailing lines-tail))
-(diminish 'whitespace-mode)
+(defvar whitespace-line-column 80)
+(defvar whitespace-style
+  '(face space tabs newline empty trailing lines-tail
+         space-mark tabs-mark newline-mark))
+(after-load 'whitespace
+  (diminish 'whitespace-mode))
 
 (defun prelude-enable-whitespace ()
   "enable `whitespace-mode'."

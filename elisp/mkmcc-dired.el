@@ -1,6 +1,10 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; dired enhancements
 ;;
+(defvar dired-recursive-deletes 'always)
+(defvar dired-recursive-copies 'always)
+(defvar dired-dwim-target t)
+
 (defun dired-ediff-marked-files ()
   "Run ediff on marked ediff files."
   (interactive)
@@ -38,10 +42,6 @@
 
 (after-load 'dired
   (defvar dired-mode-map)
-  (defvar dired-recursive-deletes)
-  (defvar dired-recursive-copies)
-  (defvar dired-dwim-target)
-
   (define-key dired-mode-map "o" 'dired-open-mac)
   (define-key dired-mode-map "-" 'dired-up-directory)
 
@@ -49,10 +49,6 @@
     (vector 'remap 'beginning-of-buffer) 'dired-back-to-top)
   (define-key dired-mode-map
     (vector 'remap 'end-of-buffer) 'dired-jump-to-bottom)
-
-  (setq dired-recursive-deletes 'always
-        dired-recursive-copies 'always
-        dired-dwim-target t)
 
   (put 'dired-find-alternate-file 'disabled nil))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

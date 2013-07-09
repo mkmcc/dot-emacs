@@ -1,12 +1,8 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; isearch
 ;;
-(defvar dired-isearch-filenames)
-(setq search-highlight t                ; highlight when searching...
-      query-replace-highlight t)        ; ...and replacing
-
-(setq dired-isearch-filenames t)        ; make C-s and C-r only match filenames
-                                        ; ...in dired buffers
+(defvar dired-isearch-filenames t) ; make C-s and C-r only match filenames
+                                   ; ...in dired buffers
 
 
 ;; http://www.emacswiki.org/emacs/ZapToISearch
@@ -42,11 +38,10 @@ and the point, not include the isearch word."
 
 ;; Activate occur easily inside isearch (this is great!)
 (define-key isearch-mode-map (kbd "C-o")
-  (λ
-   (let ((case-fold-search isearch-case-fold-search))
-     (occur (if isearch-regexp
-                isearch-string
-              (regexp-quote isearch-string))))))
+  (λ (let ((case-fold-search isearch-case-fold-search))
+       (occur (if isearch-regexp
+                  isearch-string
+                (regexp-quote isearch-string))))))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (provide 'mkmcc-isearch)

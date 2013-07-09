@@ -1,18 +1,16 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; deft customizations
 ;;
-(defvar deft-extension)
-(defvar deft-text-mode)
-(defvar deft-directory)
-(defvar deft-strip-title-regexp)
+(defvar base-dir)
 
-(setq deft-extension "org")
-(setq deft-text-mode 'org-mode)
+(defvar deft-extension "org")
+(defvar deft-text-mode 'org-mode)
+(defvar deft-directory
+  (expand-file-name "deft/" base-dir))  ; trailing / is impt.
+(defvar deft-strip-title-regexp
+  "^#\\+\\w+:[ \t]+\\|^[#* ]*")
 
-(setq deft-directory "~/.emacs.d/deft/") ; keep my ~ clean
-                                         ; note trailing / is impt.
 (global-set-key [f5] 'deft)
-(setq deft-strip-title-regexp "^#\\+\\w+:[ \t]+\\|^[#* ]*")
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (provide 'mkmcc-deft)

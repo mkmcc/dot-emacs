@@ -2,18 +2,13 @@
 ;; Mathematica
 ;;
 (defvar mkmcc-macosx-p)
-(defvar mathematica-command-line)
-(defvar mathematica-never-start-kernel-with-mode)
+(defvar mathematica-command-line
+  (if mkmcc-macosx-p
+      "/Applications/Mathematica.app/Contents/MacOS/MathKernel"
+    "/apps3/linux-apps/mathematica/math"))
+(defvar mathematica-never-start-kernel-with-mode t)
 
 (load-file "~/.emacs.d/vendor/mathematica.el")  ; FIXME
-
-(if mkmcc-macosx-p
-    (setq mathematica-command-line
-          "/Applications/Mathematica.app/Contents/MacOS/MathKernel")
-    (setq mathematica-command-line
-          "/apps3/linux-apps/mathematica/math"))
-
-(setq mathematica-never-start-kernel-with-mode t)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (provide 'mkmcc-mathematica)
