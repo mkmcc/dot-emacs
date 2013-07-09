@@ -10,9 +10,10 @@
 (defun mkmcc-set-latex-compile-command ()
   "create a buffer-local compile command for latex buffers."
   (when buffer-file-name
-    (let ((cmd "rubber -df --warn all"))
+    (let ((cmd "rubber -df --warn all")
+          (fname (file-name-nondirectory (buffer-file-name))))
       (setq-local compile-command
-                  (concat cmd " " buffer-file-name)))))
+                  (concat cmd " " fname)))))
 
 (defun mkmcc-view-latex-file ()
   "find the pdf associated with a latex file and open it."
