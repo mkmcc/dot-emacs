@@ -1,9 +1,8 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; get a simple weather report
 ;;
+(defvar weather-key "eaf92be513040126122310")
 (require 'weather)
-
-(setq weather-key "eaf92be513040126122310")
 
 (defun weather ()
   (interactive)

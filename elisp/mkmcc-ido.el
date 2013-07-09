@@ -86,9 +86,8 @@ to the owner of the file.  See the function `set-file-modes'.")
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; completion in the minibuffer
-(defvar icomplete-prospects-height)
+(defvar icomplete-prospects-height 2)
 (icomplete-mode t)                       ; completion in minibuffer
-(setq icomplete-prospects-height 2)      ; don't spam my minibuffer
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (provide 'mkmcc-ido)

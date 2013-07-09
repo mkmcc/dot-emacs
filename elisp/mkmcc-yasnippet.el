@@ -2,14 +2,14 @@
 ;; load yasnippet
 ;;
 (defvar snippets-dir)
-(defvar yas-snippet-dirs)
-(defvar yas-prompt-functions)
-(defvar yas-verbosity)
+(defvar yas-snippet-dirs snippets-dir)
+(defvar yas-prompt-functions
+  '(yas-ido-prompt yas-completing-prompt)) ; no dropdowns, please
+(defvar yas-verbosity 1)
 
 (autoload 'yas-minor-mode "yasnippet.el")
 
 (after-load 'yasnippet
-  (setq yas-snippet-dirs snippets-dir)
   (yas-load-directory yas-snippet-dirs)
   (diminish 'yas-minor-mode))
 
@@ -27,12 +27,6 @@
 
 ;; term-mode does not play well with yasnippet
 (add-hook 'term-mode-hook 'mkmcc-disable-yasnippet)
-
-;; No dropdowns please, yas
-(setq yas-prompt-functions '(yas-ido-prompt yas-completing-prompt))
-
-;; No need to be so verbose
-(setq yas-verbosity 1)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (provide 'mkmcc-yasnippet)

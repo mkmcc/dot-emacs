@@ -3,11 +3,8 @@
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; custom window layout
-(defvar gdb-many-windows)
-(defvar gdb-use-separate-io-buffer)
-
-(setq gdb-many-windows t)
-(setq gdb-use-separate-io-buffer t)
+(defvar gdb-many-windows t)
+(defvar gdb-use-separate-io-buffer t)
 
 (defadvice gdb-setup-windows (after mkmcc-gdb-setup-windows-advice
                                     first nil
