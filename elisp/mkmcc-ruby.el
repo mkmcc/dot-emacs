@@ -3,8 +3,9 @@
 ;;
 (require 'prelude-programming)
 
-;; yari provides a nice Emacs interface to RI
-(autoload 'yari "yari.el")
+(defvar ruby-block-highlight-toggle 'overlay)
+
+(autoload 'yari "yari.el")              ;TODO: are these necessary?
 (autoload 'ruby-block-mode "ruby-block.el")
 (autoload 'ruby-end-mode "ruby-end.el")
 
@@ -28,8 +29,6 @@
   (setq comint-process-echoes t)
   (ruby-end-mode +1)
   (ruby-block-mode t)
-  (defvar ruby-block-highlight-toggle)
-  (setq ruby-block-highlight-toggle 'overlay)
   ;; CamelCase aware editing operations
   (subword-mode +1))
 
