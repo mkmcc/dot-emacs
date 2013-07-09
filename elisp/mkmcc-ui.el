@@ -21,17 +21,26 @@
 (set-face-attribute 'show-paren-match-face nil
                     :weight 'extra-bold :underline nil
                     :overline nil       :slant 'normal)
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; frame font, colors, and other parameters
-(require 'server)
-
+;;
+;; fonts
 (defvar mkmcc-fixed-pitch    "Menlo-13")
 (defvar mkmcc-variable-pitch "Chaparral Pro-13")
 
+;; don't propagate definitions from one theme to the next!
+(defadvice load-theme
+  (before theme-dont-propagate activate)
+  (mapcar #'disable-theme custom-enabled-themes))
+
+;; don't apply fonts and colors for text-only displays
+;;   NB: this won't apply changes to standalone instances of emacs.  I
+;;   think this is actually a good thing: just by looking at a window
+;;   I can know whether or not it is attached to the emacs daemon.
+;;   Also, there is no reason to use standalone instances...
 (defun setup-window-system-frame-colours (&rest frame)
   (unless (eq window-system nil)
     (load-theme 'solarized-light t)
