@@ -123,8 +123,8 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; saveplace remembers your location in a file when saving files
-(require 'saveplace)
 (defvar save-place-file (expand-file-name "saveplace" savefile-dir))
+(require 'saveplace)
 (setq-default save-place t)
 
 ;; savehist keeps track of some history
