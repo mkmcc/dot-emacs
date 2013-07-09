@@ -20,7 +20,7 @@
 ;; eshell
 (defvar eshell-directory-name (expand-file-name "eshell" base-dir))
 
-(defvar eshell-where-to-jump 'begin)
+(defvar eshell-where-to-jump 'begin)    ;TODO: after breaks em-smart...
 (defvar eshell-review-quick-commands nil)
 (defvar eshell-smart-space-goes-to-end t) ;TODO: think about this
 (defvar eshell-history-size 512)
