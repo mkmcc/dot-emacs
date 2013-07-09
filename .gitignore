@@ -11,3 +11,4 @@ url
 games
 .DS_Store
 .yas-compiled-snippets.el
+personal/custom.el
