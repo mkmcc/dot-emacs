@@ -33,7 +33,7 @@
 ;; don't propagate definitions from one theme to the next!
 (defadvice load-theme
   (before theme-dont-propagate activate)
-  (mapcar #'disable-theme custom-enabled-themes))
+  (mapc #'disable-theme custom-enabled-themes))
 
 ;; don't apply fonts and colors for text-only displays
 ;;   NB: this won't apply changes to standalone instances of emacs.  I
