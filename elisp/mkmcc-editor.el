@@ -228,8 +228,10 @@ indent yanked text (with prefix arg don't indent)."
 ;; whitespace-mode config
 (defvar whitespace-line-column 80)
 (defvar whitespace-style
-  '(face space tabs newline empty trailing lines-tail
-         tabs-mark newline-mark))
+      '(face tabs spaces newline trailing lines-tail
+             indentation empty
+             space-mark tab-mark newline-mark))
+
 (after-load 'whitespace
   (diminish 'whitespace-mode))
 
