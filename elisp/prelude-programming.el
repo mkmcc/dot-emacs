@@ -108,8 +108,6 @@
   (subword-mode +1)
   (abbrev-mode -1)
   (prelude-add-watchwords)
-  ;; I often hit S-M-k instead of C-M-k.  confusing.
-  (local-unset-key "M-k")
   ;; keep the whitespace decent all the time
   (add-hook 'before-save-hook 'whitespace-cleanup nil t))
 
