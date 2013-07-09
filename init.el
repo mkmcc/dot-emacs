@@ -20,7 +20,6 @@ to the Emacs load path."
       (when (and (file-directory-p name)
                  (not (equal f ".."))
                  (not (equal f ".")))
-        (message name)
         (add-to-list the-list name)))))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
