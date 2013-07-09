@@ -6,6 +6,26 @@
 (require 'cl)                           ; can't use dash yet!
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; load path utilities
+(defun mkmcc-add-subfolders-to-load-path (parent-dir &optional the-list)
+  "Adds all first level `parent-dir' subdirs to a list.  Default
+to the Emacs load path."
+  (let ((mlist (if the-list the-list 'load-path )))
+    (mkmcc-add-subfolders-to-list parent-dir mlist)))
+
+(defun mkmcc-add-subfolders-to-list (parent-dir the-list)
+  "Adds all first level `parent-dir' subdirs to a list."
+  (dolist (f (directory-files parent-dir))
+    (let ((name (expand-file-name f parent-dir)))
+      (when (and (file-directory-p name)
+                 (not (equal f ".."))
+                 (not (equal f ".")))
+        (message name)
+        (add-to-list the-list name)))))
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; load path
 (defvar base-dir     "~/.emacs.d/")
 (defvar elisp-dir    (expand-file-name "elisp"    base-dir))
@@ -22,7 +42,12 @@
 (add-to-list 'load-path elisp-dir)
 (add-to-list 'load-path vendor-dir)
 (add-to-list 'load-path personal-dir)
-(add-to-list 'load-path (expand-file-name "solarized" themes-dir))
+
+;; add the first level subfolders of themes and vendor
+(mkmcc-add-subfolders-to-load-path vendor-dir)
+(mkmcc-add-subfolders-to-list themes-dir 'load-path)
+(setq custom-theme-load-path nil)
+(mkmcc-add-subfolders-to-list themes-dir 'custom-theme-load-path)
 
 (setq custom-file (expand-file-name "custom.el" personal-dir))
 (setq custom-theme-directory themes-dir)
@@ -42,10 +67,6 @@
 (require 'mkmcc-buffer-defuns)
 (require 'mkmcc-editing-defuns)
 (require 'mkmcc-misc)
-
-;; add the first level subfolders of themes and vendor
-(mkmcc-add-subfolders-to-load-path vendor-dir)
-(mkmcc-add-subfolders-to-load-path themes-dir 'custom-theme-load-path)
 
 ;; interface
 (require 'mkmcc-ui)
