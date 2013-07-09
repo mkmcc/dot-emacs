@@ -38,7 +38,7 @@
   "defaults for `latex-mode'."
   (turn-on-reftex)
   (diminish 'reftex-mode)
-  (diminish 'abbrev-mode "…")
+  (abbrev-mode -1)
   (turn-on-auto-fill)
 
   ;; F7 to compile, F8 to view the file; keep F12 for dictionary.
