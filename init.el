@@ -42,10 +42,12 @@ to the Emacs load path."
 (add-to-list 'load-path vendor-dir)
 (add-to-list 'load-path personal-dir)
 
+(setq custom-theme-load-path nil)       ; nix the bundled themes
+
 ;; add the first level subfolders of themes and vendor
+;;   this way I can keep things organized in subdirectories
 (mkmcc-add-subfolders-to-load-path vendor-dir)
-(mkmcc-add-subfolders-to-list themes-dir 'load-path)
-(setq custom-theme-load-path nil)
+(mkmcc-add-subfolders-to-list themes-dir 'load-path) ;some themes load code
 (mkmcc-add-subfolders-to-list themes-dir 'custom-theme-load-path)
 
 (setq custom-file (expand-file-name "custom.el" personal-dir))
@@ -118,8 +120,8 @@ to the Emacs load path."
 ;; necessary to run gnuplot.  may not be the right solution?
 (setenv "DISPLAY" ":0")
 
-(require 'dash)
-(require 's)
+(require 'dash)        ; can't `require' these in benchmark since they
+(require 's)           ; may not be installed yet!
 (message "%s" (benchmark/report-require-times))
 
 ;;; fin
