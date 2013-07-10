@@ -42,7 +42,7 @@
 
 (after-load 'dired
   (defvar dired-mode-map)
-  (define-key dired-mode-map "o" 'dired-open-mac)
+  (define-key dired-mode-map "O" 'dired-open-mac)
   (define-key dired-mode-map "-" 'dired-up-directory)
 
   (define-key dired-mode-map
