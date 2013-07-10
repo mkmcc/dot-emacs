@@ -31,30 +31,18 @@
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; spell check
-(autoload 'flyspell-mode "flyspell.el")
-
-(add-hook 'message-mode-hook 'flyspell-mode)
-(add-hook 'text-mode-hook    'flyspell-mode)
-
-(defvar ispell-silently-savep t)
-(defvar ispell-program-name "aspell")
-(after-load 'flyspell (diminish 'flyspell-mode))
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; version control
+;; backups, autosaves, and version control for the obsessive and compulsive
 ;;
-;; backups  (emacs will write backups and number them)
-(setq make-backup-files t                                ; do make backups
-      backup-by-copying t                                ; and copy them...
-      backup-directory-alist '(("." . "~/.backup/"))     ; ...here
-      version-control t
+;; backups  (the defaults are pretty unfortunate)
+(setq make-backup-files t               ; do make backups...
+      backup-by-copying t               ; ...copy, don't rename...
+      backup-directory-alist            ; ...them...
+      '(("." . "~/.backup/"))           ; ...here.
+      version-control t                 ; (and number them, please)
       kept-new-versions 5
       kept-old-versions 5
       delete-old-versions t
-      vc-make-backup-files t)
+      vc-make-backup-files t)           ; even if under version control
 
 ;; autosave on window switches
 (setq auto-save-file-name-transforms
@@ -113,21 +101,13 @@
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; tramp mode
-;;
-(defvar tramp-default-method "ssh")
-(defvar tramp-default-user "mkmcc")
-(defvar tramp-default-host "strata")
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; saveplace remembers your location in a file when saving files
+;; saveplace stores your location in files
+(defvar savefile-dir)
 (defvar save-place-file (expand-file-name "saveplace" savefile-dir))
 (require 'saveplace)
 (setq-default save-place t)
 
-;; savehist keeps track of some history
+;; savehist
 (defvar savehist-additional-variables '(search ring regexp-search-ring))
 (defvar savehist-autosave-interval 60)
 (defvar savehist-file (expand-file-name "savehist" savefile-dir))
@@ -156,7 +136,7 @@
    (if mark-active (list (region-beginning) (region-end))
      (message "Copied line")
      (list (line-beginning-position)
-           (line-beginning-position 2)))))
+           (line-end-position)))))
 
 (defadvice kill-region (before smart-cut activate compile)
   "When called interactively with no active region, kill a single line instead."
@@ -167,15 +147,17 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; shorter aliases for ack-and-a-half commands
 (defalias 'ack 'ack-and-a-half)
 (defalias 'ack-same 'ack-and-a-half-same)
 (defalias 'ack-find-file 'ack-and-a-half-find-file)
 (defalias 'ack-find-file-same 'ack-and-a-half-find-file-same)
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
-
-;; automatically indenting yanked text if in programming-modes
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; automatically indent yanked text in programming-modes
 (defvar yank-indent-modes
   '(LaTeX-mode TeX-mode)
   "Modes in which to indent regions that are yanked (or yank-popped).

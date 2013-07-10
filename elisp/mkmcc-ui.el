@@ -3,23 +3,87 @@
 ;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; appearance (superficial)
-(scroll-bar-mode 0)                     ; disable useless things
-(when (fboundp 'tool-bar-mode)
-  (tool-bar-mode -1))
-(unless (eq system-type 'darwin)
-  (menu-bar-mode -1))
+;; annoyances and conveniences
+(scroll-bar-mode 0)                     ; disable...
+(when (fboundp 'tool-bar-mode)          ; ...
+  (tool-bar-mode -1))                   ; ...
+(unless (eq system-type 'darwin)        ; ...
+  (menu-bar-mode -1))                   ; ...useless things
+
+(put 'narrow-to-region 'disabled nil)   ; enable...
+(put 'downcase-region 'disabled nil)    ; ...
+(put 'upcase-region 'disabled nil)      ; ...
+(put 'erase-buffer 'disabled nil)       ; ...useful things
 
 (blink-cursor-mode -1)                  ; annoyances
 (setq inhibit-startup-screen t)
+(fset 'yes-or-no-p 'y-or-n-p)
 
-(setq ring-bell-function 'ignore)       ; turn off the damn bell
+(setq ring-bell-function 'ignore)       ; turn off the damn bell!
 
+(defvar cua-enable-cua-keys nil)        ; only for rectangles
+(defvar cua-delete-selection nil)       ; don't delete selection
+(cua-mode t)
+
+;; compilation window
+(defvar compilation-scroll-output 'first-error) ; scroll until first error
+(defvar compilation-read-command t)             ; require enter to compile
+(defvar compilation-window-height 16)           ; keep it readable
+
+;; show-paren
 (defvar show-paren-style 'parenthesis)
 (show-paren-mode t)
 (set-face-attribute 'show-paren-match-face nil
                     :weight 'extra-bold :underline nil
                     :overline nil       :slant 'normal)
+
+(setq require-final-newline t)          ; end files with a newline
+
+(electric-pair-mode t)                  ; smart pairing, indenting, etc.
+(electric-indent-mode t)
+(electric-layout-mode t)
+
+(setq kill-buffer-query-functions       ; don't prompt me about processes
+      (remq 'process-kill-buffer-query-function
+            kill-buffer-query-functions))
+
+(setq-default indent-tabs-mode nil)     ; death to tabs!
+
+(setq scroll-margin 0                   ; nice scrolling
+      scroll-conservatively 100000
+      scroll-preserve-screen-position) 1
+
+(setq redisplay-dont-pause t)           ; more responsive display
+
+(set-default 'imenu-auto-rescan t)
+
+;; revert buffers automatically when underlying files are changed
+;; externally
+(defvar global-auto-revert-non-file-buffers t) ; also revert dired
+(defvar auto-revert-verbose nil)
+(global-auto-revert-mode t)
+
+;; saner regex syntax (maybe switch to rx?)
+;;   NB: C-c C-w copies and converts to elisp format
+(defvar reb-re-syntax 'string)
+
+;; Use elisp ls program.  The osx one doesn't have the full GNU
+;; functionality.
+(defvar ls-lisp-ignore-case t)
+(autoload 'insert-directory "ls-lisp.el")
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; spell check
+(autoload 'flyspell-mode "flyspell.el")
+
+(add-hook 'message-mode-hook 'flyspell-mode)
+(add-hook 'text-mode-hook    'flyspell-mode)
+
+(defvar ispell-silently-savep t)
+(defvar ispell-program-name "aspell")
+(after-load 'flyspell (diminish 'flyspell-mode))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
@@ -121,70 +185,26 @@
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; convenience
-(fset 'yes-or-no-p 'y-or-n-p)           ; enable y/n answers
+;; whitespace-mode config
+(defvar whitespace-line-column 80)
+(defvar whitespace-style
+  '(face tabs spaces newline trailing lines-tail
+         indentation empty
+         space-mark tab-mark newline-mark))
 
-(put 'narrow-to-region 'disabled nil)   ; enable...
-(put 'downcase-region 'disabled nil)    ; ...
-(put 'upcase-region 'disabled nil)      ; ...
-(put 'erase-buffer 'disabled nil)       ; ...useful things
+(after-load 'whitespace
+  (diminish 'whitespace-mode))
 
-(defvar cua-enable-cua-keys nil)        ; only for rectangles
-(defvar cua-delete-selection nil)       ; don't delete selection
-(cua-mode t)
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; appearance (behavior)
-;;
-(setq require-final-newline t)          ; end files with a newline
-
-;; smart indenting and pairing for all
-(electric-pair-mode t)
-(electric-indent-mode t)
-(electric-layout-mode t)
-
-(setq kill-buffer-query-functions       ; don't prompt me about processes
-      (remq 'process-kill-buffer-query-function
-            kill-buffer-query-functions))
-
-(setq-default indent-tabs-mode nil)     ; death to tabs!
-
-;; nice scrolling
-(setq scroll-margin 0
-      scroll-conservatively 100000
-      scroll-preserve-screen-position) 1
-
-(setq redisplay-dont-pause t)           ; more responsive display
-
-(set-default 'imenu-auto-rescan t)
-
-
-;; revert buffers automatically when underlying files are changed
-;; externally
-(defvar global-auto-revert-non-file-buffers t) ; also revert dired
-(defvar auto-revert-verbose nil)
-(global-auto-revert-mode t)
-
-;; Use elisp ls program.  The osx one doesn't have the full GNU
-;; functionality.
-(defvar ls-lisp-ignore-case t)
-(autoload 'insert-directory "ls-lisp.el")
+(defun prelude-enable-whitespace ()
+  "enable `whitespace-mode'."
+  (add-hook 'before-save-hook 'whitespace-cleanup nil t)
+  (whitespace-mode +1))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; games
 (defvar tetris-score-file "~/.emacs.d/games/tetris-scores")
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; compilation window
-(defvar compilation-scroll-output 'first-error) ; scroll until first error
-(defvar compilation-read-command t)             ; require enter to compile
-(defvar compilation-window-height 16)           ; keep it readable
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (provide 'mkmcc-ui)
