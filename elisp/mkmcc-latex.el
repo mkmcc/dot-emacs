@@ -30,7 +30,7 @@
   (interactive)
   (reftex-access-scan-info)
   (let* ((docstruct (symbol-value reftex-docstruct-symbol))
-	 (label (completing-read "Label: " docstruct
+         (label (completing-read "Label: " docstruct
                                  (lambda (x) (stringp (car x))) t nil nil)))
     label))
 

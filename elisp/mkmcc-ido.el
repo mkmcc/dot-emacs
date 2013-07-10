@@ -22,7 +22,7 @@ to the owner of the file.  See the function `set-file-modes'.")
 
 (ad-activate 'ido-save-history)
 
-;; make ~ take me home
+;; ~ takes me home
 (defvar ido-file-completion-map)
 (defun mkmcc-ido-setup ()
   "sensible defaults for ido."
@@ -36,14 +36,14 @@ to the owner of the file.  See the function `set-file-modes'.")
 (add-hook 'ido-setup-hook 'mkmcc-ido-setup)
 
 ;; more sensible defaults
-(defvar ido-case-fold  t)
-(defvar ido-enable-flex-matching t)
-(defvar ido-create-new-buffer 'prompt)
-(defvar ido-max-prospects 6)
+(defvar ido-case-fold                 t)
+(defvar ido-enable-flex-matching      t)
+(defvar ido-create-new-buffer        'prompt)
+(defvar ido-max-prospects             6)
 (defvar ido-confirm-unique-completion t)
 
 (defvar ido-enable-last-directory-history t)
-(defvar ido-use-url-at-point nil)
+(defvar ido-use-url-at-point              nil)
 
 (defvar ido-save-directory-list-file (expand-file-name "ido.last" savefile-dir))
 (defvar ido-ignore-buffers
