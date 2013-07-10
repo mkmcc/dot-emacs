@@ -212,33 +212,6 @@ indent yanked text (with prefix arg don't indent)."
                (member major-mode yank-indent-modes)))
     (let ((transient-mark-mode nil))
     (yank-advised-indent-function (region-beginning) (region-end)))))
-
-;; make a shell script executable automatically on save
-(add-hook 'after-save-hook
-          'executable-make-buffer-file-executable-if-script-p)
-
-;; .zsh file is shell script too
-(add-auto-mode 'shell-script-mode "\\.zsh\\'")
-
-;; saner regex syntax (maybe switch to rx?)
-;;   NB: C-c C-w copies and converts to elisp format
-;;   NB 2: C-c TAB cycles formats
-(defvar reb-re-syntax 'string)
-
-;; whitespace-mode config
-(defvar whitespace-line-column 80)
-(defvar whitespace-style
-      '(face tabs spaces newline trailing lines-tail
-             indentation empty
-             space-mark tab-mark newline-mark))
-
-(after-load 'whitespace
-  (diminish 'whitespace-mode))
-
-(defun prelude-enable-whitespace ()
-  "enable `whitespace-mode'."
-  (add-hook 'before-save-hook 'whitespace-cleanup nil t)
-  (whitespace-mode +1))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (provide 'mkmcc-editor)
