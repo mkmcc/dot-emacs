@@ -85,6 +85,7 @@ to the Emacs load path."
 (require 'mkmcc-latex)
 ;(require 'prelude-python)
 (require 'mkmcc-ruby)
+(require 'mkmcc-shell-script)
 (require 'mkmcc-gnuplot)
 (require 'mkmcc-athena)
 (require 'mkmcc-emacs-lisp)
