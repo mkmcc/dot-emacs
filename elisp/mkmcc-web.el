@@ -37,12 +37,12 @@ bibtex page."
 The link you provide should point to an ADS \"abstract\" page.
 So you'd use this from, e.g. a page listing search results.  This
 is awesome."
-  (interactive (list (read-string "Link Number: ")))
+  (interactive (list (read-string "Slurp bibtex from Link Number: ")))
   (let ((url (nero-follow-link-internal link-number 'return-link)))
     (nero-browse-url url nil nil nil
        (lambda ()
          (cond
-          ((search-forward "BibTeX" nil t)
+          ((search-forward "Bibtex" nil t)
            (nero-move-to-previous-link)
            (nero-follow-link nil nil
                              (lambda ()
@@ -50,6 +50,9 @@ is awesome."
            (message "Copied bibtex entry to kill-ring."))
           (t
            (message "Couldn't find bibtex entry.")))))))
+
+(after-load 'nero
+  (define-key nero-mode-map (kbd "z") 'nero-slurp-bibtex))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (provide 'mkmcc-web)
