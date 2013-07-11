@@ -124,8 +124,8 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; volatiile-highlights
-(require 'volatile-highlights)
-(volatile-highlights-mode t)
+(require 'volatile-highlights)          ; TODO: this takes a while.
+(volatile-highlights-mode t)            ; add to some hook?
 (diminish 'volatile-highlights-mode)
 
 ;; note - this should be after volatile-highlights is required

@@ -59,7 +59,7 @@ to the owner of the file.  See the function `set-file-modes'.")
 (ido-mode 'both)
 (ido-everywhere 1)
 (require 'ido-ubiquitous)
-(ido-ubiquitous-mode 1)
+(ido-ubiquitous-mode)
 
 ;; Fix ido-ubiquitous for newer packages
 (defmacro ido-ubiquitous-use-new-completing-read (cmd package)
@@ -93,7 +93,9 @@ to the owner of the file.  See the function `set-file-modes'.")
 (defvar recentf-max-saved-items 50)
 (defvar recentf-max-menu-items 15)
 
-(recentf-mode t)
+(recentf-mode t)                        ; this takes a while to load.
+                                        ; maybe add it to a find-file
+                                        ; hook or something?
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
