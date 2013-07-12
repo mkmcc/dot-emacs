@@ -176,6 +176,10 @@
 ;; annoyances
 (global-unset-key (kbd "C-\\"))         ; don't need to change
                                         ; languages that easily!
+
+(global-unset-key (kbd "M-`"))          ; keep hitting this instead of
+                                        ; M-TAB.  all it does is throw
+                                        ; an error message...
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (provide 'mkmcc-global-keybindings)
