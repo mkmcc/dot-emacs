@@ -88,9 +88,15 @@
   (auto-fill-mode t))
 
 (defun prelude-add-watchwords ()
-  (font-lock-add-keywords
-   nil '(("\\<\\(XXX\\|BUG\\|FIX\\|TODO\\|FIXME\\|HACK\\|REFACTOR\\):"
-          1 font-lock-warning-face t))))
+  (let* ((watchword-list
+          '("Note" "NOTE" "note"
+            "BUG" "FIX" "FIXME" "TODO" "HACK"
+            "REFACTOR"))
+         (watchword-regexp
+          (concat "\\<" (regexp-opt watchword-list 'words) ":")))
+    (font-lock-add-keywords
+     nil
+     `((,watchword-regexp 1 'font-lock-warning-face t)))))
 
 ;; show the name of the current function definition in the modeline
 (require 'which-func)
