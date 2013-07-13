@@ -87,6 +87,15 @@ Passes ARG to command `kill-whole-line' when provided."
   (kill-whole-line arg)
   (back-to-indentation))
 
+(defun zap-up-to-char (arg char)
+  "Like standard zap-to-char, but stops just before the given character."
+  (interactive "p\ncZap up to char: ")
+  (kill-region (point)
+               (progn
+                 (search-forward (char-to-string char) nil nil arg)
+                 (forward-char (if (>= arg 0) -1 1))
+                 (point))))
+
 (defun prelude-move-beginning-of-line (arg)
   "Move point back to indentation of beginning of line.
 

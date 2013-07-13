@@ -94,6 +94,7 @@
 (global-set-key (kbd "M-o")        'prelude-smart-open-line)
 (global-set-key (kbd "M-O")        'prelude-smart-open-line-above)
 (global-set-key [remap kill-whole-line] 'prelude-kill-whole-line)
+(global-set-key [remap zap-to-char] 'zap-up-to-char)
 
 ;; set RET to newline-and-indent.  I can never get used to C-j or M-j
 ;; TODO: why deosn't S-RET work?
