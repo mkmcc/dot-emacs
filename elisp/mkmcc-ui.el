@@ -1,6 +1,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; tweaks to user interface
 ;;
+(defvar mkmcc-macosx-p)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; annoyances and conveniences
@@ -24,6 +25,9 @@
 (defvar cua-enable-cua-keys nil)        ; only for rectangles
 (defvar cua-delete-selection nil)       ; don't delete selection
 (cua-mode t)
+
+(when mkmcc-macosx-p
+  (defvar locate-command "mdfind"))
 
 ;; compilation window
 (defvar compilation-scroll-output 'first-error) ; scroll until first error
