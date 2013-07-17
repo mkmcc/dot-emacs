@@ -5,8 +5,7 @@
 
 (defvar ruby-block-highlight-toggle 'overlay)
 
-(autoload 'yari "yari.el")              ;TODO: are these necessary?
-(autoload 'ruby-block-mode "ruby-block.el")
+(autoload 'ruby-block-mode "ruby-block.el") ; TODO: why are these needed?
 (autoload 'ruby-end-mode "ruby-end.el")
 
 (after-load 'ruby-block (diminish 'ruby-block-mode))
