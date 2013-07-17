@@ -7,8 +7,6 @@
   '(yas-ido-prompt yas-completing-prompt)) ; no dropdowns, please
 (defvar yas-verbosity 1)
 
-(autoload 'yas-minor-mode "yasnippet.el")
-
 (after-load 'yasnippet
   (yas-load-directory yas-snippet-dirs)
   (diminish 'yas-minor-mode))

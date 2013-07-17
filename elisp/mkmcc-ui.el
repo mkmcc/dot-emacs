@@ -74,7 +74,7 @@
 ;; Use elisp ls program.  The osx one doesn't have the full GNU
 ;; functionality.
 (defvar ls-lisp-ignore-case t)
-(autoload 'insert-directory "ls-lisp.el")
+(autoload 'insert-directory "ls-lisp.el") ; TODO: is this necessary?
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
