@@ -1,3 +1,3 @@
-(require 'nero-ads)
+(require 'nero)
 
 (provide 'mkmcc-web)
