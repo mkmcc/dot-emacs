@@ -80,8 +80,6 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; spell check
-(autoload 'flyspell-mode "flyspell.el")
-
 (add-hook 'message-mode-hook 'flyspell-mode)
 (add-hook 'text-mode-hook    'flyspell-mode)
 
