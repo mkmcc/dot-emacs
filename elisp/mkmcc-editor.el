@@ -17,16 +17,10 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; expand-region with delete-selection-mode is handy
-(autoload 'expand-region "expand-region.el")
 (after-load 'expand-region
   (if (boundp 'cua-delete-selection)
       (setq cua-delete-selection t)
     (delete-selection-mode t)))
-
-(autoload 'smart-up       "smart-forward.el")
-(autoload 'smart-down     "smart-forward.el")
-(autoload 'smart-forward  "smart-forward.el")
-(autoload 'smart-backward "smart-forward.el")
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
