@@ -201,6 +201,7 @@
 ;;;     mathematica-always-start-kernel-with-mode   nil
 ;;;     mathematica-split-on-startup                nil
 
+;;;###autoload
 (setq auto-mode-alist
       (append
        '(
@@ -392,6 +393,7 @@ part of an interrupt message." )
   (setq buffer-read-only t)
   )
 
+;;;###autoload
 (defun mathematica-mode ()
   "Major mode for editing Mathematica plain text files (.m) in Emacs.
 Commands:
