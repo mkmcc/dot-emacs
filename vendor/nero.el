@@ -3,7 +3,7 @@
 ;; Copyright (C) 2005-2007 Joe Corneli <jcorneli@math.utexas.edu>
 ;; Copyright (C) 2007      Xavier Maillard <zedek@gnu.org>
 
-;; Time-stamp: <2012-03-25 02:00:36 (mkmccjr)>
+;; Time-stamp: <2013-07-17 16:09:21 (mkmcc)>
 
 ;; This file is not part of GNU Emacs, but it is distributed under
 ;; the same terms as GNU Emacs.
@@ -346,8 +346,8 @@ Currently, only numbered links are fontified.")
 The old layout is restored when either `nero-hide' or
 `nero-finished' runs.")
 
-(eval-when-compile (defvar nero-history nil "Record of pages already visited.
-See also `nero-future', `nero-ariadnes-thread'."))
+(defvar nero-history nil "Record of pages already visited.
+See also `nero-future', `nero-ariadnes-thread'.")
 
 (defvar nero-future nil
   "Record of pages visited and then retreated from with `nero-back'.
