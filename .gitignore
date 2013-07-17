@@ -16,3 +16,4 @@ personal/custom.el
 # stored in external repositories
 vendor/athinput-mode
 vendor/nero-ads/
+vendor/loaddefs.el

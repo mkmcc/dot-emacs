@@ -1,7 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; athena-mode
 ;;
-(autoload 'athinput-mode "athinput-mode.el")
 (add-auto-mode 'athinput-mode "athinput\\'" "athinput\\.*\\'" "\\.athinput\\'")
 
 (defun mkmcc-athinput-mode-hook ()

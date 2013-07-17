@@ -117,6 +117,8 @@ to the Emacs load path."
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; finish up
 
+(load-file (expand-file-name "loaddefs.el" vendor-dir))
+
 ;; necessary to run gnuplot.  may not be the right solution?
 (setenv "DISPLAY" ":0")
 
