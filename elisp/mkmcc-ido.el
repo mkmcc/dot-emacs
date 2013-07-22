@@ -58,7 +58,6 @@ to the owner of the file.  See the function `set-file-modes'.")
 ;; now fire up ido
 (ido-mode 'both)
 (ido-everywhere 1)
-(require 'ido-ubiquitous)
 (ido-ubiquitous-mode)
 
 ;; Fix ido-ubiquitous for newer packages
