@@ -61,8 +61,8 @@
 
 ;; File finding
 (global-set-key (kbd "C-x C-r") 'prelude-recentf-ido-find-file)
-(global-set-key (kbd "C-x f")   'ack-and-a-half-find-file)
-(global-set-key (kbd "C-c f")   'ack-and-a-half-find-file-same)
+(global-set-key (kbd "C-c f")   'ack-and-a-half-find-file)
+(global-set-key (kbd "C-x f")   'ack-and-a-half-find-file-same)
 
 ;; buffer commands
 (global-set-key (kbd "C-c s")   'prelude-swap-windows)
