@@ -10,6 +10,8 @@
 (set-selection-coding-system 'utf-8)    ; please
 (prefer-coding-system        'utf-8)    ; with sugar on top
 
+(setq-default buffer-file-coding-system 'utf-8)
+
 (setq-default indent-tabs-mode nil)  ; don't use tabs to indent
 (setq-default tab-width 8)           ; but maintain correct appearance
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
