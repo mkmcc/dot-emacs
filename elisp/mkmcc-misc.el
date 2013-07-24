@@ -16,11 +16,26 @@
 
 
 (defun mkmcc-call-dict-command ()
+  "look up word-at-point in the osx dictionary."
   (interactive)
   (let* ((word (word-at-point)))
     (if word
         (concat "open dict://" (substring-no-properties word))
       "open -a /Applications/Dictionary.app")))
+
+(defvar mkmcc-dictionary-file
+  "~/Documents/Other/dictionary/dict-data.tex"
+  "file path to my personal dictionary")
+
+(defun mkmcc-add-definition-to-dictionary (word)
+  "add a word and definition to my personal dictionary."
+  (interactive (list (read-from-minibuffer "word: ")))
+  (let* ((cmd (concat "~/build/bin/define" " " word))
+         (def (shell-command-to-string cmd))
+         (entry
+          (concat "\\word{" word "}{uncategorized}%\n"
+                  "{" (s-trim def) "}\n\n")))
+    (append-to-file entry nil mkmcc-dictionary-file)))
 
 (defun prelude-google ()
   "Googles a query or region if any."
