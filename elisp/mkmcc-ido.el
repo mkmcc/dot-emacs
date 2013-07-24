@@ -77,7 +77,7 @@ to the owner of the file.  See the function `set-file-modes'.")
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; smex
-(defvar smex-save-file (expand-file-name ".smex-items" savefile-dir))
+(defvar smex-save-file (expand-file-name "smex-items" savefile-dir))
 
 (global-set-key (kbd "M-x") 'smex)
 (global-set-key (kbd "M-X") 'smex-major-mode-commands)
