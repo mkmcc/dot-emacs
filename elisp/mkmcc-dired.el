@@ -1,9 +1,19 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; dired enhancements
 ;;
+(require 'dash)
+
 (defvar dired-recursive-deletes 'always)
 (defvar dired-recursive-copies 'always)
 (defvar dired-dwim-target t)
+
+;; Reload dired after making changes
+(--each '(dired-do-rename
+          dired-do-copy
+          dired-create-directory
+          wdired-abort-changes)
+  (eval `(defadvice ,it (after revert-buffer activate)
+           (revert-buffer))))
 
 (defun dired-ediff-marked-files ()
   "Run ediff on marked ediff files."
@@ -33,6 +43,11 @@
   (goto-char (point-max))
   (dired-next-line -1))
 
+;; C-a is nicer in dired if it moves back to start of files
+(defun dired-back-to-start-of-files ()
+  (interactive)
+  (backward-char (- (current-column) 2)))
+
 ; remap 'o' in dired mode to open a file
 (defun dired-open-mac ()
   (interactive)
@@ -50,7 +65,19 @@
   (define-key dired-mode-map
     (vector 'remap 'end-of-buffer) 'dired-jump-to-bottom)
 
+  (define-key dired-mode-map (kbd "C-a") 'dired-back-to-start-of-files)
+  (define-key dired-mode-map (kbd "k") 'dired-do-delete)
+
   (put 'dired-find-alternate-file 'disabled nil))
+
+(eval-after-load "wdired"
+  '(progn
+     (define-key wdired-mode-map (kbd "C-a")
+       'dired-back-to-start-of-files)
+     (define-key wdired-mode-map (vector 'remap 'beginning-of-buffer)
+       'dired-back-to-top)
+     (define-key wdired-mode-map (vector 'remap 'end-of-buffer)
+       'dired-jump-to-bottom)))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (provide 'mkmcc-dired)
