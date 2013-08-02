@@ -17,3 +17,4 @@ personal/custom.el
 vendor/athinput-mode
 vendor/nero-ads/
 vendor/loaddefs.el
+/vendor/bibslurp/
