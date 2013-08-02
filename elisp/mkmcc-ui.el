@@ -19,6 +19,7 @@
 (blink-cursor-mode -1)                  ; annoyances
 (setq inhibit-startup-screen t)
 (fset 'yes-or-no-p 'y-or-n-p)
+(setq echo-keystrokes 0.1)
 
 (setq ring-bell-function 'ignore)       ; turn off the damn bell!
 
