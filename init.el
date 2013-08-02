@@ -15,12 +15,9 @@ to the Emacs load path."
 
 (defun mkmcc-add-subfolders-to-list (parent-dir the-list)
   "Adds all first level `parent-dir' subdirs to a list."
-  (dolist (f (directory-files parent-dir))
-    (let ((name (expand-file-name f parent-dir)))
-      (when (and (file-directory-p name)
-                 (not (equal f ".."))
-                 (not (equal f ".")))
-        (add-to-list the-list name)))))
+  (dolist (file (directory-files parent-dir t "\\w+"))
+    (when (file-directory-p file)
+      (add-to-list the-list file))))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
