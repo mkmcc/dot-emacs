@@ -100,7 +100,7 @@
 ;; TODO: why deosn't S-RET work?
 (defun mkmcc-coding-set-newlines ()
   "Bind RED and S-RET to useful things."
-  (local-set-key (kbd "RET") (key-binding (kbd "M-j")))
+  ;(local-set-key (kbd "RET") (key-binding (kbd "M-j")))
   (local-set-key (kbd "S-<return>") 'prelude-smart-open-line-above))
 
 (-map                                   ; do this only for specific modes...
