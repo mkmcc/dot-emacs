@@ -98,6 +98,8 @@ to the Emacs load path."
 (require 'mkmcc-gdb)
 (after-load 'paredit
   (require 'mkmcc-paredit))
+(after-load 'grep
+  (require 'mkmcc-rgrep))
 
 ;; other
 ;(require 'mkmcc-erc)
