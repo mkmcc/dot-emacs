@@ -3,15 +3,6 @@
 ;;
 (require 'thingatpt)
 
-;; use paredit in the minibuffer!
-(defun prelude-conditionally-enable-paredit-mode ()
-  "Enable `paredit-mode' in the minibuffer, during `eval-expression'."
-  (if (eq this-command 'eval-expression)
-      (paredit-mode 1)))
-
-(add-hook 'minibuffer-setup-hook 'prelude-conditionally-enable-paredit-mode)
-
-
 ;; evaluate lisp sexps anywhere
 (defun prelude-eval-and-replace ()
   "Replace the preceding sexp with its value."

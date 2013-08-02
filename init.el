@@ -96,6 +96,8 @@ to the Emacs load path."
 (require 'mkmcc-org)
 (require 'mkmcc-org-website)
 (require 'mkmcc-gdb)
+(after-load 'paredit
+  (require 'mkmcc-paredit))
 
 ;; other
 ;(require 'mkmcc-erc)

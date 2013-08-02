@@ -47,27 +47,6 @@
 (add-hook 'scheme-mode-hook 'prelude-lisp-coding-hook)
 
 
-(after-load 'paredit
-  (diminish 'paredit-mode " π")
-
-  ;; making paredit work with delete-selection-mode
-  (put 'paredit-forward-delete 'delete-selection 'supersede)
-  (put 'paredit-backward-delete 'delete-selection 'supersede)
-  (put 'paredit-open-round 'delete-selection t)
-  (put 'paredit-open-square 'delete-selection t)
-  (put 'paredit-doublequote 'delete-selection t)
-  (put 'paredit-newline 'delete-selection t)
-
-  (defun paredit-wrap-round-from-behind ()
-    (interactive)
-    (forward-sexp -1)
-    (paredit-wrap-round)
-    (insert " ")
-    (forward-char -1))
-
-  (define-key paredit-mode-map (kbd "M-)")
-    'paredit-wrap-round-from-behind))
-
 (provide 'prelude-lisp)
 
 ;;; prelude-lisp.el ends here
