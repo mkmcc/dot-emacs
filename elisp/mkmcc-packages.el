@@ -16,7 +16,7 @@
 (defvar mkmcc-packages
   '(melpa
     org deft
-    gnuplot-mode
+    gnuplot-mode bibslurp
     rainbow-mode flycheck
     expand-region smart-forward
     volatile-highlights diminish nyan-mode
