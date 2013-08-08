@@ -94,8 +94,12 @@
 ;; frame font, colors, and other parameters
 ;;
 ;; fonts
-(defvar mkmcc-fixed-pitch    "Menlo-13")
-(defvar mkmcc-variable-pitch "Chaparral Pro-13")
+(defvar mkmcc-fixed-pitch nil
+  "monospace font to use.  E.g. 'Menlo-11'.  Define this in
+ personal/personal.el")
+(defvar mkmcc-variable-pitch nil
+  "proportional font to use.  E.g. 'Helvetica-11'.  Define this
+ in personal/personal.el")
 
 ;; don't propagate definitions from one theme to the next!
 (defadvice load-theme
@@ -110,9 +114,12 @@
 (defun setup-window-system-frame-colours (&rest frame)
   (unless (eq window-system nil)
     (load-theme 'solarized-light t)
-    (set-frame-font mkmcc-fixed-pitch)
-    (set-face-attribute 'fixed-pitch    nil :font mkmcc-fixed-pitch)
-    (set-face-attribute 'variable-pitch nil :font mkmcc-variable-pitch)))
+    (when mkmcc-fixed-pitch
+      (set-frame-font mkmcc-fixed-pitch))
+    (when mkmcc-fixed-pitch
+      (set-face-attribute 'fixed-pitch    nil :font mkmcc-fixed-pitch))
+    (when mkmcc-variable-pitch
+      (set-face-attribute 'variable-pitch nil :font mkmcc-variable-pitch))))
 
 (defadvice server-create-window-system-frame
   (after set-window-system-frame-colours ())
