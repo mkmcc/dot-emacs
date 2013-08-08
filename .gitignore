@@ -11,10 +11,11 @@ url
 games
 .DS_Store
 .yas-compiled-snippets.el
-personal/custom.el
+personal/*
 
 # stored in external repositories
 vendor/athinput-mode
 vendor/nero-ads/
 vendor/loaddefs.el
 /vendor/bibslurp/
+
