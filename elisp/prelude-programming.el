@@ -93,7 +93,9 @@
             "BUG" "FIX" "FIXME" "TODO" "HACK"
             "REFACTOR"))
          (watchword-regexp
-          (concat "\\<" (regexp-opt watchword-list 'words) ":")))
+          (concat "\\<\\("
+                  (mapconcat 'identity watchword-list "\\|")
+                  "\\):")))
     (font-lock-add-keywords
      nil
      `((,watchword-regexp 1 'font-lock-warning-face t)))))
