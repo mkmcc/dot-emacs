@@ -52,8 +52,6 @@
       (remq 'process-kill-buffer-query-function
             kill-buffer-query-functions))
 
-(setq-default indent-tabs-mode nil)     ; death to tabs!
-
 (setq scroll-margin 0                   ; nice scrolling
       scroll-conservatively 100000
       scroll-preserve-screen-position) 1
