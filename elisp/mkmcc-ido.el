@@ -58,21 +58,21 @@ to the owner of the file.  See the function `set-file-modes'.")
 ;; now fire up ido
 (ido-mode 'both)
 (ido-everywhere 1)
-(ido-ubiquitous-mode)
+;; (ido-ubiquitous-mode)
 
-;; Fix ido-ubiquitous for newer packages
-(defmacro ido-ubiquitous-use-new-completing-read (cmd package)
-  `(eval-after-load ,package
-     '(defadvice ,cmd (around ido-ubiquitous-new activate)
-        (let ((ido-ubiquitous-enable-compatibility nil))
-          ad-do-it))))
+;; ;; Fix ido-ubiquitous for newer packages
+;; (defmacro ido-ubiquitous-use-new-completing-read (cmd package)
+;;   `(eval-after-load ,package
+;;      '(defadvice ,cmd (around ido-ubiquitous-new activate)
+;;         (let ((ido-ubiquitous-enable-compatibility nil))
+;;           ad-do-it))))
 
-(ido-ubiquitous-use-new-completing-read webjump 'webjump)
-(ido-ubiquitous-use-new-completing-read yas/expand 'yasnippet)
-(ido-ubiquitous-use-new-completing-read yas/visit-snippet-file 'yasnippet)
+;; (ido-ubiquitous-use-new-completing-read webjump 'webjump)
+;; (ido-ubiquitous-use-new-completing-read yas/expand 'yasnippet)
+;; (ido-ubiquitous-use-new-completing-read yas/visit-snippet-file 'yasnippet)
 ; TODO: this doesn't work.  RET returns the empty string, rather than
 ; first item in the list.
-(ido-ubiquitous-use-new-completing-read load-theme 'custom)
+;; (ido-ubiquitous-use-new-completing-read load-theme 'custom)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

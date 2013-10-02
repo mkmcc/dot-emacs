@@ -22,7 +22,8 @@
     volatile-highlights diminish nyan-mode
     paredit elisp-slime-nav ack-and-a-half
     gitconfig-mode gitignore-mode git-commit-mode magit
-    ido-ubiquitous smex yasnippet
+    ;ido-ubiquitous 
+    smex yasnippet
     ruby-end inf-ruby yari
     dash s ht loop)
   "A list of packages to ensure are installed at launch.")
