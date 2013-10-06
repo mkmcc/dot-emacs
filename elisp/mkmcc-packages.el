@@ -16,13 +16,13 @@
 (defvar mkmcc-packages
   '(melpa
     org deft
-    gnuplot-mode bibslurp
+    gnuplot-mode bibslurp jumblr
     rainbow-mode flycheck
     expand-region smart-forward
     volatile-highlights diminish nyan-mode
     paredit elisp-slime-nav ack-and-a-half
     gitconfig-mode gitignore-mode git-commit-mode magit
-    ;ido-ubiquitous 
+    ;ido-ubiquitous
     smex yasnippet
     ruby-end inf-ruby yari
     dash s ht loop)
