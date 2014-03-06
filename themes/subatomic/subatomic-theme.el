@@ -27,6 +27,8 @@
       (midnight-2        "#2a2c3e")
       (midnight-3        "#232533")
       (mystic-blue       "#696e92")
+      (mystic-blue-1     "#5B5F7F")
+      (mystic-blue-2     "#474b65")
       (victory-blue      "#8aa6bc")
       (victory-blue+1    "#9dbbd3")
       (jungle-green      "#a9dc69")
@@ -104,7 +106,7 @@
      ((t (:inherit hl-line))))
 
    `(minibuffer-prompt
-     ((t (:foreground ,axiomatic-purple :weight bold))))
+     ((t (:foreground ,deep-gold :weight bold))))
 
    `(escape-glyph
      ((t (:foreground ,cold-mud :weight bold))))
@@ -117,14 +119,14 @@
 
    ;; whitespace-mode
    `(whitespace-space
-     ((t (:background ,midnight :foreground ,mystic-blue))))
+     ((t (:background ,midnight :foreground ,mystic-blue-1))))
 
    `(whitespace-hspace
-     ((t (:background ,midnight :foreground ,mystic-blue))))
+     ((t (:background ,midnight :foreground ,mystic-blue-1))))
 
    `(whitespace-tab ((t (:background ,brick-red))))
 
-   `(whitespace-newline ((t (:foreground ,mystic-blue))))
+   `(whitespace-newline ((t (:foreground ,mystic-blue-1))))
 
    `(whitespace-trailing ((t (:background ,brick-red))))
 
@@ -145,7 +147,7 @@
 
    ;; modeline
    `(mode-line
-     ((t (:background ,midnight-3 :foreground ,full-white :weight bold
+     ((t (:background ,midnight-3 :foreground ,victory-blue :weight bold
                       :box (:line-width 6 :color ,midnight-3 :style nil)))))
 
 
@@ -169,10 +171,10 @@
      ((t (:inherit mode-line-face :foreground ,axiomatic-purple :weight bold))))
 
    `(mode-line-position-face
-     ((t (:foreground ,victory-blue))))
+     ((t (:foreground ,mystic-blue))))
 
    `(mode-line-mode-face
-     ((t (:foreground ,deep-gold :weight bold))))
+     ((t (:foreground ,undergrowth-green :weight bold))))
 
    `(mode-line-minor-mode-face
      ((t (:foreground ,cold-mud :height 110))))
