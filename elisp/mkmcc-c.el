@@ -46,6 +46,8 @@ defined, else start in the current directory."
    c-hungry-delete-key t
    mode-name "C")
 
+  (c-set-offset 'substatement-open 0)
+
   ;; Keybindings
   (local-set-key (kbd "C-c o")   'ff-find-other-file)
   (local-set-key (kbd "<f8>")    'mkmcc-compile))
