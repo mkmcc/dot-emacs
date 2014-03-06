@@ -22,7 +22,7 @@
     volatile-highlights diminish nyan-mode
     paredit elisp-slime-nav ack-and-a-half
     gitconfig-mode gitignore-mode git-commit-mode magit
-    ;ido-ubiquitous
+    flx-ido ido-vertical-mode ;ido-ubiquitous
     smex yasnippet
     ruby-end inf-ruby yari
     dash s ht loop)
