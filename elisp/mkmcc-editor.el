@@ -209,4 +209,17 @@ indent yanked text (with prefix arg don't indent)."
 (defvar tramp-default-method "ssh")
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; follow-mode
+(after-load 'follow
+  (defalias 'two-column 'follow-delete-other-windows-and-split)
+
+  (defun mkmcc-follow-mode-hook ()
+    (define-key follow-mode-map (kbd "C-v") 'follow-scroll-up)
+    (define-key follow-mode-map (kbd "M-v") 'follow-scroll-down))
+
+  (add-hook 'follow-mode-hook 'mkmcc-follow-mode-hook))
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 (provide 'mkmcc-editor)
