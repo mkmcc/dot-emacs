@@ -34,6 +34,9 @@
                                  (lambda (x) (stringp (car x))) t nil nil)))
     label))
 
+(defvar longlines-show-hard-newlines)
+(setq longlines-show-hard-newlines t)
+
 (defvar longlines-show-effect)
 (setq longlines-show-effect
       (propertize "$\n" 'face 'font-lock-comment-face))
