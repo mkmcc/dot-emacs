@@ -34,12 +34,35 @@
                                  (lambda (x) (stringp (car x))) t nil nil)))
     label))
 
+(defvar longlines-show-effect)
+(setq longlines-show-effect
+      (propertize "$\n" 'face 'font-lock-comment-face))
+
+(defadvice LaTeX-fill-region-as-paragraph (around LaTeX-sentence-filling)
+  "Start each sentence on a new line."
+  (let ((from (ad-get-arg 0))
+        (to-marker (set-marker (make-marker) (ad-get-arg 1)))
+        tmp-end)
+    (while (< from (marker-position to-marker))
+      (forward-sentence)
+      ;; might have gone beyond to-marker --- use whichever is smaller:
+      (ad-set-arg 1 (setq tmp-end (min (point) (marker-position to-marker))))
+      ad-do-it
+      (ad-set-arg 0 (setq from (point)))
+      (unless (or
+               (bolp)
+               (looking-at "\\s *$"))
+        (LaTeX-newline)))
+    (set-marker to-marker nil)))
+(ad-activate 'LaTeX-fill-region-as-paragraph)
+
 (defun mkmcc-latex-mode-hook ()
   "defaults for `latex-mode'."
   (turn-on-reftex)
   (diminish 'reftex-mode)
   (abbrev-mode -1)
   (turn-on-auto-fill)
+  (longlines-mode +1)
 
   ;; F7 to compile, F8 to view the file; keep F12 for dictionary.
   (mkmcc-set-latex-compile-command)
