@@ -75,10 +75,13 @@ to the owner of the file.  See the function `set-file-modes'.")
 ;; (ido-ubiquitous-use-new-completing-read load-theme 'custom)
 
 (ido-vertical-mode 1)
-(setq ido-vertical-define-keys 'C-n-C-p-up-down-left-right)
+(defvar ido-vertical-define-keys)
+(setq ido-vertical-define-keys 'C-n-and-C-p-only)
 (flx-ido-mode 1)
 ;; disable ido faces to see flx highlights.
-(setq ido-use-faces nil)
+(defvar ido-use-faces)
+;;(setq ido-use-faces nil)
+(setq ido-use-faces t)                  ; I think I prefer this?
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
