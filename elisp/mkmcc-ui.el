@@ -23,9 +23,9 @@
 
 (setq ring-bell-function 'ignore)       ; turn off the damn bell!
 
-(defvar cua-enable-cua-keys nil)        ; only for rectangles
-(defvar cua-delete-selection nil)       ; don't delete selection
-(cua-mode t)
+;; (defvar cua-enable-cua-keys nil)        ; only for rectangles
+;; (defvar cua-delete-selection nil)       ; don't delete selection
+;; (cua-mode t)
 
 (when mkmcc-macosx-p
   (defvar locate-command "mdfind"))
