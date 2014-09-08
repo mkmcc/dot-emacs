@@ -23,7 +23,6 @@
 (add-to-list 'completion-ignored-extensions ".rbc")
 
 (defun prelude-ruby-mode-hook ()
-  (inf-ruby-setup-keybindings)
   ;; turn off the annoying input echo in irb
   (setq comint-process-echoes t)
   (ruby-end-mode +1)
