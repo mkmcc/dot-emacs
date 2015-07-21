@@ -76,12 +76,20 @@
 (global-set-key (kbd "C-r")   'isearch-backward-regexp)
 (global-set-key (kbd "C-M-s") 'isearch-forward)
 (global-set-key (kbd "C-M-r") 'isearch-backward)
+
+;; avy
+(global-set-key (kbd "M-Z") 'avy-zap-to-char-dwim)
+(global-set-key (kbd "M-z") 'avy-zap-up-to-char-dwim)
+
+(global-set-key (kbd "C-c j") 'avy-goto-word-or-subword-1)
+(global-set-key (kbd "s-.")   'avy-goto-word-or-subword-1)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; spelling and dictionaries
 (global-set-key [f2] 'ispell-word)
+(global-set-key [f11] 'define-word-at-point)
 (global-set-key [f12] (λ (shell-command (mkmcc-call-dict-command))))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 

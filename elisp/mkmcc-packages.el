@@ -14,18 +14,40 @@
 
 ;; automatically update or install some packages
 (defvar mkmcc-packages
-  '(melpa
-    org deft
-    gnuplot-mode bibslurp jumblr
-    rainbow-mode flycheck
-    expand-region smart-forward
-    volatile-highlights diminish nyan-mode
-    paredit elisp-slime-nav ack-and-a-half
-    gitconfig-mode gitignore-mode git-commit-mode magit
-    flx-ido ido-vertical-mode ;ido-ubiquitous
-    smex yasnippet
-    ruby-end inf-ruby yari
-    dash s ht loop)
+  '(org
+    deft
+    gnuplot-mode
+    bibslurp
+    jumblr
+    rainbow-mode
+    flycheck
+    expand-region
+    smart-forward
+    volatile-highlights
+    diminish
+    nyan-mode
+    paredit
+    elisp-slime-nav
+    ack-and-a-half
+    gitconfig-mode
+    gitignore-mode
+    git-commit-mode
+    magit
+    flx-ido
+    ido-vertical-mode
+    ;;ido-ubiquitous
+    smex
+    yasnippet
+    ruby-end
+    inf-ruby
+    yari
+    dash
+    s
+    ht
+    loop
+    avy
+    avy-zap
+    define-word)
   "A list of packages to ensure are installed at launch.")
 
 (defun mkmcc-packages-installed-p ()
