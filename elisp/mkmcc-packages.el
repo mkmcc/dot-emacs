@@ -28,10 +28,10 @@
     nyan-mode
     paredit
     elisp-slime-nav
-    ack-and-a-half
+    ;;ack-and-a-half
     gitconfig-mode
     gitignore-mode
-    git-commit-mode
+    git-commit
     magit
     flx-ido
     ido-vertical-mode
@@ -45,8 +45,8 @@
     s
     ht
     loop
-    avy
-    avy-zap
+    ;avy
+    ;avy-zap
     define-word)
   "A list of packages to ensure are installed at launch.")
 
